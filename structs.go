@@ -95,7 +95,21 @@ type PatchDayObject struct {
 			Vector        string   `json:"Vector"`
 			ProductID     []string `json:"ProductID"`
 		} `json:"CVSSScoreSets"`
-		Remediations    []interface{} `json:"Remediations"`
+		Remediations []struct {
+			Description struct {
+				Value string `json:"Value"`
+			} `json:"Description"`
+			URL             string        `json:"URL"`
+			Supercedence    string        `json:"Supercedence"`
+			ProductID       []string      `json:"ProductID"`
+			Type            int           `json:"Type"`
+			DateSpecified   bool          `json:"DateSpecified"`
+			AffectedFiles   []interface{} `json:"AffectedFiles"`
+			RestartRequired struct {
+				Value string `json:"Value"`
+			} `json:"RestartRequired"`
+			SubType string `json:"SubType"`
+		} `json:"Remediations"`
 		Acknowledgments []struct {
 			Name []struct {
 				Value string `json:"Value"`
