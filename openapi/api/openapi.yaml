@@ -1,18 +1,14 @@
 openapi: 3.0.1
 info:
-  description: "This RESTful API can be used to engage the Microsoft Security Response\
-    \ Center (MSRC) in the following ways:\r\n\r\n- Get security update summaries\
-    \ and details using the [Common Vulnerability Reporting Framework](https://www.icasi.org/cvrf)\
-    \ (CVRF).\r\n\r\n- Report suspected cyberattacks or abuse originating from Microsoft\
-    \ Online Services.\r\n\r\n- Notify Microsoft of any planned penetration tests\
-    \ against your Azure assets.\r\n\r\n**Sample client code** is available on the\
-    \ Microsoft Security [Updates](https://github.com/microsoft/MSRC-Microsoft-Security-Updates-API)\
-    \ and [Engage](https://github.com/Microsoft/MSRC-Microsoft-Engage-API) \r\nGithub\
-    \ repositories."
-  title: MSRC Public API
-  version: v1
+  description: "Get security updates programmatically using this RESTful API. Sample\
+    \ client code is available on the [Microsoft Security Updates GitHub](https://github.com/microsoft/MSRC-Microsoft-Security-Updates-API).\
+    \ For more details, please visit [msrc.microsoft.com/update-guide](https://msrc.microsoft.com/update-guide).\r\
+    \n\r\n_**NOTE: If you're looking for the Engage API (CARS), please refer to the\
+    \ new [Abuse Reporting developer portal](https://msrc.microsoft.com/report/developer).**_"
+  title: MSRC CVRF API
+  version: v2
 servers:
-- url: https://api.msrc.microsoft.com/
+- url: https://api.msrc.microsoft.com/cvrf/v2.0
 paths:
   /cvrf/{id}:
     get:
@@ -26,12 +22,6 @@ paths:
       - description: CVRF document ID (yyyy-mmm)
         in: path
         name: id
-        required: true
-        schema:
-          type: string
-      - description: API version (yyyy), e.g. 2017
-        in: query
-        name: api-version
         required: true
         schema:
           type: string
@@ -66,49 +56,6 @@ paths:
       summary: Get security update details in CVRF format
       tags:
       - Get Security Updates
-  /engage/cars:
-    post:
-      description: "Submit reports to Microsoft's Computer Emergency Response Team\
-        \ (CERT) using the Common Abuse Reporting System (CARS).\r\nThis action is\
-        \ to report suspected cyberattacks or abuse originating from Microsoft Online\
-        \ Services,\r\nsuch as Azure, Bing, Outlook, OneDrive, and Office 365. This\
-        \ includes malicious network activity\r\noriginating from Microsoft IP addresses.\
-        \ It also includes distribution of malicious content or other\r\nillicit material\
-        \ through Microsoft Online Services."
-      operationId: Cars_PostCarsReport
-      parameters:
-      - description: API version (yyyy)
-        in: query
-        name: api-version
-        schema:
-          type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/CarsDto'
-        description: CARS-formatted abuse report
-        required: true
-      responses:
-        "202":
-          content: {}
-          description: Submitted Successfully
-        "400":
-          content: {}
-          description: Bad Request
-        "401":
-          content: {}
-          description: Unauthorized
-        "415":
-          content: {}
-          description: Unsupported Media Type
-        "500":
-          content: {}
-          description: Internal Server Error
-      summary: Submit an abuse report
-      tags:
-      - Engage the Microsoft Security Response Center (MSRC)
-      x-codegen-request-body-name: carsDto
   /updates:
     get:
       description: Get a list of all Microsoft security updates. Each includes a link
@@ -117,13 +64,6 @@ paths:
         [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)
         on current and initial release dates.
       operationId: Updates_GetUpdates
-      parameters:
-      - description: API version (yyyy), e.g. 2017
-        in: query
-        name: api-version
-        required: true
-        schema:
-          type: string
       responses:
         "200":
           content:
@@ -153,12 +93,6 @@ paths:
         \ on current and initial release dates.\r\n\r\nNOTE: this endpoint is case-sensitive."
       operationId: Updates_GetUpdatesByKey
       parameters:
-      - description: API version (yyyy), e.g. 2017
-        in: query
-        name: api-version
-        required: true
-        schema:
-          type: string
       - description: update ID (yyyy-mmm), vulnerability ID (CVE number), or year
           (yyyy)
         in: path
@@ -190,42 +124,6 @@ paths:
       - Get Security Updates
 components:
   schemas:
-    RequesterInfo:
-      description: information about the requester
-      properties:
-        contactEmail:
-          description: requester email
-          type: string
-      required:
-      - contactEmail
-      type: object
-    SubscriptionInfo:
-      description: information about an Azure subscription
-      properties:
-        subscriptionId:
-          description: Azure subscription ID
-          type: string
-      required:
-      - subscriptionId
-      type: object
-    TestInfo:
-      description: information about a penetration test
-      properties:
-        startDate:
-          description: date testing will commence
-          type: string
-        endDate:
-          description: date testing will end
-          type: string
-        testDescription:
-          description: detailed summary of the planned testing, including types of
-            tests and a list of targeted assets (IP or FQDN)
-          type: string
-      required:
-      - endDate
-      - startDate
-      - testDescription
-      type: object
     cvrfdoc:
       example:
         AggregateSeverity:
@@ -989,6 +887,7 @@ components:
           - 5
           - 6
           - 7
+          - 8
           format: int32
           type: integer
         Ordinal:
@@ -1675,6 +1574,7 @@ components:
           - 5
           - 6
           - 7
+          - 8
           format: int32
           type: integer
         Ordinal:
@@ -2112,213 +2012,6 @@ components:
         Value:
           type: string
       type: object
-    CarsDto:
-      description: a Common Abuse Reporting System (CARS) submission
-      example:
-        testSubmission: true
-        carsAdvancedCheck: true
-        reporterInfo:
-          reporterEmail: someone@contoso.com
-          reporterName: First Last
-          reporterPhone: 000-000-0000
-          reporterOrg: Contoso
-          discloseEmail: "true"
-          reporterNotes: This is example reporter information.
-        reports:
-        - report:
-            batchID: campaign X
-            relatedCases:
-            - TODO
-            reportNotes: This is an example abuse report.
-            tlp: WHITE
-            disclosureNotes: Share freely.
-            threats:
-            - threat:
-                threatType: activity
-                threatSubType: spam
-                sourceIp: 1.1.1.1
-                destinationIp: 2.2.2.2
-                sourcePort: "1"
-                destinationPort: "2"
-                protocol: "0"
-                byteCount: "1"
-                packetCount: "1"
-                date: 2000-01-20
-                time: 00:00:00
-                timeZone: -00:00
-                sample: This is example activity threat information.
-                sampleType: text/plain
-            - threat:
-                threatType: content
-                threatSubType: malware
-                sourceUrl: evil.com
-                destinationUrl: example.com
-                protocol: "0"
-                date: 2000-01-20
-                time: 00:00:00
-                timeZone: -00:00
-                sample: This is example content threat information.
-                sampleType: text/plain
-      properties:
-        testSubmission:
-          description: is this a test submission? If so, the API will validate the
-            input but won't submit it to MSRC for action
-          type: boolean
-        carsAdvancedCheck:
-          description: do the reports include detailed fields? This can be false only
-            for form submissions (API users should ignore it)
-          type: boolean
-        reporterInfo:
-          $ref: '#/components/schemas/ReporterInfo'
-        reports:
-          description: reports of abuse
-          items:
-            $ref: '#/components/schemas/Report'
-          type: array
-      required:
-      - reporterInfo
-      - reports
-      - testSubmission
-      type: object
-    ReporterInfo:
-      description: information about the reporter
-      properties:
-        reporterEmail:
-          description: reporter email address, may be used for further correspondence
-          type: string
-        reporterName:
-          description: reporter name
-          type: string
-        reporterPhone:
-          description: reporter phone number
-          type: string
-        reporterOrg:
-          description: reporter organization
-          type: string
-        discloseEmail:
-          description: allow response organization to share reporter email with an
-            external incident resolver as appropriate?
-          type: string
-        reporterNotes:
-          description: any other relevant information about the reporter or reporter
-            organization
-          type: string
-      required:
-      - discloseEmail
-      - reporterEmail
-      - reporterName
-      - reporterNotes
-      type: object
-    Report:
-      description: abuse report
-      properties:
-        report:
-          $ref: '#/components/schemas/Report1'
-      required:
-      - report
-      type: object
-    Report1:
-      description: abuse report
-      properties:
-        batchID:
-          description: tag and group reports
-          type: string
-        relatedCases:
-          description: IDs of known related cases
-          items:
-            type: string
-          type: array
-        reportNotes:
-          description: a brief summary of what occurred
-          type: string
-        TLP:
-          description: "[Traffic Light Protocol](https://www.us-cert.gov/tlp) color\
-            \ (RED, AMBER, GREEN, or WHITE) to regulate the level of\r\ndisclosure"
-          type: string
-        disclosureNotes:
-          description: any additional limits on disclosure
-          type: string
-        threats:
-          description: instances of abuse
-          items:
-            $ref: '#/components/schemas/Threat'
-          type: array
-      required:
-      - reportNotes
-      - threats
-      type: object
-    Threat:
-      description: an instance of abuse
-      properties:
-        threat:
-          $ref: '#/components/schemas/Threat1'
-      required:
-      - threat
-      type: object
-    Threat1:
-      description: an instance of abuse
-      properties:
-        threatType:
-          description: 'threat type: activity or content'
-          type: string
-        threatSubType:
-          description: threat subtype (depends on threat type)
-          type: string
-        sourceIp:
-          description: IP address sending unwanted traffic (required for activity
-            threats)
-          type: string
-        destinationIp:
-          description: IP address receiving unwanted traffic (required for activity
-            threats)
-          type: string
-        sourcePort:
-          description: port sending unwanted traffic
-          type: string
-        destinationPort:
-          description: port receiving unwanted traffic
-          type: string
-        sourceUrl:
-          description: URL hosting abusive content (required for content threats)
-          type: string
-        destinationUrl:
-          description: URL receiving abusive content (required for content threats)
-          type: string
-        protocol:
-          description: '[internet protocol number](http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml)
-            of the protocol being used to send or serve abusive traffic or data'
-          type: string
-        byteCount:
-          description: total number of bytes received for reported traffic (activity
-            threats only)
-          type: string
-        packetCount:
-          description: total number of packets received for reported traffic (activity
-            threats only)
-          type: string
-        date:
-          description: date of abuse
-          type: string
-        time:
-          description: time of abuse
-          type: string
-        timeZone:
-          description: reporter time zone
-          type: string
-        sample:
-          description: sample data/artifacts relating to abuse
-          type: string
-        sampleType:
-          description: '[Media Type](https://www.iana.org/assignments/media-types/media-types.xhtml)
-            of sample (required if sample is provided)'
-          type: string
-      required:
-      - date
-      - threatSubType
-      - threatType
-      - time
-      - timeZone
-      type: object
     Update:
       description: summary information about a security release (CVRF document)
       example:
@@ -2393,18 +2086,4 @@ components:
       - '@odata.context'
       - value
       type: object
-  securitySchemes:
-    apiKeyHeader:
-      description: API Key Header
-      in: header
-      name: api-key
-      type: apiKey
-    oauth2:
-      description: OAuth2Microsoft AAD
-      flows:
-        authorizationCode:
-          authorizationUrl: https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/authorize
-          scopes: {}
-          tokenUrl: https://login.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token
-      type: oauth2
 x-original-swagger-version: "2.0"

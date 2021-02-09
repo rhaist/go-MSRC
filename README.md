@@ -52,7 +52,6 @@ func main() {
 }
 ```
 
-
 ## License
 
 This software is distributed under the MIT license.

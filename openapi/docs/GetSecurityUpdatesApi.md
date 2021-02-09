@@ -1,6 +1,6 @@
 # \GetSecurityUpdatesApi
 
-All URIs are relative to *https://api.msrc.microsoft.com*
+All URIs are relative to *https://api.msrc.microsoft.com/cvrf/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 ## CvrfGetCvrf
 
-> Cvrfdoc CvrfGetCvrf(ctx, id).ApiVersion(apiVersion).Execute()
+> Cvrfdoc CvrfGetCvrf(ctx, id).Execute()
 
 Get security update details in CVRF format
 
@@ -32,12 +32,11 @@ import (
 
 func main() {
     id := "id_example" // string | CVRF document ID (yyyy-mmm)
-    apiVersion := "apiVersion_example" // string | API version (yyyy), e.g. 2017
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).ApiVersion(apiVersion).Execute()
-    if err.Error() != "" {
+    resp, r, err := api_client.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).Execute()
+    if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.CvrfGetCvrf``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
@@ -62,7 +61,6 @@ Other parameters are passed through a pointer to a apiCvrfGetCvrfRequest struct 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
- **apiVersion** | **string** | API version (yyyy), e.g. 2017 | 
 
 ### Return type
 
@@ -84,7 +82,7 @@ No authorization required
 
 ## UpdatesGetUpdates
 
-> InlineResponse200 UpdatesGetUpdates(ctx).ApiVersion(apiVersion).Execute()
+> InlineResponse200 UpdatesGetUpdates(ctx).Execute()
 
 Get all security update summaries
 
@@ -103,12 +101,11 @@ import (
 )
 
 func main() {
-    apiVersion := "apiVersion_example" // string | API version (yyyy), e.g. 2017
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).ApiVersion(apiVersion).Execute()
-    if err.Error() != "" {
+    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).Execute()
+    if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
@@ -119,16 +116,12 @@ func main() {
 
 ### Path Parameters
 
-
+This endpoint does not need any parameter.
 
 ### Other Parameters
 
 Other parameters are passed through a pointer to a apiUpdatesGetUpdatesRequest struct via the builder pattern
 
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiVersion** | **string** | API version (yyyy), e.g. 2017 | 
 
 ### Return type
 
@@ -150,7 +143,7 @@ No authorization required
 
 ## UpdatesGetUpdatesByKey
 
-> InlineResponse200 UpdatesGetUpdatesByKey(ctx, key).ApiVersion(apiVersion).Execute()
+> InlineResponse200 UpdatesGetUpdatesByKey(ctx, key).Execute()
 
 Get security update summaries by key
 
@@ -169,13 +162,12 @@ import (
 )
 
 func main() {
-    apiVersion := "apiVersion_example" // string | API version (yyyy), e.g. 2017
     key := "key_example" // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
 
     configuration := openapiclient.NewConfiguration()
     api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).ApiVersion(apiVersion).Execute()
-    if err.Error() != "" {
+    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
+    if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
@@ -199,7 +191,6 @@ Other parameters are passed through a pointer to a apiUpdatesGetUpdatesByKeyRequ
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiVersion** | **string** | API version (yyyy), e.g. 2017 | 
 
 
 ### Return type

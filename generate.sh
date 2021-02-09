@@ -13,6 +13,8 @@ if ! [ -x "$(command -v openapi-generator)" ]; then
 	exit 1
 fi
 
+rm -rf openapi/*
+
 openapi-generator generate \
 	--git-user-id $GIT_USER_ID \
 	--git-repo-id $GIT_REPO_ID \
@@ -20,4 +22,4 @@ openapi-generator generate \
 	--additional-properties=isGoSubmodule=true \
 	-g go \
 	-o openapi \
-	-i https://portal.msrc.microsoft.com/developer/open-api-spec/v1
+	-i https://api.msrc.microsoft.com/cvrf/v2.0/swagger/docs/v2
