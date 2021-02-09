@@ -15,9 +15,6 @@ Please have a look at the generated [README](openapi/README.md) for additional i
 The following code shows how the client can be used to get the Patchday data for
 a specific month.
 
-The required API Key has to be requested at the
-[Microsoft Security Update API Developer Portal](https://portal.msrc.microsoft.com/en-us/developer).
-
 Please refer to the [official documentation](https://pkg.go.dev/github.com/rhaist/go-MSRC/openapi)
 for advanced usage of this client.
 
@@ -35,11 +32,9 @@ import (
 const API_KEY = "CHANGEME"
 
 func main() {
-	apiVersion := "2017" // string | API version (yyyy), e.g. 2017
-	key := "2021-Jan"    // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
+	key := "2021-Feb"    // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
 
 	configuration := openapi.NewConfiguration()
-	configuration.AddDefaultHeader("api-key", API_KEY)
 
 	api_client := openapi.NewAPIClient(configuration)
 	resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).ApiVersion(apiVersion).Execute()
