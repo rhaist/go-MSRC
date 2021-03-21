@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Number** | Pointer to **string** |  | [optional] 
 **Date** | Pointer to **time.Time** |  | [optional] 
-**Description** | Pointer to [**CvrfdocDocumentTrackingRevisionDescription**](cvrfdocDocumentTrackingRevisionDescription.md) |  | [optional] 
+**Description** | Pointer to [**CvrfdocDocumentTrackingRevisionDescription**](CvrfdocDocumentTrackingRevisionDescription.md) |  | [optional] 
 
 ## Methods
 

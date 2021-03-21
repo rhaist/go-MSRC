@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ID** | Pointer to [**CvrfdocDocumentTrackingIdentificationID**](cvrfdocDocumentTrackingIdentificationID.md) |  | [optional] 
-**Alias** | Pointer to [**CvrfdocDocumentTrackingIdentificationAlias**](cvrfdocDocumentTrackingIdentificationAlias.md) |  | [optional] 
+**ID** | Pointer to [**CvrfdocDocumentTrackingIdentificationID**](CvrfdocDocumentTrackingIdentificationID.md) |  | [optional] 
+**Alias** | Pointer to [**CvrfdocDocumentTrackingIdentificationAlias**](CvrfdocDocumentTrackingIdentificationAlias.md) |  | [optional] 
 
 ## Methods
 

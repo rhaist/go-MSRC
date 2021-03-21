@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Cvrfdoc**](cvrfdoc.md)
+[**Cvrfdoc**](Cvrfdoc.md)
 
 ### Authorization
 
@@ -125,7 +125,7 @@ Other parameters are passed through a pointer to a apiUpdatesGetUpdatesRequest s
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](inline_response_200.md)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 

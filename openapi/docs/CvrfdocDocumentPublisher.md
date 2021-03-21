@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ContactDetails** | Pointer to [**CvrfdocDocumentPublisherContactDetails**](cvrfdocDocumentPublisherContactDetails.md) |  | [optional] 
-**IssuingAuthority** | Pointer to [**CvrfdocDocumentPublisherIssuingAuthority**](cvrfdocDocumentPublisherIssuingAuthority.md) |  | [optional] 
+**ContactDetails** | Pointer to [**CvrfdocDocumentPublisherContactDetails**](CvrfdocDocumentPublisherContactDetails.md) |  | [optional] 
+**IssuingAuthority** | Pointer to [**CvrfdocDocumentPublisherIssuingAuthority**](CvrfdocDocumentPublisherIssuingAuthority.md) |  | [optional] 
 **Type** | Pointer to **int32** |  | [optional] 
 **VendorID** | Pointer to **string** |  | [optional] 
 

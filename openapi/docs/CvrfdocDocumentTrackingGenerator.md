@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Engine** | Pointer to [**CvrfdocDocumentTrackingGeneratorEngine**](cvrfdocDocumentTrackingGeneratorEngine.md) |  | [optional] 
+**Engine** | Pointer to [**CvrfdocDocumentTrackingGeneratorEngine**](CvrfdocDocumentTrackingGeneratorEngine.md) |  | [optional] 
 **Date** | Pointer to **time.Time** |  | [optional] 
 **DateSpecified** | Pointer to **bool** |  | [optional] 
 

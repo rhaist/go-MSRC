@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **URL** | Pointer to **string** |  | [optional] 
-**Description** | Pointer to [**CvrfdocReferenceDescription**](cvrfdocReferenceDescription.md) |  | [optional] 
+**Description** | Pointer to [**CvrfdocReferenceDescription**](CvrfdocReferenceDescription.md) |  | [optional] 
 **Type** | Pointer to **int32** |  | [optional] 
 
 ## Methods

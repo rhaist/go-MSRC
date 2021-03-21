@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Name** | Pointer to [**[]CvrfdocAcknowledgmentName**](CvrfdocAcknowledgmentName.md) |  | [optional] 
 **Organization** | Pointer to [**[]CvrfdocAcknowledgmentOrganization**](CvrfdocAcknowledgmentOrganization.md) |  | [optional] 
-**Description** | Pointer to [**CvrfdocAcknowledgmentDescription**](cvrfdocAcknowledgmentDescription.md) |  | [optional] 
+**Description** | Pointer to [**CvrfdocAcknowledgmentDescription**](CvrfdocAcknowledgmentDescription.md) |  | [optional] 
 **URL** | Pointer to **[]string** |  | [optional] 
 
 ## Methods

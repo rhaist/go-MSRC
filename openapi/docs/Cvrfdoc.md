@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**DocumentTitle** | Pointer to [**CvrfdocDocumentTitle**](cvrfdocDocumentTitle.md) |  | [optional] 
-**DocumentType** | Pointer to [**CvrfdocDocumentType**](cvrfdocDocumentType.md) |  | [optional] 
-**DocumentPublisher** | Pointer to [**CvrfdocDocumentPublisher**](cvrfdocDocumentPublisher.md) |  | [optional] 
-**DocumentTracking** | Pointer to [**CvrfdocDocumentTracking**](cvrfdocDocumentTracking.md) |  | [optional] 
+**DocumentTitle** | Pointer to [**CvrfdocDocumentTitle**](CvrfdocDocumentTitle.md) |  | [optional] 
+**DocumentType** | Pointer to [**CvrfdocDocumentType**](CvrfdocDocumentType.md) |  | [optional] 
+**DocumentPublisher** | Pointer to [**CvrfdocDocumentPublisher**](CvrfdocDocumentPublisher.md) |  | [optional] 
+**DocumentTracking** | Pointer to [**CvrfdocDocumentTracking**](CvrfdocDocumentTracking.md) |  | [optional] 
 **DocumentNotes** | Pointer to [**[]CvrfdocNote**](CvrfdocNote.md) |  | [optional] 
-**DocumentDistribution** | Pointer to [**CvrfdocDocumentDistribution**](cvrfdocDocumentDistribution.md) |  | [optional] 
-**AggregateSeverity** | Pointer to [**CvrfdocAggregateSeverity**](cvrfdocAggregateSeverity.md) |  | [optional] 
+**DocumentDistribution** | Pointer to [**CvrfdocDocumentDistribution**](CvrfdocDocumentDistribution.md) |  | [optional] 
+**AggregateSeverity** | Pointer to [**CvrfdocAggregateSeverity**](CvrfdocAggregateSeverity.md) |  | [optional] 
 **DocumentReferences** | Pointer to [**[]CvrfdocReference**](CvrfdocReference.md) |  | [optional] 
 **Acknowledgments** | Pointer to [**[]CvrfdocAcknowledgment**](CvrfdocAcknowledgment.md) |  | [optional] 
 **ProductTree** | Pointer to [**ProductTree**](ProductTree.md) |  | [optional] 

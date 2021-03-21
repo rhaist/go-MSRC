@@ -4,13 +4,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Identification** | Pointer to [**CvrfdocDocumentTrackingIdentification**](cvrfdocDocumentTrackingIdentification.md) |  | [optional] 
+**Identification** | Pointer to [**CvrfdocDocumentTrackingIdentification**](CvrfdocDocumentTrackingIdentification.md) |  | [optional] 
 **Status** | Pointer to **int32** |  | [optional] 
 **Version** | Pointer to **string** |  | [optional] 
 **RevisionHistory** | Pointer to [**[]CvrfdocDocumentTrackingRevision**](CvrfdocDocumentTrackingRevision.md) |  | [optional] 
 **InitialReleaseDate** | Pointer to **time.Time** |  | [optional] 
 **CurrentReleaseDate** | Pointer to **time.Time** |  | [optional] 
-**Generator** | Pointer to [**CvrfdocDocumentTrackingGenerator**](cvrfdocDocumentTrackingGenerator.md) |  | [optional] 
+**Generator** | Pointer to [**CvrfdocDocumentTrackingGenerator**](CvrfdocDocumentTrackingGenerator.md) |  | [optional] 
 
 ## Methods
 
