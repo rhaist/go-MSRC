@@ -242,8 +242,7 @@ components:
             Value: Value
             lang: lang
           Remediations:
-          - Type: 1
-            Description:
+          - Description:
               Value: Value
               lang: lang
             RestartRequired:
@@ -268,18 +267,19 @@ components:
             - ProductID
             - ProductID
             DateSpecified: true
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
             URL: URL
             Date: 2000-01-23T04:56:07.000+00:00
             GroupID:
             - GroupID
             - GroupID
-          - Type: 1
-            Description:
+            Type: 1
+            Entitlement:
+            - Value: Value
+              lang: lang
+            - Value: Value
+              lang: lang
+            FixedBuild: FixedBuild
+          - Description:
               Value: Value
               lang: lang
             RestartRequired:
@@ -304,16 +304,18 @@ components:
             - ProductID
             - ProductID
             DateSpecified: true
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
             URL: URL
             Date: 2000-01-23T04:56:07.000+00:00
             GroupID:
             - GroupID
             - GroupID
+            Type: 1
+            Entitlement:
+            - Value: Value
+              lang: lang
+            - Value: Value
+              lang: lang
+            FixedBuild: FixedBuild
           ReleaseDate: 2000-01-23T04:56:07.000+00:00
           CWE:
           - Value: Value
@@ -462,8 +464,7 @@ components:
             Value: Value
             lang: lang
           Remediations:
-          - Type: 1
-            Description:
+          - Description:
               Value: Value
               lang: lang
             RestartRequired:
@@ -488,18 +489,19 @@ components:
             - ProductID
             - ProductID
             DateSpecified: true
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
             URL: URL
             Date: 2000-01-23T04:56:07.000+00:00
             GroupID:
             - GroupID
             - GroupID
-          - Type: 1
-            Description:
+            Type: 1
+            Entitlement:
+            - Value: Value
+              lang: lang
+            - Value: Value
+              lang: lang
+            FixedBuild: FixedBuild
+          - Description:
               Value: Value
               lang: lang
             RestartRequired:
@@ -524,16 +526,18 @@ components:
             - ProductID
             - ProductID
             DateSpecified: true
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
             URL: URL
             Date: 2000-01-23T04:56:07.000+00:00
             GroupID:
             - GroupID
             - GroupID
+            Type: 1
+            Entitlement:
+            - Value: Value
+              lang: lang
+            - Value: Value
+              lang: lang
+            FixedBuild: FixedBuild
           ReleaseDate: 2000-01-23T04:56:07.000+00:00
           CWE:
           - Value: Value
@@ -1099,8 +1103,7 @@ components:
           Value: Value
           lang: lang
         Remediations:
-        - Type: 1
-          Description:
+        - Description:
             Value: Value
             lang: lang
           RestartRequired:
@@ -1125,18 +1128,19 @@ components:
           - ProductID
           - ProductID
           DateSpecified: true
-          Entitlement:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
           URL: URL
           Date: 2000-01-23T04:56:07.000+00:00
           GroupID:
           - GroupID
           - GroupID
-        - Type: 1
-          Description:
+          Type: 1
+          Entitlement:
+          - Value: Value
+            lang: lang
+          - Value: Value
+            lang: lang
+          FixedBuild: FixedBuild
+        - Description:
             Value: Value
             lang: lang
           RestartRequired:
@@ -1161,16 +1165,18 @@ components:
           - ProductID
           - ProductID
           DateSpecified: true
-          Entitlement:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
           URL: URL
           Date: 2000-01-23T04:56:07.000+00:00
           GroupID:
           - GroupID
           - GroupID
+          Type: 1
+          Entitlement:
+          - Value: Value
+            lang: lang
+          - Value: Value
+            lang: lang
+          FixedBuild: FixedBuild
         ReleaseDate: 2000-01-23T04:56:07.000+00:00
         CWE:
         - Value: Value
@@ -1717,7 +1723,6 @@ components:
       type: object
     VulnerabilityRemediation:
       example:
-        Type: 1
         Description:
           Value: Value
           lang: lang
@@ -1743,16 +1748,18 @@ components:
         - ProductID
         - ProductID
         DateSpecified: true
-        Entitlement:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
         URL: URL
         Date: 2000-01-23T04:56:07.000+00:00
         GroupID:
         - GroupID
         - GroupID
+        Type: 1
+        Entitlement:
+        - Value: Value
+          lang: lang
+        - Value: Value
+          lang: lang
+        FixedBuild: FixedBuild
       properties:
         Description:
           $ref: '#/components/schemas/VulnerabilityRemediationDescription'
@@ -1794,6 +1801,8 @@ components:
         RestartRequired:
           $ref: '#/components/schemas/VulnerabilityRemediationRestartRequired'
         SubType:
+          type: string
+        FixedBuild:
           type: string
       type: object
     VulnerabilityReference:
