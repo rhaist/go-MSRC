@@ -61,12 +61,10 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrf(ctx _context.Context, id stri
 //  @return Cvrfdoc
 func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfRequest) (Cvrfdoc, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  Cvrfdoc
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue Cvrfdoc
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.CvrfGetCvrf")
@@ -98,7 +96,7 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfReques
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -163,12 +161,10 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdates(ctx _context.Context) A
 //  @return InlineResponse200
 func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetUpdatesRequest) (InlineResponse200, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InlineResponse200
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdates")
@@ -199,7 +195,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetU
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
@@ -269,12 +265,10 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKey(ctx _context.Conte
 //  @return InlineResponse200
 func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdatesGetUpdatesByKeyRequest) (InlineResponse200, *_nethttp.Response, error) {
 	var (
-		localVarHTTPMethod   = _nethttp.MethodGet
-		localVarPostBody     interface{}
-		localVarFormFileName string
-		localVarFileName     string
-		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse200
+		localVarHTTPMethod  = _nethttp.MethodGet
+		localVarPostBody    interface{}
+		formFiles           []formFile
+		localVarReturnValue InlineResponse200
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdatesByKey")
@@ -306,7 +300,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdate
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFormFileName, localVarFileName, localVarFileBytes)
+	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
 		return localVarReturnValue, nil, err
 	}
