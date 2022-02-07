@@ -20,7 +20,7 @@ type CvrfdocDocumentTracking struct {
 	Identification     *CvrfdocDocumentTrackingIdentification `json:"Identification,omitempty"`
 	Status             *int32                                 `json:"Status,omitempty"`
 	Version            *string                                `json:"Version,omitempty"`
-	RevisionHistory    *[]CvrfdocDocumentTrackingRevision     `json:"RevisionHistory,omitempty"`
+	RevisionHistory    []CvrfdocDocumentTrackingRevision      `json:"RevisionHistory,omitempty"`
 	InitialReleaseDate *time.Time                             `json:"InitialReleaseDate,omitempty"`
 	CurrentReleaseDate *time.Time                             `json:"CurrentReleaseDate,omitempty"`
 	Generator          *CvrfdocDocumentTrackingGenerator      `json:"Generator,omitempty"`
@@ -145,12 +145,12 @@ func (o *CvrfdocDocumentTracking) GetRevisionHistory() []CvrfdocDocumentTracking
 		var ret []CvrfdocDocumentTrackingRevision
 		return ret
 	}
-	return *o.RevisionHistory
+	return o.RevisionHistory
 }
 
 // GetRevisionHistoryOk returns a tuple with the RevisionHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CvrfdocDocumentTracking) GetRevisionHistoryOk() (*[]CvrfdocDocumentTrackingRevision, bool) {
+func (o *CvrfdocDocumentTracking) GetRevisionHistoryOk() ([]CvrfdocDocumentTrackingRevision, bool) {
 	if o == nil || o.RevisionHistory == nil {
 		return nil, false
 	}
@@ -168,7 +168,7 @@ func (o *CvrfdocDocumentTracking) HasRevisionHistory() bool {
 
 // SetRevisionHistory gets a reference to the given []CvrfdocDocumentTrackingRevision and assigns it to the RevisionHistory field.
 func (o *CvrfdocDocumentTracking) SetRevisionHistory(v []CvrfdocDocumentTrackingRevision) {
-	o.RevisionHistory = &v
+	o.RevisionHistory = v
 }
 
 // GetInitialReleaseDate returns the InitialReleaseDate field value if set, zero value otherwise.

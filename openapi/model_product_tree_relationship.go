@@ -16,10 +16,10 @@ import (
 
 // ProductTreeRelationship struct for ProductTreeRelationship
 type ProductTreeRelationship struct {
-	FullProductName           *[]FullProductName `json:"FullProductName,omitempty"`
-	ProductReference          *string            `json:"ProductReference,omitempty"`
-	RelationType              *int32             `json:"RelationType,omitempty"`
-	RelatesToProductReference *string            `json:"RelatesToProductReference,omitempty"`
+	FullProductName           []FullProductName `json:"FullProductName,omitempty"`
+	ProductReference          *string           `json:"ProductReference,omitempty"`
+	RelationType              *int32            `json:"RelationType,omitempty"`
+	RelatesToProductReference *string           `json:"RelatesToProductReference,omitempty"`
 }
 
 // NewProductTreeRelationship instantiates a new ProductTreeRelationship object
@@ -45,12 +45,12 @@ func (o *ProductTreeRelationship) GetFullProductName() []FullProductName {
 		var ret []FullProductName
 		return ret
 	}
-	return *o.FullProductName
+	return o.FullProductName
 }
 
 // GetFullProductNameOk returns a tuple with the FullProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTreeRelationship) GetFullProductNameOk() (*[]FullProductName, bool) {
+func (o *ProductTreeRelationship) GetFullProductNameOk() ([]FullProductName, bool) {
 	if o == nil || o.FullProductName == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ProductTreeRelationship) HasFullProductName() bool {
 
 // SetFullProductName gets a reference to the given []FullProductName and assigns it to the FullProductName field.
 func (o *ProductTreeRelationship) SetFullProductName(v []FullProductName) {
-	o.FullProductName = &v
+	o.FullProductName = v
 }
 
 // GetProductReference returns the ProductReference field value if set, zero value otherwise.

@@ -77,11 +77,11 @@ func (o *InlineResponse200) GetValue() []Update {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200) GetValueOk() (*[]Update, bool) {
+func (o *InlineResponse200) GetValueOk() ([]Update, bool) {
 	if o == nil {
 		return nil, false
 	}
-	return &o.Value, true
+	return o.Value, true
 }
 
 // SetValue sets field value

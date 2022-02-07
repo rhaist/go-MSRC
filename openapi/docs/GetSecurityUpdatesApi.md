@@ -34,8 +34,8 @@ func main() {
     id := "id_example" // string | CVRF document ID (yyyy-mmm)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.CvrfGetCvrf``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -103,8 +103,8 @@ import (
 func main() {
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
@@ -165,8 +165,8 @@ func main() {
     key := "key_example" // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
 
     configuration := openapiclient.NewConfiguration()
-    api_client := openapiclient.NewAPIClient(configuration)
-    resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
+    apiClient := openapiclient.NewAPIClient(configuration)
+    resp, r, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
     if err != nil {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)

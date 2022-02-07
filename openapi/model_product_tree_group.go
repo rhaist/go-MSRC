@@ -17,7 +17,7 @@ import (
 // ProductTreeGroup struct for ProductTreeGroup
 type ProductTreeGroup struct {
 	Description *ProductTreeGroupDescription `json:"Description,omitempty"`
-	ProductID   *[]string                    `json:"ProductID,omitempty"`
+	ProductID   []string                     `json:"ProductID,omitempty"`
 	GroupID     *string                      `json:"GroupID,omitempty"`
 }
 
@@ -76,12 +76,12 @@ func (o *ProductTreeGroup) GetProductID() []string {
 		var ret []string
 		return ret
 	}
-	return *o.ProductID
+	return o.ProductID
 }
 
 // GetProductIDOk returns a tuple with the ProductID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTreeGroup) GetProductIDOk() (*[]string, bool) {
+func (o *ProductTreeGroup) GetProductIDOk() ([]string, bool) {
 	if o == nil || o.ProductID == nil {
 		return nil, false
 	}
@@ -99,7 +99,7 @@ func (o *ProductTreeGroup) HasProductID() bool {
 
 // SetProductID gets a reference to the given []string and assigns it to the ProductID field.
 func (o *ProductTreeGroup) SetProductID(v []string) {
-	o.ProductID = &v
+	o.ProductID = v
 }
 
 // GetGroupID returns the GroupID field value if set, zero value otherwise.

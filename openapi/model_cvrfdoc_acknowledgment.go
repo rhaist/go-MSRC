@@ -16,10 +16,10 @@ import (
 
 // CvrfdocAcknowledgment struct for CvrfdocAcknowledgment
 type CvrfdocAcknowledgment struct {
-	Name         *[]CvrfdocAcknowledgmentName         `json:"Name,omitempty"`
-	Organization *[]CvrfdocAcknowledgmentOrganization `json:"Organization,omitempty"`
-	Description  *CvrfdocAcknowledgmentDescription    `json:"Description,omitempty"`
-	URL          *[]string                            `json:"URL,omitempty"`
+	Name         []CvrfdocAcknowledgmentName         `json:"Name,omitempty"`
+	Organization []CvrfdocAcknowledgmentOrganization `json:"Organization,omitempty"`
+	Description  *CvrfdocAcknowledgmentDescription   `json:"Description,omitempty"`
+	URL          []string                            `json:"URL,omitempty"`
 }
 
 // NewCvrfdocAcknowledgment instantiates a new CvrfdocAcknowledgment object
@@ -45,12 +45,12 @@ func (o *CvrfdocAcknowledgment) GetName() []CvrfdocAcknowledgmentName {
 		var ret []CvrfdocAcknowledgmentName
 		return ret
 	}
-	return *o.Name
+	return o.Name
 }
 
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CvrfdocAcknowledgment) GetNameOk() (*[]CvrfdocAcknowledgmentName, bool) {
+func (o *CvrfdocAcknowledgment) GetNameOk() ([]CvrfdocAcknowledgmentName, bool) {
 	if o == nil || o.Name == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *CvrfdocAcknowledgment) HasName() bool {
 
 // SetName gets a reference to the given []CvrfdocAcknowledgmentName and assigns it to the Name field.
 func (o *CvrfdocAcknowledgment) SetName(v []CvrfdocAcknowledgmentName) {
-	o.Name = &v
+	o.Name = v
 }
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
@@ -77,12 +77,12 @@ func (o *CvrfdocAcknowledgment) GetOrganization() []CvrfdocAcknowledgmentOrganiz
 		var ret []CvrfdocAcknowledgmentOrganization
 		return ret
 	}
-	return *o.Organization
+	return o.Organization
 }
 
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CvrfdocAcknowledgment) GetOrganizationOk() (*[]CvrfdocAcknowledgmentOrganization, bool) {
+func (o *CvrfdocAcknowledgment) GetOrganizationOk() ([]CvrfdocAcknowledgmentOrganization, bool) {
 	if o == nil || o.Organization == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *CvrfdocAcknowledgment) HasOrganization() bool {
 
 // SetOrganization gets a reference to the given []CvrfdocAcknowledgmentOrganization and assigns it to the Organization field.
 func (o *CvrfdocAcknowledgment) SetOrganization(v []CvrfdocAcknowledgmentOrganization) {
-	o.Organization = &v
+	o.Organization = v
 }
 
 // GetDescription returns the Description field value if set, zero value otherwise.
@@ -141,12 +141,12 @@ func (o *CvrfdocAcknowledgment) GetURL() []string {
 		var ret []string
 		return ret
 	}
-	return *o.URL
+	return o.URL
 }
 
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *CvrfdocAcknowledgment) GetURLOk() (*[]string, bool) {
+func (o *CvrfdocAcknowledgment) GetURLOk() ([]string, bool) {
 	if o == nil || o.URL == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *CvrfdocAcknowledgment) HasURL() bool {
 
 // SetURL gets a reference to the given []string and assigns it to the URL field.
 func (o *CvrfdocAcknowledgment) SetURL(v []string) {
-	o.URL = &v
+	o.URL = v
 }
 
 func (o CvrfdocAcknowledgment) MarshalJSON() ([]byte, error) {

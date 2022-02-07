@@ -16,9 +16,9 @@ import (
 
 // BranchType struct for BranchType
 type BranchType struct {
-	Items *[]map[string]interface{} `json:"Items,omitempty"`
-	Type  *int32                    `json:"Type,omitempty"`
-	Name  *string                   `json:"Name,omitempty"`
+	Items []map[string]interface{} `json:"Items,omitempty"`
+	Type  *int32                   `json:"Type,omitempty"`
+	Name  *string                  `json:"Name,omitempty"`
 }
 
 // NewBranchType instantiates a new BranchType object
@@ -44,12 +44,12 @@ func (o *BranchType) GetItems() []map[string]interface{} {
 		var ret []map[string]interface{}
 		return ret
 	}
-	return *o.Items
+	return o.Items
 }
 
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *BranchType) GetItemsOk() (*[]map[string]interface{}, bool) {
+func (o *BranchType) GetItemsOk() ([]map[string]interface{}, bool) {
 	if o == nil || o.Items == nil {
 		return nil, false
 	}
@@ -67,7 +67,7 @@ func (o *BranchType) HasItems() bool {
 
 // SetItems gets a reference to the given []map[string]interface{} and assigns it to the Items field.
 func (o *BranchType) SetItems(v []map[string]interface{}) {
-	o.Items = &v
+	o.Items = v
 }
 
 // GetType returns the Type field value if set, zero value otherwise.

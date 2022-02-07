@@ -16,10 +16,10 @@ import (
 
 // ProductTree struct for ProductTree
 type ProductTree struct {
-	Branch          *[]BranchType              `json:"Branch,omitempty"`
-	FullProductName *[]FullProductName         `json:"FullProductName,omitempty"`
-	Relationship    *[]ProductTreeRelationship `json:"Relationship,omitempty"`
-	ProductGroups   *[]ProductTreeGroup        `json:"ProductGroups,omitempty"`
+	Branch          []BranchType              `json:"Branch,omitempty"`
+	FullProductName []FullProductName         `json:"FullProductName,omitempty"`
+	Relationship    []ProductTreeRelationship `json:"Relationship,omitempty"`
+	ProductGroups   []ProductTreeGroup        `json:"ProductGroups,omitempty"`
 }
 
 // NewProductTree instantiates a new ProductTree object
@@ -45,12 +45,12 @@ func (o *ProductTree) GetBranch() []BranchType {
 		var ret []BranchType
 		return ret
 	}
-	return *o.Branch
+	return o.Branch
 }
 
 // GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTree) GetBranchOk() (*[]BranchType, bool) {
+func (o *ProductTree) GetBranchOk() ([]BranchType, bool) {
 	if o == nil || o.Branch == nil {
 		return nil, false
 	}
@@ -68,7 +68,7 @@ func (o *ProductTree) HasBranch() bool {
 
 // SetBranch gets a reference to the given []BranchType and assigns it to the Branch field.
 func (o *ProductTree) SetBranch(v []BranchType) {
-	o.Branch = &v
+	o.Branch = v
 }
 
 // GetFullProductName returns the FullProductName field value if set, zero value otherwise.
@@ -77,12 +77,12 @@ func (o *ProductTree) GetFullProductName() []FullProductName {
 		var ret []FullProductName
 		return ret
 	}
-	return *o.FullProductName
+	return o.FullProductName
 }
 
 // GetFullProductNameOk returns a tuple with the FullProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTree) GetFullProductNameOk() (*[]FullProductName, bool) {
+func (o *ProductTree) GetFullProductNameOk() ([]FullProductName, bool) {
 	if o == nil || o.FullProductName == nil {
 		return nil, false
 	}
@@ -100,7 +100,7 @@ func (o *ProductTree) HasFullProductName() bool {
 
 // SetFullProductName gets a reference to the given []FullProductName and assigns it to the FullProductName field.
 func (o *ProductTree) SetFullProductName(v []FullProductName) {
-	o.FullProductName = &v
+	o.FullProductName = v
 }
 
 // GetRelationship returns the Relationship field value if set, zero value otherwise.
@@ -109,12 +109,12 @@ func (o *ProductTree) GetRelationship() []ProductTreeRelationship {
 		var ret []ProductTreeRelationship
 		return ret
 	}
-	return *o.Relationship
+	return o.Relationship
 }
 
 // GetRelationshipOk returns a tuple with the Relationship field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTree) GetRelationshipOk() (*[]ProductTreeRelationship, bool) {
+func (o *ProductTree) GetRelationshipOk() ([]ProductTreeRelationship, bool) {
 	if o == nil || o.Relationship == nil {
 		return nil, false
 	}
@@ -132,7 +132,7 @@ func (o *ProductTree) HasRelationship() bool {
 
 // SetRelationship gets a reference to the given []ProductTreeRelationship and assigns it to the Relationship field.
 func (o *ProductTree) SetRelationship(v []ProductTreeRelationship) {
-	o.Relationship = &v
+	o.Relationship = v
 }
 
 // GetProductGroups returns the ProductGroups field value if set, zero value otherwise.
@@ -141,12 +141,12 @@ func (o *ProductTree) GetProductGroups() []ProductTreeGroup {
 		var ret []ProductTreeGroup
 		return ret
 	}
-	return *o.ProductGroups
+	return o.ProductGroups
 }
 
 // GetProductGroupsOk returns a tuple with the ProductGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ProductTree) GetProductGroupsOk() (*[]ProductTreeGroup, bool) {
+func (o *ProductTree) GetProductGroupsOk() ([]ProductTreeGroup, bool) {
 	if o == nil || o.ProductGroups == nil {
 		return nil, false
 	}
@@ -164,7 +164,7 @@ func (o *ProductTree) HasProductGroups() bool {
 
 // SetProductGroups gets a reference to the given []ProductTreeGroup and assigns it to the ProductGroups field.
 func (o *ProductTree) SetProductGroups(v []ProductTreeGroup) {
-	o.ProductGroups = &v
+	o.ProductGroups = v
 }
 
 func (o ProductTree) MarshalJSON() ([]byte, error) {

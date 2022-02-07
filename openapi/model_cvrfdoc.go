@@ -20,13 +20,13 @@ type Cvrfdoc struct {
 	DocumentType         *CvrfdocDocumentType         `json:"DocumentType,omitempty"`
 	DocumentPublisher    *CvrfdocDocumentPublisher    `json:"DocumentPublisher,omitempty"`
 	DocumentTracking     *CvrfdocDocumentTracking     `json:"DocumentTracking,omitempty"`
-	DocumentNotes        *[]CvrfdocNote               `json:"DocumentNotes,omitempty"`
+	DocumentNotes        []CvrfdocNote                `json:"DocumentNotes,omitempty"`
 	DocumentDistribution *CvrfdocDocumentDistribution `json:"DocumentDistribution,omitempty"`
 	AggregateSeverity    *CvrfdocAggregateSeverity    `json:"AggregateSeverity,omitempty"`
-	DocumentReferences   *[]CvrfdocReference          `json:"DocumentReferences,omitempty"`
-	Acknowledgments      *[]CvrfdocAcknowledgment     `json:"Acknowledgments,omitempty"`
+	DocumentReferences   []CvrfdocReference           `json:"DocumentReferences,omitempty"`
+	Acknowledgments      []CvrfdocAcknowledgment      `json:"Acknowledgments,omitempty"`
 	ProductTree          *ProductTree                 `json:"ProductTree,omitempty"`
-	Vulnerability        *[]Vulnerability             `json:"Vulnerability,omitempty"`
+	Vulnerability        []Vulnerability              `json:"Vulnerability,omitempty"`
 }
 
 // NewCvrfdoc instantiates a new Cvrfdoc object
@@ -180,12 +180,12 @@ func (o *Cvrfdoc) GetDocumentNotes() []CvrfdocNote {
 		var ret []CvrfdocNote
 		return ret
 	}
-	return *o.DocumentNotes
+	return o.DocumentNotes
 }
 
 // GetDocumentNotesOk returns a tuple with the DocumentNotes field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cvrfdoc) GetDocumentNotesOk() (*[]CvrfdocNote, bool) {
+func (o *Cvrfdoc) GetDocumentNotesOk() ([]CvrfdocNote, bool) {
 	if o == nil || o.DocumentNotes == nil {
 		return nil, false
 	}
@@ -203,7 +203,7 @@ func (o *Cvrfdoc) HasDocumentNotes() bool {
 
 // SetDocumentNotes gets a reference to the given []CvrfdocNote and assigns it to the DocumentNotes field.
 func (o *Cvrfdoc) SetDocumentNotes(v []CvrfdocNote) {
-	o.DocumentNotes = &v
+	o.DocumentNotes = v
 }
 
 // GetDocumentDistribution returns the DocumentDistribution field value if set, zero value otherwise.
@@ -276,12 +276,12 @@ func (o *Cvrfdoc) GetDocumentReferences() []CvrfdocReference {
 		var ret []CvrfdocReference
 		return ret
 	}
-	return *o.DocumentReferences
+	return o.DocumentReferences
 }
 
 // GetDocumentReferencesOk returns a tuple with the DocumentReferences field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cvrfdoc) GetDocumentReferencesOk() (*[]CvrfdocReference, bool) {
+func (o *Cvrfdoc) GetDocumentReferencesOk() ([]CvrfdocReference, bool) {
 	if o == nil || o.DocumentReferences == nil {
 		return nil, false
 	}
@@ -299,7 +299,7 @@ func (o *Cvrfdoc) HasDocumentReferences() bool {
 
 // SetDocumentReferences gets a reference to the given []CvrfdocReference and assigns it to the DocumentReferences field.
 func (o *Cvrfdoc) SetDocumentReferences(v []CvrfdocReference) {
-	o.DocumentReferences = &v
+	o.DocumentReferences = v
 }
 
 // GetAcknowledgments returns the Acknowledgments field value if set, zero value otherwise.
@@ -308,12 +308,12 @@ func (o *Cvrfdoc) GetAcknowledgments() []CvrfdocAcknowledgment {
 		var ret []CvrfdocAcknowledgment
 		return ret
 	}
-	return *o.Acknowledgments
+	return o.Acknowledgments
 }
 
 // GetAcknowledgmentsOk returns a tuple with the Acknowledgments field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cvrfdoc) GetAcknowledgmentsOk() (*[]CvrfdocAcknowledgment, bool) {
+func (o *Cvrfdoc) GetAcknowledgmentsOk() ([]CvrfdocAcknowledgment, bool) {
 	if o == nil || o.Acknowledgments == nil {
 		return nil, false
 	}
@@ -331,7 +331,7 @@ func (o *Cvrfdoc) HasAcknowledgments() bool {
 
 // SetAcknowledgments gets a reference to the given []CvrfdocAcknowledgment and assigns it to the Acknowledgments field.
 func (o *Cvrfdoc) SetAcknowledgments(v []CvrfdocAcknowledgment) {
-	o.Acknowledgments = &v
+	o.Acknowledgments = v
 }
 
 // GetProductTree returns the ProductTree field value if set, zero value otherwise.
@@ -372,12 +372,12 @@ func (o *Cvrfdoc) GetVulnerability() []Vulnerability {
 		var ret []Vulnerability
 		return ret
 	}
-	return *o.Vulnerability
+	return o.Vulnerability
 }
 
 // GetVulnerabilityOk returns a tuple with the Vulnerability field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *Cvrfdoc) GetVulnerabilityOk() (*[]Vulnerability, bool) {
+func (o *Cvrfdoc) GetVulnerabilityOk() ([]Vulnerability, bool) {
 	if o == nil || o.Vulnerability == nil {
 		return nil, false
 	}
@@ -395,7 +395,7 @@ func (o *Cvrfdoc) HasVulnerability() bool {
 
 // SetVulnerability gets a reference to the given []Vulnerability and assigns it to the Vulnerability field.
 func (o *Cvrfdoc) SetVulnerability(v []Vulnerability) {
-	o.Vulnerability = &v
+	o.Vulnerability = v
 }
 
 func (o Cvrfdoc) MarshalJSON() ([]byte, error) {
