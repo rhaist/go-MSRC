@@ -82,7 +82,7 @@ No authorization required
 
 ## UpdatesGetUpdates
 
-> InlineResponse200 UpdatesGetUpdates(ctx).Execute()
+> UpdatesGetUpdates200Response UpdatesGetUpdates(ctx).Execute()
 
 Get all security update summaries
 
@@ -109,7 +109,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatesGetUpdates`: InlineResponse200
+    // response from `UpdatesGetUpdates`: UpdatesGetUpdates200Response
     fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.UpdatesGetUpdates`: %v\n", resp)
 }
 ```
@@ -125,7 +125,7 @@ Other parameters are passed through a pointer to a apiUpdatesGetUpdatesRequest s
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**UpdatesGetUpdates200Response**](UpdatesGetUpdates200Response.md)
 
 ### Authorization
 
@@ -143,7 +143,7 @@ No authorization required
 
 ## UpdatesGetUpdatesByKey
 
-> InlineResponse200 UpdatesGetUpdatesByKey(ctx, key).Execute()
+> UpdatesGetUpdates200Response UpdatesGetUpdatesByKey(ctx, key).Execute()
 
 Get security update summaries by key
 
@@ -171,7 +171,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `UpdatesGetUpdatesByKey`: InlineResponse200
+    // response from `UpdatesGetUpdatesByKey`: UpdatesGetUpdates200Response
     fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey`: %v\n", resp)
 }
 ```
@@ -195,7 +195,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**UpdatesGetUpdates200Response**](UpdatesGetUpdates200Response.md)
 
 ### Authorization
 

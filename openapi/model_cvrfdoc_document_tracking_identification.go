@@ -39,7 +39,7 @@ func NewCvrfdocDocumentTrackingIdentificationWithDefaults() *CvrfdocDocumentTrac
 
 // GetID returns the ID field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingIdentification) GetID() CvrfdocDocumentTrackingIdentificationID {
-	if o == nil || o.ID == nil {
+	if o == nil || isNil(o.ID) {
 		var ret CvrfdocDocumentTrackingIdentificationID
 		return ret
 	}
@@ -49,7 +49,7 @@ func (o *CvrfdocDocumentTrackingIdentification) GetID() CvrfdocDocumentTrackingI
 // GetIDOk returns a tuple with the ID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingIdentification) GetIDOk() (*CvrfdocDocumentTrackingIdentificationID, bool) {
-	if o == nil || o.ID == nil {
+	if o == nil || isNil(o.ID) {
 		return nil, false
 	}
 	return o.ID, true
@@ -57,7 +57,7 @@ func (o *CvrfdocDocumentTrackingIdentification) GetIDOk() (*CvrfdocDocumentTrack
 
 // HasID returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingIdentification) HasID() bool {
-	if o != nil && o.ID != nil {
+	if o != nil && !isNil(o.ID) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *CvrfdocDocumentTrackingIdentification) SetID(v CvrfdocDocumentTrackingI
 
 // GetAlias returns the Alias field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingIdentification) GetAlias() CvrfdocDocumentTrackingIdentificationAlias {
-	if o == nil || o.Alias == nil {
+	if o == nil || isNil(o.Alias) {
 		var ret CvrfdocDocumentTrackingIdentificationAlias
 		return ret
 	}
@@ -81,7 +81,7 @@ func (o *CvrfdocDocumentTrackingIdentification) GetAlias() CvrfdocDocumentTracki
 // GetAliasOk returns a tuple with the Alias field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingIdentification) GetAliasOk() (*CvrfdocDocumentTrackingIdentificationAlias, bool) {
-	if o == nil || o.Alias == nil {
+	if o == nil || isNil(o.Alias) {
 		return nil, false
 	}
 	return o.Alias, true
@@ -89,7 +89,7 @@ func (o *CvrfdocDocumentTrackingIdentification) GetAliasOk() (*CvrfdocDocumentTr
 
 // HasAlias returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingIdentification) HasAlias() bool {
-	if o != nil && o.Alias != nil {
+	if o != nil && !isNil(o.Alias) {
 		return true
 	}
 
@@ -103,10 +103,10 @@ func (o *CvrfdocDocumentTrackingIdentification) SetAlias(v CvrfdocDocumentTracki
 
 func (o CvrfdocDocumentTrackingIdentification) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ID != nil {
+	if !isNil(o.ID) {
 		toSerialize["ID"] = o.ID
 	}
-	if o.Alias != nil {
+	if !isNil(o.Alias) {
 		toSerialize["Alias"] = o.Alias
 	}
 	return json.Marshal(toSerialize)

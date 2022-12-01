@@ -32,12 +32,12 @@ docs/CvrfdocReference.md
 docs/CvrfdocReferenceDescription.md
 docs/FullProductName.md
 docs/GetSecurityUpdatesApi.md
-docs/InlineResponse200.md
 docs/ProductTree.md
 docs/ProductTreeGroup.md
 docs/ProductTreeGroupDescription.md
 docs/ProductTreeRelationship.md
 docs/Update.md
+docs/UpdatesGetUpdates200Response.md
 docs/Vulnerability.md
 docs/VulnerabilityAcknowledgment.md
 docs/VulnerabilityAcknowledgmentDescription.md
@@ -88,12 +88,12 @@ model_cvrfdoc_note.go
 model_cvrfdoc_reference.go
 model_cvrfdoc_reference_description.go
 model_full_product_name.go
-model_inline_response_200.go
 model_product_tree.go
 model_product_tree_group.go
 model_product_tree_group_description.go
 model_product_tree_relationship.go
 model_update.go
+model_updates_get_updates_200_response.go
 model_vulnerability.go
 model_vulnerability_acknowledgment.go
 model_vulnerability_acknowledgment_description.go
@@ -116,4 +116,5 @@ model_vulnerability_threat.go
 model_vulnerability_threat_description.go
 model_vulnerability_title.go
 response.go
+test/api_get_security_updates_test.go
 utils.go

@@ -130,7 +130,7 @@ func (o *Update) SetDocumentTitle(v string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *Update) GetSeverity() string {
-	if o == nil || o.Severity == nil {
+	if o == nil || isNil(o.Severity) {
 		var ret string
 		return ret
 	}
@@ -140,7 +140,7 @@ func (o *Update) GetSeverity() string {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Update) GetSeverityOk() (*string, bool) {
-	if o == nil || o.Severity == nil {
+	if o == nil || isNil(o.Severity) {
 		return nil, false
 	}
 	return o.Severity, true
@@ -148,7 +148,7 @@ func (o *Update) GetSeverityOk() (*string, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *Update) HasSeverity() bool {
-	if o != nil && o.Severity != nil {
+	if o != nil && !isNil(o.Severity) {
 		return true
 	}
 
@@ -243,7 +243,7 @@ func (o Update) MarshalJSON() ([]byte, error) {
 	if true {
 		toSerialize["DocumentTitle"] = o.DocumentTitle
 	}
-	if o.Severity != nil {
+	if !isNil(o.Severity) {
 		toSerialize["Severity"] = o.Severity
 	}
 	if true {

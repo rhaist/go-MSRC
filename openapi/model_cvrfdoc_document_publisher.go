@@ -41,7 +41,7 @@ func NewCvrfdocDocumentPublisherWithDefaults() *CvrfdocDocumentPublisher {
 
 // GetContactDetails returns the ContactDetails field value if set, zero value otherwise.
 func (o *CvrfdocDocumentPublisher) GetContactDetails() CvrfdocDocumentPublisherContactDetails {
-	if o == nil || o.ContactDetails == nil {
+	if o == nil || isNil(o.ContactDetails) {
 		var ret CvrfdocDocumentPublisherContactDetails
 		return ret
 	}
@@ -51,7 +51,7 @@ func (o *CvrfdocDocumentPublisher) GetContactDetails() CvrfdocDocumentPublisherC
 // GetContactDetailsOk returns a tuple with the ContactDetails field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentPublisher) GetContactDetailsOk() (*CvrfdocDocumentPublisherContactDetails, bool) {
-	if o == nil || o.ContactDetails == nil {
+	if o == nil || isNil(o.ContactDetails) {
 		return nil, false
 	}
 	return o.ContactDetails, true
@@ -59,7 +59,7 @@ func (o *CvrfdocDocumentPublisher) GetContactDetailsOk() (*CvrfdocDocumentPublis
 
 // HasContactDetails returns a boolean if a field has been set.
 func (o *CvrfdocDocumentPublisher) HasContactDetails() bool {
-	if o != nil && o.ContactDetails != nil {
+	if o != nil && !isNil(o.ContactDetails) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *CvrfdocDocumentPublisher) SetContactDetails(v CvrfdocDocumentPublisherC
 
 // GetIssuingAuthority returns the IssuingAuthority field value if set, zero value otherwise.
 func (o *CvrfdocDocumentPublisher) GetIssuingAuthority() CvrfdocDocumentPublisherIssuingAuthority {
-	if o == nil || o.IssuingAuthority == nil {
+	if o == nil || isNil(o.IssuingAuthority) {
 		var ret CvrfdocDocumentPublisherIssuingAuthority
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *CvrfdocDocumentPublisher) GetIssuingAuthority() CvrfdocDocumentPublishe
 // GetIssuingAuthorityOk returns a tuple with the IssuingAuthority field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentPublisher) GetIssuingAuthorityOk() (*CvrfdocDocumentPublisherIssuingAuthority, bool) {
-	if o == nil || o.IssuingAuthority == nil {
+	if o == nil || isNil(o.IssuingAuthority) {
 		return nil, false
 	}
 	return o.IssuingAuthority, true
@@ -91,7 +91,7 @@ func (o *CvrfdocDocumentPublisher) GetIssuingAuthorityOk() (*CvrfdocDocumentPubl
 
 // HasIssuingAuthority returns a boolean if a field has been set.
 func (o *CvrfdocDocumentPublisher) HasIssuingAuthority() bool {
-	if o != nil && o.IssuingAuthority != nil {
+	if o != nil && !isNil(o.IssuingAuthority) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *CvrfdocDocumentPublisher) SetIssuingAuthority(v CvrfdocDocumentPublishe
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CvrfdocDocumentPublisher) GetType() int32 {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret int32
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *CvrfdocDocumentPublisher) GetType() int32 {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentPublisher) GetTypeOk() (*int32, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -123,7 +123,7 @@ func (o *CvrfdocDocumentPublisher) GetTypeOk() (*int32, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CvrfdocDocumentPublisher) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -137,7 +137,7 @@ func (o *CvrfdocDocumentPublisher) SetType(v int32) {
 
 // GetVendorID returns the VendorID field value if set, zero value otherwise.
 func (o *CvrfdocDocumentPublisher) GetVendorID() string {
-	if o == nil || o.VendorID == nil {
+	if o == nil || isNil(o.VendorID) {
 		var ret string
 		return ret
 	}
@@ -147,7 +147,7 @@ func (o *CvrfdocDocumentPublisher) GetVendorID() string {
 // GetVendorIDOk returns a tuple with the VendorID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentPublisher) GetVendorIDOk() (*string, bool) {
-	if o == nil || o.VendorID == nil {
+	if o == nil || isNil(o.VendorID) {
 		return nil, false
 	}
 	return o.VendorID, true
@@ -155,7 +155,7 @@ func (o *CvrfdocDocumentPublisher) GetVendorIDOk() (*string, bool) {
 
 // HasVendorID returns a boolean if a field has been set.
 func (o *CvrfdocDocumentPublisher) HasVendorID() bool {
-	if o != nil && o.VendorID != nil {
+	if o != nil && !isNil(o.VendorID) {
 		return true
 	}
 
@@ -169,16 +169,16 @@ func (o *CvrfdocDocumentPublisher) SetVendorID(v string) {
 
 func (o CvrfdocDocumentPublisher) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ContactDetails != nil {
+	if !isNil(o.ContactDetails) {
 		toSerialize["ContactDetails"] = o.ContactDetails
 	}
-	if o.IssuingAuthority != nil {
+	if !isNil(o.IssuingAuthority) {
 		toSerialize["IssuingAuthority"] = o.IssuingAuthority
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["Type"] = o.Type
 	}
-	if o.VendorID != nil {
+	if !isNil(o.VendorID) {
 		toSerialize["VendorID"] = o.VendorID
 	}
 	return json.Marshal(toSerialize)

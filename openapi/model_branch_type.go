@@ -40,7 +40,7 @@ func NewBranchTypeWithDefaults() *BranchType {
 
 // GetItems returns the Items field value if set, zero value otherwise.
 func (o *BranchType) GetItems() []map[string]interface{} {
-	if o == nil || o.Items == nil {
+	if o == nil || isNil(o.Items) {
 		var ret []map[string]interface{}
 		return ret
 	}
@@ -50,7 +50,7 @@ func (o *BranchType) GetItems() []map[string]interface{} {
 // GetItemsOk returns a tuple with the Items field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchType) GetItemsOk() ([]map[string]interface{}, bool) {
-	if o == nil || o.Items == nil {
+	if o == nil || isNil(o.Items) {
 		return nil, false
 	}
 	return o.Items, true
@@ -58,7 +58,7 @@ func (o *BranchType) GetItemsOk() ([]map[string]interface{}, bool) {
 
 // HasItems returns a boolean if a field has been set.
 func (o *BranchType) HasItems() bool {
-	if o != nil && o.Items != nil {
+	if o != nil && !isNil(o.Items) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *BranchType) SetItems(v []map[string]interface{}) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *BranchType) GetType() int32 {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		var ret int32
 		return ret
 	}
@@ -82,7 +82,7 @@ func (o *BranchType) GetType() int32 {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchType) GetTypeOk() (*int32, bool) {
-	if o == nil || o.Type == nil {
+	if o == nil || isNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -90,7 +90,7 @@ func (o *BranchType) GetTypeOk() (*int32, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *BranchType) HasType() bool {
-	if o != nil && o.Type != nil {
+	if o != nil && !isNil(o.Type) {
 		return true
 	}
 
@@ -104,7 +104,7 @@ func (o *BranchType) SetType(v int32) {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *BranchType) GetName() string {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *BranchType) GetName() string {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *BranchType) GetNameOk() (*string, bool) {
-	if o == nil || o.Name == nil {
+	if o == nil || isNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -122,7 +122,7 @@ func (o *BranchType) GetNameOk() (*string, bool) {
 
 // HasName returns a boolean if a field has been set.
 func (o *BranchType) HasName() bool {
-	if o != nil && o.Name != nil {
+	if o != nil && !isNil(o.Name) {
 		return true
 	}
 
@@ -136,13 +136,13 @@ func (o *BranchType) SetName(v string) {
 
 func (o BranchType) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Items != nil {
+	if !isNil(o.Items) {
 		toSerialize["Items"] = o.Items
 	}
-	if o.Type != nil {
+	if !isNil(o.Type) {
 		toSerialize["Type"] = o.Type
 	}
-	if o.Name != nil {
+	if !isNil(o.Name) {
 		toSerialize["Name"] = o.Name
 	}
 	return json.Marshal(toSerialize)

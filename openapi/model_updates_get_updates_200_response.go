@@ -14,35 +14,35 @@ import (
 	"encoding/json"
 )
 
-// InlineResponse200 struct for InlineResponse200
-type InlineResponse200 struct {
+// UpdatesGetUpdates200Response struct for UpdatesGetUpdates200Response
+type UpdatesGetUpdates200Response struct {
 	// OData metadata for the request
 	OdataContext string `json:"@odata.context"`
 	// array of security update summaries
 	Value []Update `json:"value"`
 }
 
-// NewInlineResponse200 instantiates a new InlineResponse200 object
+// NewUpdatesGetUpdates200Response instantiates a new UpdatesGetUpdates200Response object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewInlineResponse200(odataContext string, value []Update) *InlineResponse200 {
-	this := InlineResponse200{}
+func NewUpdatesGetUpdates200Response(odataContext string, value []Update) *UpdatesGetUpdates200Response {
+	this := UpdatesGetUpdates200Response{}
 	this.OdataContext = odataContext
 	this.Value = value
 	return &this
 }
 
-// NewInlineResponse200WithDefaults instantiates a new InlineResponse200 object
+// NewUpdatesGetUpdates200ResponseWithDefaults instantiates a new UpdatesGetUpdates200Response object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewInlineResponse200WithDefaults() *InlineResponse200 {
-	this := InlineResponse200{}
+func NewUpdatesGetUpdates200ResponseWithDefaults() *UpdatesGetUpdates200Response {
+	this := UpdatesGetUpdates200Response{}
 	return &this
 }
 
 // GetOdataContext returns the OdataContext field value
-func (o *InlineResponse200) GetOdataContext() string {
+func (o *UpdatesGetUpdates200Response) GetOdataContext() string {
 	if o == nil {
 		var ret string
 		return ret
@@ -53,7 +53,7 @@ func (o *InlineResponse200) GetOdataContext() string {
 
 // GetOdataContextOk returns a tuple with the OdataContext field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200) GetOdataContextOk() (*string, bool) {
+func (o *UpdatesGetUpdates200Response) GetOdataContextOk() (*string, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -61,12 +61,12 @@ func (o *InlineResponse200) GetOdataContextOk() (*string, bool) {
 }
 
 // SetOdataContext sets field value
-func (o *InlineResponse200) SetOdataContext(v string) {
+func (o *UpdatesGetUpdates200Response) SetOdataContext(v string) {
 	o.OdataContext = v
 }
 
 // GetValue returns the Value field value
-func (o *InlineResponse200) GetValue() []Update {
+func (o *UpdatesGetUpdates200Response) GetValue() []Update {
 	if o == nil {
 		var ret []Update
 		return ret
@@ -77,7 +77,7 @@ func (o *InlineResponse200) GetValue() []Update {
 
 // GetValueOk returns a tuple with the Value field value
 // and a boolean to check if the value has been set.
-func (o *InlineResponse200) GetValueOk() ([]Update, bool) {
+func (o *UpdatesGetUpdates200Response) GetValueOk() ([]Update, bool) {
 	if o == nil {
 		return nil, false
 	}
@@ -85,11 +85,11 @@ func (o *InlineResponse200) GetValueOk() ([]Update, bool) {
 }
 
 // SetValue sets field value
-func (o *InlineResponse200) SetValue(v []Update) {
+func (o *UpdatesGetUpdates200Response) SetValue(v []Update) {
 	o.Value = v
 }
 
-func (o InlineResponse200) MarshalJSON() ([]byte, error) {
+func (o UpdatesGetUpdates200Response) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
 	if true {
 		toSerialize["@odata.context"] = o.OdataContext
@@ -100,38 +100,38 @@ func (o InlineResponse200) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-type NullableInlineResponse200 struct {
-	value *InlineResponse200
+type NullableUpdatesGetUpdates200Response struct {
+	value *UpdatesGetUpdates200Response
 	isSet bool
 }
 
-func (v NullableInlineResponse200) Get() *InlineResponse200 {
+func (v NullableUpdatesGetUpdates200Response) Get() *UpdatesGetUpdates200Response {
 	return v.value
 }
 
-func (v *NullableInlineResponse200) Set(val *InlineResponse200) {
+func (v *NullableUpdatesGetUpdates200Response) Set(val *UpdatesGetUpdates200Response) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableInlineResponse200) IsSet() bool {
+func (v NullableUpdatesGetUpdates200Response) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableInlineResponse200) Unset() {
+func (v *NullableUpdatesGetUpdates200Response) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableInlineResponse200(val *InlineResponse200) *NullableInlineResponse200 {
-	return &NullableInlineResponse200{value: val, isSet: true}
+func NewNullableUpdatesGetUpdates200Response(val *UpdatesGetUpdates200Response) *NullableUpdatesGetUpdates200Response {
+	return &NullableUpdatesGetUpdates200Response{value: val, isSet: true}
 }
 
-func (v NullableInlineResponse200) MarshalJSON() ([]byte, error) {
+func (v NullableUpdatesGetUpdates200Response) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableInlineResponse200) UnmarshalJSON(src []byte) error {
+func (v *NullableUpdatesGetUpdates200Response) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }

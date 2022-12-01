@@ -6,16 +6,15 @@ export GO_POST_PROCESS_FILE="$(which gofmt) -w"
 export GIT_USER_ID="rhaist"
 export GIT_REPO_ID="go-MSRC"
 
-# Check for openapi-generator
-# Install for Mac: brew install openapi-generator
-if ! [ -x "$(command -v openapi-generator)" ]; then
-	echo 'Error: openapi-generator is not installed.' >&2
+# Check for openapi-generator-cli
+if ! [ -x "$(command -v openapi-generator-cli)" ]; then
+	echo 'Error: openapi-generator-cli is not installed.' >&2
 	exit 1
 fi
 
 rm -rf openapi/*
 
-openapi-generator generate \
+openapi-generator-cli generate \
 	--git-user-id $GIT_USER_ID \
 	--git-repo-id $GIT_REPO_ID \
 	--enable-post-process-file \

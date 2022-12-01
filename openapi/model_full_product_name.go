@@ -40,7 +40,7 @@ func NewFullProductNameWithDefaults() *FullProductName {
 
 // GetProductID returns the ProductID field value if set, zero value otherwise.
 func (o *FullProductName) GetProductID() string {
-	if o == nil || o.ProductID == nil {
+	if o == nil || isNil(o.ProductID) {
 		var ret string
 		return ret
 	}
@@ -50,7 +50,7 @@ func (o *FullProductName) GetProductID() string {
 // GetProductIDOk returns a tuple with the ProductID field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullProductName) GetProductIDOk() (*string, bool) {
-	if o == nil || o.ProductID == nil {
+	if o == nil || isNil(o.ProductID) {
 		return nil, false
 	}
 	return o.ProductID, true
@@ -58,7 +58,7 @@ func (o *FullProductName) GetProductIDOk() (*string, bool) {
 
 // HasProductID returns a boolean if a field has been set.
 func (o *FullProductName) HasProductID() bool {
-	if o != nil && o.ProductID != nil {
+	if o != nil && !isNil(o.ProductID) {
 		return true
 	}
 
@@ -72,7 +72,7 @@ func (o *FullProductName) SetProductID(v string) {
 
 // GetCPE returns the CPE field value if set, zero value otherwise.
 func (o *FullProductName) GetCPE() string {
-	if o == nil || o.CPE == nil {
+	if o == nil || isNil(o.CPE) {
 		var ret string
 		return ret
 	}
@@ -82,7 +82,7 @@ func (o *FullProductName) GetCPE() string {
 // GetCPEOk returns a tuple with the CPE field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullProductName) GetCPEOk() (*string, bool) {
-	if o == nil || o.CPE == nil {
+	if o == nil || isNil(o.CPE) {
 		return nil, false
 	}
 	return o.CPE, true
@@ -90,7 +90,7 @@ func (o *FullProductName) GetCPEOk() (*string, bool) {
 
 // HasCPE returns a boolean if a field has been set.
 func (o *FullProductName) HasCPE() bool {
-	if o != nil && o.CPE != nil {
+	if o != nil && !isNil(o.CPE) {
 		return true
 	}
 
@@ -104,7 +104,7 @@ func (o *FullProductName) SetCPE(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *FullProductName) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -114,7 +114,7 @@ func (o *FullProductName) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *FullProductName) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -122,7 +122,7 @@ func (o *FullProductName) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *FullProductName) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -136,13 +136,13 @@ func (o *FullProductName) SetValue(v string) {
 
 func (o FullProductName) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ProductID != nil {
+	if !isNil(o.ProductID) {
 		toSerialize["ProductID"] = o.ProductID
 	}
-	if o.CPE != nil {
+	if !isNil(o.CPE) {
 		toSerialize["CPE"] = o.CPE
 	}
-	if o.Value != nil {
+	if !isNil(o.Value) {
 		toSerialize["Value"] = o.Value
 	}
 	return json.Marshal(toSerialize)

@@ -41,7 +41,7 @@ func NewProductTreeWithDefaults() *ProductTree {
 
 // GetBranch returns the Branch field value if set, zero value otherwise.
 func (o *ProductTree) GetBranch() []BranchType {
-	if o == nil || o.Branch == nil {
+	if o == nil || isNil(o.Branch) {
 		var ret []BranchType
 		return ret
 	}
@@ -51,7 +51,7 @@ func (o *ProductTree) GetBranch() []BranchType {
 // GetBranchOk returns a tuple with the Branch field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTree) GetBranchOk() ([]BranchType, bool) {
-	if o == nil || o.Branch == nil {
+	if o == nil || isNil(o.Branch) {
 		return nil, false
 	}
 	return o.Branch, true
@@ -59,7 +59,7 @@ func (o *ProductTree) GetBranchOk() ([]BranchType, bool) {
 
 // HasBranch returns a boolean if a field has been set.
 func (o *ProductTree) HasBranch() bool {
-	if o != nil && o.Branch != nil {
+	if o != nil && !isNil(o.Branch) {
 		return true
 	}
 
@@ -73,7 +73,7 @@ func (o *ProductTree) SetBranch(v []BranchType) {
 
 // GetFullProductName returns the FullProductName field value if set, zero value otherwise.
 func (o *ProductTree) GetFullProductName() []FullProductName {
-	if o == nil || o.FullProductName == nil {
+	if o == nil || isNil(o.FullProductName) {
 		var ret []FullProductName
 		return ret
 	}
@@ -83,7 +83,7 @@ func (o *ProductTree) GetFullProductName() []FullProductName {
 // GetFullProductNameOk returns a tuple with the FullProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTree) GetFullProductNameOk() ([]FullProductName, bool) {
-	if o == nil || o.FullProductName == nil {
+	if o == nil || isNil(o.FullProductName) {
 		return nil, false
 	}
 	return o.FullProductName, true
@@ -91,7 +91,7 @@ func (o *ProductTree) GetFullProductNameOk() ([]FullProductName, bool) {
 
 // HasFullProductName returns a boolean if a field has been set.
 func (o *ProductTree) HasFullProductName() bool {
-	if o != nil && o.FullProductName != nil {
+	if o != nil && !isNil(o.FullProductName) {
 		return true
 	}
 
@@ -105,7 +105,7 @@ func (o *ProductTree) SetFullProductName(v []FullProductName) {
 
 // GetRelationship returns the Relationship field value if set, zero value otherwise.
 func (o *ProductTree) GetRelationship() []ProductTreeRelationship {
-	if o == nil || o.Relationship == nil {
+	if o == nil || isNil(o.Relationship) {
 		var ret []ProductTreeRelationship
 		return ret
 	}
@@ -115,7 +115,7 @@ func (o *ProductTree) GetRelationship() []ProductTreeRelationship {
 // GetRelationshipOk returns a tuple with the Relationship field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTree) GetRelationshipOk() ([]ProductTreeRelationship, bool) {
-	if o == nil || o.Relationship == nil {
+	if o == nil || isNil(o.Relationship) {
 		return nil, false
 	}
 	return o.Relationship, true
@@ -123,7 +123,7 @@ func (o *ProductTree) GetRelationshipOk() ([]ProductTreeRelationship, bool) {
 
 // HasRelationship returns a boolean if a field has been set.
 func (o *ProductTree) HasRelationship() bool {
-	if o != nil && o.Relationship != nil {
+	if o != nil && !isNil(o.Relationship) {
 		return true
 	}
 
@@ -137,7 +137,7 @@ func (o *ProductTree) SetRelationship(v []ProductTreeRelationship) {
 
 // GetProductGroups returns the ProductGroups field value if set, zero value otherwise.
 func (o *ProductTree) GetProductGroups() []ProductTreeGroup {
-	if o == nil || o.ProductGroups == nil {
+	if o == nil || isNil(o.ProductGroups) {
 		var ret []ProductTreeGroup
 		return ret
 	}
@@ -147,7 +147,7 @@ func (o *ProductTree) GetProductGroups() []ProductTreeGroup {
 // GetProductGroupsOk returns a tuple with the ProductGroups field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTree) GetProductGroupsOk() ([]ProductTreeGroup, bool) {
-	if o == nil || o.ProductGroups == nil {
+	if o == nil || isNil(o.ProductGroups) {
 		return nil, false
 	}
 	return o.ProductGroups, true
@@ -155,7 +155,7 @@ func (o *ProductTree) GetProductGroupsOk() ([]ProductTreeGroup, bool) {
 
 // HasProductGroups returns a boolean if a field has been set.
 func (o *ProductTree) HasProductGroups() bool {
-	if o != nil && o.ProductGroups != nil {
+	if o != nil && !isNil(o.ProductGroups) {
 		return true
 	}
 
@@ -169,16 +169,16 @@ func (o *ProductTree) SetProductGroups(v []ProductTreeGroup) {
 
 func (o ProductTree) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Branch != nil {
+	if !isNil(o.Branch) {
 		toSerialize["Branch"] = o.Branch
 	}
-	if o.FullProductName != nil {
+	if !isNil(o.FullProductName) {
 		toSerialize["FullProductName"] = o.FullProductName
 	}
-	if o.Relationship != nil {
+	if !isNil(o.Relationship) {
 		toSerialize["Relationship"] = o.Relationship
 	}
-	if o.ProductGroups != nil {
+	if !isNil(o.ProductGroups) {
 		toSerialize["ProductGroups"] = o.ProductGroups
 	}
 	return json.Marshal(toSerialize)

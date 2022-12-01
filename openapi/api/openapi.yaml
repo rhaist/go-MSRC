@@ -41,6 +41,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/cvrfdoc'
           description: OK
+        "500":
+          content: {}
+          description: Internal Server Error
         "400":
           content: {}
           description: Bad Request
@@ -50,26 +53,23 @@ paths:
         "404":
           content: {}
           description: Not Found
-        "500":
-          content: {}
-          description: Internal Server Error
       summary: Get security update details in CVRF format
       tags:
       - Get Security Updates
   /updates:
     get:
-      description: Get a list of all Microsoft security updates. Each includes a link
-        to the update details, formatted according to the [Common Vulnerability Reporting
-        Framework](https://www.icasi.org/cvrf). This list can be manipulated using
-        [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)
-        on current and initial release dates.
+      description: "Get a list of all Microsoft security updates. Each includes a\
+        \ link to the update details, formatted according to the [Common Vulnerability\
+        \ Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\
+        \ on current and initial release dates."
       operationId: Updates_GetUpdates
       responses:
         "200":
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/Updates_GetUpdates_200_response'
           description: OK
         "400":
           content: {}
@@ -93,8 +93,8 @@ paths:
         \ on current and initial release dates.\r\n\r\nNOTE: this endpoint is case-sensitive."
       operationId: Updates_GetUpdatesByKey
       parameters:
-      - description: update ID (yyyy-mmm), vulnerability ID (CVE number), or year
-          (yyyy)
+      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
+          \ (yyyy)"
         in: path
         name: key
         required: true
@@ -105,7 +105,7 @@ paths:
           content:
             '*/*':
               schema:
-                $ref: '#/components/schemas/inline_response_200'
+                $ref: '#/components/schemas/Updates_GetUpdates_200_response'
           description: OK
         "400":
           content: {}
@@ -643,13 +643,13 @@ components:
           Branch:
           - Type: 5
             Items:
-            - '{}'
-            - '{}'
+            - "{}"
+            - "{}"
             Name: Name
           - Type: 5
             Items:
-            - '{}'
-            - '{}'
+            - "{}"
+            - "{}"
             Name: Name
           Relationship:
           - RelatesToProductReference: RelatesToProductReference
@@ -982,13 +982,13 @@ components:
         Branch:
         - Type: 5
           Items:
-          - '{}'
-          - '{}'
+          - "{}"
+          - "{}"
           Name: Name
         - Type: 5
           Items:
-          - '{}'
-          - '{}'
+          - "{}"
+          - "{}"
           Name: Name
         Relationship:
         - RelatesToProductReference: RelatesToProductReference
@@ -1445,8 +1445,8 @@ components:
       example:
         Type: 5
         Items:
-        - '{}'
-        - '{}'
+        - "{}"
+        - "{}"
         Name: Name
       properties:
         Items:
@@ -2033,7 +2033,7 @@ components:
         InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
       properties:
         ID:
-          description: unique identifier for CVRF document, often yyyy-mmm
+          description: "unique identifier for CVRF document, often yyyy-mmm"
           type: string
         Alias:
           description: alternative ID for CVRF document
@@ -2063,7 +2063,7 @@ components:
       - ID
       - InitialReleaseDate
       type: object
-    inline_response_200:
+    Updates_GetUpdates_200_response:
       example:
         '@odata.context': http://example.com/aeiou
         value:

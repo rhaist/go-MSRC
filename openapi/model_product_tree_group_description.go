@@ -39,7 +39,7 @@ func NewProductTreeGroupDescriptionWithDefaults() *ProductTreeGroupDescription {
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *ProductTreeGroupDescription) GetLang() string {
-	if o == nil || o.Lang == nil {
+	if o == nil || isNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -49,7 +49,7 @@ func (o *ProductTreeGroupDescription) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeGroupDescription) GetLangOk() (*string, bool) {
-	if o == nil || o.Lang == nil {
+	if o == nil || isNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -57,7 +57,7 @@ func (o *ProductTreeGroupDescription) GetLangOk() (*string, bool) {
 
 // HasLang returns a boolean if a field has been set.
 func (o *ProductTreeGroupDescription) HasLang() bool {
-	if o != nil && o.Lang != nil {
+	if o != nil && !isNil(o.Lang) {
 		return true
 	}
 
@@ -71,7 +71,7 @@ func (o *ProductTreeGroupDescription) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *ProductTreeGroupDescription) GetValue() string {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -81,7 +81,7 @@ func (o *ProductTreeGroupDescription) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeGroupDescription) GetValueOk() (*string, bool) {
-	if o == nil || o.Value == nil {
+	if o == nil || isNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -89,7 +89,7 @@ func (o *ProductTreeGroupDescription) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *ProductTreeGroupDescription) HasValue() bool {
-	if o != nil && o.Value != nil {
+	if o != nil && !isNil(o.Value) {
 		return true
 	}
 
@@ -103,10 +103,10 @@ func (o *ProductTreeGroupDescription) SetValue(v string) {
 
 func (o ProductTreeGroupDescription) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Lang != nil {
+	if !isNil(o.Lang) {
 		toSerialize["lang"] = o.Lang
 	}
-	if o.Value != nil {
+	if !isNil(o.Value) {
 		toSerialize["Value"] = o.Value
 	}
 	return json.Marshal(toSerialize)

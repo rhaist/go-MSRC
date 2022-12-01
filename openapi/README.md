@@ -63,7 +63,7 @@ Each operation can use different server URL defined using `OperationServers` map
 An operation is uniquely identified by `"{classname}Service.{nickname}"` string.
 Similar rules for overriding default operation server index and variables applies by using `sw.ContextOperationServerIndices` and `sw.ContextOperationServerVariables` context maps.
 
-```
+```golang
 ctx := context.WithValue(context.Background(), openapi.ContextOperationServerIndices, map[string]int{
 	"{classname}Service.{nickname}": 2,
 })
@@ -113,12 +113,12 @@ Class | Method | HTTP request | Description
  - [CvrfdocReference](docs/CvrfdocReference.md)
  - [CvrfdocReferenceDescription](docs/CvrfdocReferenceDescription.md)
  - [FullProductName](docs/FullProductName.md)
- - [InlineResponse200](docs/InlineResponse200.md)
  - [ProductTree](docs/ProductTree.md)
  - [ProductTreeGroup](docs/ProductTreeGroup.md)
  - [ProductTreeGroupDescription](docs/ProductTreeGroupDescription.md)
  - [ProductTreeRelationship](docs/ProductTreeRelationship.md)
  - [Update](docs/Update.md)
+ - [UpdatesGetUpdates200Response](docs/UpdatesGetUpdates200Response.md)
  - [Vulnerability](docs/Vulnerability.md)
  - [VulnerabilityAcknowledgment](docs/VulnerabilityAcknowledgment.md)
  - [VulnerabilityAcknowledgmentDescription](docs/VulnerabilityAcknowledgmentDescription.md)

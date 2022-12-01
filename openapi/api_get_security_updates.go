@@ -19,11 +19,6 @@ import (
 	"strings"
 )
 
-// Linger please
-var (
-	_ context.Context
-)
-
 // GetSecurityUpdatesApiService GetSecurityUpdatesApi service
 type GetSecurityUpdatesApiService service
 
@@ -58,7 +53,8 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrf(ctx context.Context, id strin
 }
 
 // Execute executes the request
-//  @return Cvrfdoc
+//
+//	@return Cvrfdoc
 func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfRequest) (*Cvrfdoc, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
@@ -138,7 +134,7 @@ type ApiUpdatesGetUpdatesRequest struct {
 	ApiService *GetSecurityUpdatesApiService
 }
 
-func (r ApiUpdatesGetUpdatesRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiUpdatesGetUpdatesRequest) Execute() (*UpdatesGetUpdates200Response, *http.Response, error) {
 	return r.ApiService.UpdatesGetUpdatesExecute(r)
 }
 
@@ -147,8 +143,8 @@ UpdatesGetUpdates Get all security update summaries
 
 Get a list of all Microsoft security updates. Each includes a link to the update details, formatted according to the [Common Vulnerability Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated using [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356) on current and initial release dates.
 
- @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiUpdatesGetUpdatesRequest
+	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+	@return ApiUpdatesGetUpdatesRequest
 */
 func (a *GetSecurityUpdatesApiService) UpdatesGetUpdates(ctx context.Context) ApiUpdatesGetUpdatesRequest {
 	return ApiUpdatesGetUpdatesRequest{
@@ -158,13 +154,14 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdates(ctx context.Context) Ap
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetUpdatesRequest) (*InlineResponse200, *http.Response, error) {
+//
+//	@return UpdatesGetUpdates200Response
+func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetUpdatesRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse200
+		localVarReturnValue *UpdatesGetUpdates200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdates")
@@ -238,7 +235,7 @@ type ApiUpdatesGetUpdatesByKeyRequest struct {
 	key        string
 }
 
-func (r ApiUpdatesGetUpdatesByKeyRequest) Execute() (*InlineResponse200, *http.Response, error) {
+func (r ApiUpdatesGetUpdatesByKeyRequest) Execute() (*UpdatesGetUpdates200Response, *http.Response, error) {
 	return r.ApiService.UpdatesGetUpdatesByKeyExecute(r)
 }
 
@@ -262,13 +259,14 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKey(ctx context.Contex
 }
 
 // Execute executes the request
-//  @return InlineResponse200
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdatesGetUpdatesByKeyRequest) (*InlineResponse200, *http.Response, error) {
+//
+//	@return UpdatesGetUpdates200Response
+func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdatesGetUpdatesByKeyRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
 		formFiles           []formFile
-		localVarReturnValue *InlineResponse200
+		localVarReturnValue *UpdatesGetUpdates200Response
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdatesByKey")

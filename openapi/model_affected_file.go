@@ -44,7 +44,7 @@ func NewAffectedFileWithDefaults() *AffectedFile {
 
 // GetProductId returns the ProductId field value if set, zero value otherwise.
 func (o *AffectedFile) GetProductId() string {
-	if o == nil || o.ProductId == nil {
+	if o == nil || isNil(o.ProductId) {
 		var ret string
 		return ret
 	}
@@ -54,7 +54,7 @@ func (o *AffectedFile) GetProductId() string {
 // GetProductIdOk returns a tuple with the ProductId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetProductIdOk() (*string, bool) {
-	if o == nil || o.ProductId == nil {
+	if o == nil || isNil(o.ProductId) {
 		return nil, false
 	}
 	return o.ProductId, true
@@ -62,7 +62,7 @@ func (o *AffectedFile) GetProductIdOk() (*string, bool) {
 
 // HasProductId returns a boolean if a field has been set.
 func (o *AffectedFile) HasProductId() bool {
-	if o != nil && o.ProductId != nil {
+	if o != nil && !isNil(o.ProductId) {
 		return true
 	}
 
@@ -76,7 +76,7 @@ func (o *AffectedFile) SetProductId(v string) {
 
 // GetFileName returns the FileName field value if set, zero value otherwise.
 func (o *AffectedFile) GetFileName() string {
-	if o == nil || o.FileName == nil {
+	if o == nil || isNil(o.FileName) {
 		var ret string
 		return ret
 	}
@@ -86,7 +86,7 @@ func (o *AffectedFile) GetFileName() string {
 // GetFileNameOk returns a tuple with the FileName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetFileNameOk() (*string, bool) {
-	if o == nil || o.FileName == nil {
+	if o == nil || isNil(o.FileName) {
 		return nil, false
 	}
 	return o.FileName, true
@@ -94,7 +94,7 @@ func (o *AffectedFile) GetFileNameOk() (*string, bool) {
 
 // HasFileName returns a boolean if a field has been set.
 func (o *AffectedFile) HasFileName() bool {
-	if o != nil && o.FileName != nil {
+	if o != nil && !isNil(o.FileName) {
 		return true
 	}
 
@@ -108,7 +108,7 @@ func (o *AffectedFile) SetFileName(v string) {
 
 // GetFileVersion returns the FileVersion field value if set, zero value otherwise.
 func (o *AffectedFile) GetFileVersion() string {
-	if o == nil || o.FileVersion == nil {
+	if o == nil || isNil(o.FileVersion) {
 		var ret string
 		return ret
 	}
@@ -118,7 +118,7 @@ func (o *AffectedFile) GetFileVersion() string {
 // GetFileVersionOk returns a tuple with the FileVersion field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetFileVersionOk() (*string, bool) {
-	if o == nil || o.FileVersion == nil {
+	if o == nil || isNil(o.FileVersion) {
 		return nil, false
 	}
 	return o.FileVersion, true
@@ -126,7 +126,7 @@ func (o *AffectedFile) GetFileVersionOk() (*string, bool) {
 
 // HasFileVersion returns a boolean if a field has been set.
 func (o *AffectedFile) HasFileVersion() bool {
-	if o != nil && o.FileVersion != nil {
+	if o != nil && !isNil(o.FileVersion) {
 		return true
 	}
 
@@ -140,7 +140,7 @@ func (o *AffectedFile) SetFileVersion(v string) {
 
 // GetFilePath returns the FilePath field value if set, zero value otherwise.
 func (o *AffectedFile) GetFilePath() string {
-	if o == nil || o.FilePath == nil {
+	if o == nil || isNil(o.FilePath) {
 		var ret string
 		return ret
 	}
@@ -150,7 +150,7 @@ func (o *AffectedFile) GetFilePath() string {
 // GetFilePathOk returns a tuple with the FilePath field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetFilePathOk() (*string, bool) {
-	if o == nil || o.FilePath == nil {
+	if o == nil || isNil(o.FilePath) {
 		return nil, false
 	}
 	return o.FilePath, true
@@ -158,7 +158,7 @@ func (o *AffectedFile) GetFilePathOk() (*string, bool) {
 
 // HasFilePath returns a boolean if a field has been set.
 func (o *AffectedFile) HasFilePath() bool {
-	if o != nil && o.FilePath != nil {
+	if o != nil && !isNil(o.FilePath) {
 		return true
 	}
 
@@ -172,7 +172,7 @@ func (o *AffectedFile) SetFilePath(v string) {
 
 // GetFileLastModified returns the FileLastModified field value if set, zero value otherwise.
 func (o *AffectedFile) GetFileLastModified() time.Time {
-	if o == nil || o.FileLastModified == nil {
+	if o == nil || isNil(o.FileLastModified) {
 		var ret time.Time
 		return ret
 	}
@@ -182,7 +182,7 @@ func (o *AffectedFile) GetFileLastModified() time.Time {
 // GetFileLastModifiedOk returns a tuple with the FileLastModified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetFileLastModifiedOk() (*time.Time, bool) {
-	if o == nil || o.FileLastModified == nil {
+	if o == nil || isNil(o.FileLastModified) {
 		return nil, false
 	}
 	return o.FileLastModified, true
@@ -190,7 +190,7 @@ func (o *AffectedFile) GetFileLastModifiedOk() (*time.Time, bool) {
 
 // HasFileLastModified returns a boolean if a field has been set.
 func (o *AffectedFile) HasFileLastModified() bool {
-	if o != nil && o.FileLastModified != nil {
+	if o != nil && !isNil(o.FileLastModified) {
 		return true
 	}
 
@@ -204,7 +204,7 @@ func (o *AffectedFile) SetFileLastModified(v time.Time) {
 
 // GetFileArchitecture returns the FileArchitecture field value if set, zero value otherwise.
 func (o *AffectedFile) GetFileArchitecture() string {
-	if o == nil || o.FileArchitecture == nil {
+	if o == nil || isNil(o.FileArchitecture) {
 		var ret string
 		return ret
 	}
@@ -214,7 +214,7 @@ func (o *AffectedFile) GetFileArchitecture() string {
 // GetFileArchitectureOk returns a tuple with the FileArchitecture field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *AffectedFile) GetFileArchitectureOk() (*string, bool) {
-	if o == nil || o.FileArchitecture == nil {
+	if o == nil || isNil(o.FileArchitecture) {
 		return nil, false
 	}
 	return o.FileArchitecture, true
@@ -222,7 +222,7 @@ func (o *AffectedFile) GetFileArchitectureOk() (*string, bool) {
 
 // HasFileArchitecture returns a boolean if a field has been set.
 func (o *AffectedFile) HasFileArchitecture() bool {
-	if o != nil && o.FileArchitecture != nil {
+	if o != nil && !isNil(o.FileArchitecture) {
 		return true
 	}
 
@@ -236,22 +236,22 @@ func (o *AffectedFile) SetFileArchitecture(v string) {
 
 func (o AffectedFile) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.ProductId != nil {
+	if !isNil(o.ProductId) {
 		toSerialize["ProductId"] = o.ProductId
 	}
-	if o.FileName != nil {
+	if !isNil(o.FileName) {
 		toSerialize["FileName"] = o.FileName
 	}
-	if o.FileVersion != nil {
+	if !isNil(o.FileVersion) {
 		toSerialize["FileVersion"] = o.FileVersion
 	}
-	if o.FilePath != nil {
+	if !isNil(o.FilePath) {
 		toSerialize["FilePath"] = o.FilePath
 	}
-	if o.FileLastModified != nil {
+	if !isNil(o.FileLastModified) {
 		toSerialize["FileLastModified"] = o.FileLastModified
 	}
-	if o.FileArchitecture != nil {
+	if !isNil(o.FileArchitecture) {
 		toSerialize["FileArchitecture"] = o.FileArchitecture
 	}
 	return json.Marshal(toSerialize)
