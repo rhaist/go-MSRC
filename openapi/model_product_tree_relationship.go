@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the ProductTreeRelationship type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ProductTreeRelationship{}
+
 // ProductTreeRelationship struct for ProductTreeRelationship
 type ProductTreeRelationship struct {
 	FullProductName           []FullProductName `json:"FullProductName,omitempty"`
@@ -41,7 +44,7 @@ func NewProductTreeRelationshipWithDefaults() *ProductTreeRelationship {
 
 // GetFullProductName returns the FullProductName field value if set, zero value otherwise.
 func (o *ProductTreeRelationship) GetFullProductName() []FullProductName {
-	if o == nil || isNil(o.FullProductName) {
+	if o == nil || IsNil(o.FullProductName) {
 		var ret []FullProductName
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *ProductTreeRelationship) GetFullProductName() []FullProductName {
 // GetFullProductNameOk returns a tuple with the FullProductName field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeRelationship) GetFullProductNameOk() ([]FullProductName, bool) {
-	if o == nil || isNil(o.FullProductName) {
+	if o == nil || IsNil(o.FullProductName) {
 		return nil, false
 	}
 	return o.FullProductName, true
@@ -59,7 +62,7 @@ func (o *ProductTreeRelationship) GetFullProductNameOk() ([]FullProductName, boo
 
 // HasFullProductName returns a boolean if a field has been set.
 func (o *ProductTreeRelationship) HasFullProductName() bool {
-	if o != nil && !isNil(o.FullProductName) {
+	if o != nil && !IsNil(o.FullProductName) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *ProductTreeRelationship) SetFullProductName(v []FullProductName) {
 
 // GetProductReference returns the ProductReference field value if set, zero value otherwise.
 func (o *ProductTreeRelationship) GetProductReference() string {
-	if o == nil || isNil(o.ProductReference) {
+	if o == nil || IsNil(o.ProductReference) {
 		var ret string
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *ProductTreeRelationship) GetProductReference() string {
 // GetProductReferenceOk returns a tuple with the ProductReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeRelationship) GetProductReferenceOk() (*string, bool) {
-	if o == nil || isNil(o.ProductReference) {
+	if o == nil || IsNil(o.ProductReference) {
 		return nil, false
 	}
 	return o.ProductReference, true
@@ -91,7 +94,7 @@ func (o *ProductTreeRelationship) GetProductReferenceOk() (*string, bool) {
 
 // HasProductReference returns a boolean if a field has been set.
 func (o *ProductTreeRelationship) HasProductReference() bool {
-	if o != nil && !isNil(o.ProductReference) {
+	if o != nil && !IsNil(o.ProductReference) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *ProductTreeRelationship) SetProductReference(v string) {
 
 // GetRelationType returns the RelationType field value if set, zero value otherwise.
 func (o *ProductTreeRelationship) GetRelationType() int32 {
-	if o == nil || isNil(o.RelationType) {
+	if o == nil || IsNil(o.RelationType) {
 		var ret int32
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *ProductTreeRelationship) GetRelationType() int32 {
 // GetRelationTypeOk returns a tuple with the RelationType field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeRelationship) GetRelationTypeOk() (*int32, bool) {
-	if o == nil || isNil(o.RelationType) {
+	if o == nil || IsNil(o.RelationType) {
 		return nil, false
 	}
 	return o.RelationType, true
@@ -123,7 +126,7 @@ func (o *ProductTreeRelationship) GetRelationTypeOk() (*int32, bool) {
 
 // HasRelationType returns a boolean if a field has been set.
 func (o *ProductTreeRelationship) HasRelationType() bool {
-	if o != nil && !isNil(o.RelationType) {
+	if o != nil && !IsNil(o.RelationType) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *ProductTreeRelationship) SetRelationType(v int32) {
 
 // GetRelatesToProductReference returns the RelatesToProductReference field value if set, zero value otherwise.
 func (o *ProductTreeRelationship) GetRelatesToProductReference() string {
-	if o == nil || isNil(o.RelatesToProductReference) {
+	if o == nil || IsNil(o.RelatesToProductReference) {
 		var ret string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *ProductTreeRelationship) GetRelatesToProductReference() string {
 // GetRelatesToProductReferenceOk returns a tuple with the RelatesToProductReference field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *ProductTreeRelationship) GetRelatesToProductReferenceOk() (*string, bool) {
-	if o == nil || isNil(o.RelatesToProductReference) {
+	if o == nil || IsNil(o.RelatesToProductReference) {
 		return nil, false
 	}
 	return o.RelatesToProductReference, true
@@ -155,7 +158,7 @@ func (o *ProductTreeRelationship) GetRelatesToProductReferenceOk() (*string, boo
 
 // HasRelatesToProductReference returns a boolean if a field has been set.
 func (o *ProductTreeRelationship) HasRelatesToProductReference() bool {
-	if o != nil && !isNil(o.RelatesToProductReference) {
+	if o != nil && !IsNil(o.RelatesToProductReference) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *ProductTreeRelationship) SetRelatesToProductReference(v string) {
 }
 
 func (o ProductTreeRelationship) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.FullProductName) {
-		toSerialize["FullProductName"] = o.FullProductName
-	}
-	if !isNil(o.ProductReference) {
-		toSerialize["ProductReference"] = o.ProductReference
-	}
-	if !isNil(o.RelationType) {
-		toSerialize["RelationType"] = o.RelationType
-	}
-	if !isNil(o.RelatesToProductReference) {
-		toSerialize["RelatesToProductReference"] = o.RelatesToProductReference
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o ProductTreeRelationship) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.FullProductName) {
+		toSerialize["FullProductName"] = o.FullProductName
+	}
+	if !IsNil(o.ProductReference) {
+		toSerialize["ProductReference"] = o.ProductReference
+	}
+	if !IsNil(o.RelationType) {
+		toSerialize["RelationType"] = o.RelationType
+	}
+	if !IsNil(o.RelatesToProductReference) {
+		toSerialize["RelatesToProductReference"] = o.RelatesToProductReference
+	}
+	return toSerialize, nil
 }
 
 type NullableProductTreeRelationship struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocAggregateSeverity type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocAggregateSeverity{}
+
 // CvrfdocAggregateSeverity struct for CvrfdocAggregateSeverity
 type CvrfdocAggregateSeverity struct {
 	Namespace *string `json:"Namespace,omitempty"`
@@ -40,7 +43,7 @@ func NewCvrfdocAggregateSeverityWithDefaults() *CvrfdocAggregateSeverity {
 
 // GetNamespace returns the Namespace field value if set, zero value otherwise.
 func (o *CvrfdocAggregateSeverity) GetNamespace() string {
-	if o == nil || isNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CvrfdocAggregateSeverity) GetNamespace() string {
 // GetNamespaceOk returns a tuple with the Namespace field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAggregateSeverity) GetNamespaceOk() (*string, bool) {
-	if o == nil || isNil(o.Namespace) {
+	if o == nil || IsNil(o.Namespace) {
 		return nil, false
 	}
 	return o.Namespace, true
@@ -58,7 +61,7 @@ func (o *CvrfdocAggregateSeverity) GetNamespaceOk() (*string, bool) {
 
 // HasNamespace returns a boolean if a field has been set.
 func (o *CvrfdocAggregateSeverity) HasNamespace() bool {
-	if o != nil && !isNil(o.Namespace) {
+	if o != nil && !IsNil(o.Namespace) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CvrfdocAggregateSeverity) SetNamespace(v string) {
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *CvrfdocAggregateSeverity) GetLang() string {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CvrfdocAggregateSeverity) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAggregateSeverity) GetLangOk() (*string, bool) {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -90,7 +93,7 @@ func (o *CvrfdocAggregateSeverity) GetLangOk() (*string, bool) {
 
 // HasLang returns a boolean if a field has been set.
 func (o *CvrfdocAggregateSeverity) HasLang() bool {
-	if o != nil && !isNil(o.Lang) {
+	if o != nil && !IsNil(o.Lang) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *CvrfdocAggregateSeverity) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CvrfdocAggregateSeverity) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *CvrfdocAggregateSeverity) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAggregateSeverity) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -122,7 +125,7 @@ func (o *CvrfdocAggregateSeverity) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *CvrfdocAggregateSeverity) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *CvrfdocAggregateSeverity) SetValue(v string) {
 }
 
 func (o CvrfdocAggregateSeverity) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Namespace) {
-		toSerialize["Namespace"] = o.Namespace
-	}
-	if !isNil(o.Lang) {
-		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Value) {
-		toSerialize["Value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocAggregateSeverity) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Namespace) {
+		toSerialize["Namespace"] = o.Namespace
+	}
+	if !IsNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
+	}
+	if !IsNil(o.Value) {
+		toSerialize["Value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocAggregateSeverity struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocReference type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocReference{}
+
 // CvrfdocReference struct for CvrfdocReference
 type CvrfdocReference struct {
 	URL         *string                      `json:"URL,omitempty"`
@@ -40,7 +43,7 @@ func NewCvrfdocReferenceWithDefaults() *CvrfdocReference {
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *CvrfdocReference) GetURL() string {
-	if o == nil || isNil(o.URL) {
+	if o == nil || IsNil(o.URL) {
 		var ret string
 		return ret
 	}
@@ -50,7 +53,7 @@ func (o *CvrfdocReference) GetURL() string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocReference) GetURLOk() (*string, bool) {
-	if o == nil || isNil(o.URL) {
+	if o == nil || IsNil(o.URL) {
 		return nil, false
 	}
 	return o.URL, true
@@ -58,7 +61,7 @@ func (o *CvrfdocReference) GetURLOk() (*string, bool) {
 
 // HasURL returns a boolean if a field has been set.
 func (o *CvrfdocReference) HasURL() bool {
-	if o != nil && !isNil(o.URL) {
+	if o != nil && !IsNil(o.URL) {
 		return true
 	}
 
@@ -72,7 +75,7 @@ func (o *CvrfdocReference) SetURL(v string) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CvrfdocReference) GetDescription() CvrfdocReferenceDescription {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret CvrfdocReferenceDescription
 		return ret
 	}
@@ -82,7 +85,7 @@ func (o *CvrfdocReference) GetDescription() CvrfdocReferenceDescription {
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocReference) GetDescriptionOk() (*CvrfdocReferenceDescription, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -90,7 +93,7 @@ func (o *CvrfdocReference) GetDescriptionOk() (*CvrfdocReferenceDescription, boo
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CvrfdocReference) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -104,7 +107,7 @@ func (o *CvrfdocReference) SetDescription(v CvrfdocReferenceDescription) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CvrfdocReference) GetType() int32 {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret int32
 		return ret
 	}
@@ -114,7 +117,7 @@ func (o *CvrfdocReference) GetType() int32 {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocReference) GetTypeOk() (*int32, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -122,7 +125,7 @@ func (o *CvrfdocReference) GetTypeOk() (*int32, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CvrfdocReference) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -135,17 +138,25 @@ func (o *CvrfdocReference) SetType(v int32) {
 }
 
 func (o CvrfdocReference) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.URL) {
-		toSerialize["URL"] = o.URL
-	}
-	if !isNil(o.Description) {
-		toSerialize["Description"] = o.Description
-	}
-	if !isNil(o.Type) {
-		toSerialize["Type"] = o.Type
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocReference) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.URL) {
+		toSerialize["URL"] = o.URL
+	}
+	if !IsNil(o.Description) {
+		toSerialize["Description"] = o.Description
+	}
+	if !IsNil(o.Type) {
+		toSerialize["Type"] = o.Type
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocReference struct {

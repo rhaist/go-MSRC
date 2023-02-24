@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CvrfdocDocumentTrackingGenerator type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocDocumentTrackingGenerator{}
+
 // CvrfdocDocumentTrackingGenerator struct for CvrfdocDocumentTrackingGenerator
 type CvrfdocDocumentTrackingGenerator struct {
 	Engine        *CvrfdocDocumentTrackingGeneratorEngine `json:"Engine,omitempty"`
@@ -41,7 +44,7 @@ func NewCvrfdocDocumentTrackingGeneratorWithDefaults() *CvrfdocDocumentTrackingG
 
 // GetEngine returns the Engine field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingGenerator) GetEngine() CvrfdocDocumentTrackingGeneratorEngine {
-	if o == nil || isNil(o.Engine) {
+	if o == nil || IsNil(o.Engine) {
 		var ret CvrfdocDocumentTrackingGeneratorEngine
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetEngine() CvrfdocDocumentTrackingGe
 // GetEngineOk returns a tuple with the Engine field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingGenerator) GetEngineOk() (*CvrfdocDocumentTrackingGeneratorEngine, bool) {
-	if o == nil || isNil(o.Engine) {
+	if o == nil || IsNil(o.Engine) {
 		return nil, false
 	}
 	return o.Engine, true
@@ -59,7 +62,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetEngineOk() (*CvrfdocDocumentTracki
 
 // HasEngine returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingGenerator) HasEngine() bool {
-	if o != nil && !isNil(o.Engine) {
+	if o != nil && !IsNil(o.Engine) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CvrfdocDocumentTrackingGenerator) SetEngine(v CvrfdocDocumentTrackingGe
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingGenerator) GetDate() time.Time {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		var ret time.Time
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetDate() time.Time {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingGenerator) GetDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -91,7 +94,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetDateOk() (*time.Time, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingGenerator) HasDate() bool {
-	if o != nil && !isNil(o.Date) {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CvrfdocDocumentTrackingGenerator) SetDate(v time.Time) {
 
 // GetDateSpecified returns the DateSpecified field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingGenerator) GetDateSpecified() bool {
-	if o == nil || isNil(o.DateSpecified) {
+	if o == nil || IsNil(o.DateSpecified) {
 		var ret bool
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetDateSpecified() bool {
 // GetDateSpecifiedOk returns a tuple with the DateSpecified field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingGenerator) GetDateSpecifiedOk() (*bool, bool) {
-	if o == nil || isNil(o.DateSpecified) {
+	if o == nil || IsNil(o.DateSpecified) {
 		return nil, false
 	}
 	return o.DateSpecified, true
@@ -123,7 +126,7 @@ func (o *CvrfdocDocumentTrackingGenerator) GetDateSpecifiedOk() (*bool, bool) {
 
 // HasDateSpecified returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingGenerator) HasDateSpecified() bool {
-	if o != nil && !isNil(o.DateSpecified) {
+	if o != nil && !IsNil(o.DateSpecified) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CvrfdocDocumentTrackingGenerator) SetDateSpecified(v bool) {
 }
 
 func (o CvrfdocDocumentTrackingGenerator) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Engine) {
-		toSerialize["Engine"] = o.Engine
-	}
-	if !isNil(o.Date) {
-		toSerialize["Date"] = o.Date
-	}
-	if !isNil(o.DateSpecified) {
-		toSerialize["DateSpecified"] = o.DateSpecified
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocDocumentTrackingGenerator) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Engine) {
+		toSerialize["Engine"] = o.Engine
+	}
+	if !IsNil(o.Date) {
+		toSerialize["Date"] = o.Date
+	}
+	if !IsNil(o.DateSpecified) {
+		toSerialize["DateSpecified"] = o.DateSpecified
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocDocumentTrackingGenerator struct {

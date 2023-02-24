@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the UpdatesGetUpdates200Response type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &UpdatesGetUpdates200Response{}
+
 // UpdatesGetUpdates200Response struct for UpdatesGetUpdates200Response
 type UpdatesGetUpdates200Response struct {
 	// OData metadata for the request
@@ -90,14 +93,18 @@ func (o *UpdatesGetUpdates200Response) SetValue(v []Update) {
 }
 
 func (o UpdatesGetUpdates200Response) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["@odata.context"] = o.OdataContext
-	}
-	if true {
-		toSerialize["value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o UpdatesGetUpdates200Response) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["@odata.context"] = o.OdataContext
+	toSerialize["value"] = o.Value
+	return toSerialize, nil
 }
 
 type NullableUpdatesGetUpdates200Response struct {

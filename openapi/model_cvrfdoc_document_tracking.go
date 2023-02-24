@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CvrfdocDocumentTracking type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocDocumentTracking{}
+
 // CvrfdocDocumentTracking struct for CvrfdocDocumentTracking
 type CvrfdocDocumentTracking struct {
 	Identification     *CvrfdocDocumentTrackingIdentification `json:"Identification,omitempty"`
@@ -45,7 +48,7 @@ func NewCvrfdocDocumentTrackingWithDefaults() *CvrfdocDocumentTracking {
 
 // GetIdentification returns the Identification field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetIdentification() CvrfdocDocumentTrackingIdentification {
-	if o == nil || isNil(o.Identification) {
+	if o == nil || IsNil(o.Identification) {
 		var ret CvrfdocDocumentTrackingIdentification
 		return ret
 	}
@@ -55,7 +58,7 @@ func (o *CvrfdocDocumentTracking) GetIdentification() CvrfdocDocumentTrackingIde
 // GetIdentificationOk returns a tuple with the Identification field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetIdentificationOk() (*CvrfdocDocumentTrackingIdentification, bool) {
-	if o == nil || isNil(o.Identification) {
+	if o == nil || IsNil(o.Identification) {
 		return nil, false
 	}
 	return o.Identification, true
@@ -63,7 +66,7 @@ func (o *CvrfdocDocumentTracking) GetIdentificationOk() (*CvrfdocDocumentTrackin
 
 // HasIdentification returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasIdentification() bool {
-	if o != nil && !isNil(o.Identification) {
+	if o != nil && !IsNil(o.Identification) {
 		return true
 	}
 
@@ -77,7 +80,7 @@ func (o *CvrfdocDocumentTracking) SetIdentification(v CvrfdocDocumentTrackingIde
 
 // GetStatus returns the Status field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetStatus() int32 {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		var ret int32
 		return ret
 	}
@@ -87,7 +90,7 @@ func (o *CvrfdocDocumentTracking) GetStatus() int32 {
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetStatusOk() (*int32, bool) {
-	if o == nil || isNil(o.Status) {
+	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
 	return o.Status, true
@@ -95,7 +98,7 @@ func (o *CvrfdocDocumentTracking) GetStatusOk() (*int32, bool) {
 
 // HasStatus returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasStatus() bool {
-	if o != nil && !isNil(o.Status) {
+	if o != nil && !IsNil(o.Status) {
 		return true
 	}
 
@@ -109,7 +112,7 @@ func (o *CvrfdocDocumentTracking) SetStatus(v int32) {
 
 // GetVersion returns the Version field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetVersion() string {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		var ret string
 		return ret
 	}
@@ -119,7 +122,7 @@ func (o *CvrfdocDocumentTracking) GetVersion() string {
 // GetVersionOk returns a tuple with the Version field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetVersionOk() (*string, bool) {
-	if o == nil || isNil(o.Version) {
+	if o == nil || IsNil(o.Version) {
 		return nil, false
 	}
 	return o.Version, true
@@ -127,7 +130,7 @@ func (o *CvrfdocDocumentTracking) GetVersionOk() (*string, bool) {
 
 // HasVersion returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasVersion() bool {
-	if o != nil && !isNil(o.Version) {
+	if o != nil && !IsNil(o.Version) {
 		return true
 	}
 
@@ -141,7 +144,7 @@ func (o *CvrfdocDocumentTracking) SetVersion(v string) {
 
 // GetRevisionHistory returns the RevisionHistory field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetRevisionHistory() []CvrfdocDocumentTrackingRevision {
-	if o == nil || isNil(o.RevisionHistory) {
+	if o == nil || IsNil(o.RevisionHistory) {
 		var ret []CvrfdocDocumentTrackingRevision
 		return ret
 	}
@@ -151,7 +154,7 @@ func (o *CvrfdocDocumentTracking) GetRevisionHistory() []CvrfdocDocumentTracking
 // GetRevisionHistoryOk returns a tuple with the RevisionHistory field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetRevisionHistoryOk() ([]CvrfdocDocumentTrackingRevision, bool) {
-	if o == nil || isNil(o.RevisionHistory) {
+	if o == nil || IsNil(o.RevisionHistory) {
 		return nil, false
 	}
 	return o.RevisionHistory, true
@@ -159,7 +162,7 @@ func (o *CvrfdocDocumentTracking) GetRevisionHistoryOk() ([]CvrfdocDocumentTrack
 
 // HasRevisionHistory returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasRevisionHistory() bool {
-	if o != nil && !isNil(o.RevisionHistory) {
+	if o != nil && !IsNil(o.RevisionHistory) {
 		return true
 	}
 
@@ -173,7 +176,7 @@ func (o *CvrfdocDocumentTracking) SetRevisionHistory(v []CvrfdocDocumentTracking
 
 // GetInitialReleaseDate returns the InitialReleaseDate field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetInitialReleaseDate() time.Time {
-	if o == nil || isNil(o.InitialReleaseDate) {
+	if o == nil || IsNil(o.InitialReleaseDate) {
 		var ret time.Time
 		return ret
 	}
@@ -183,7 +186,7 @@ func (o *CvrfdocDocumentTracking) GetInitialReleaseDate() time.Time {
 // GetInitialReleaseDateOk returns a tuple with the InitialReleaseDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetInitialReleaseDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.InitialReleaseDate) {
+	if o == nil || IsNil(o.InitialReleaseDate) {
 		return nil, false
 	}
 	return o.InitialReleaseDate, true
@@ -191,7 +194,7 @@ func (o *CvrfdocDocumentTracking) GetInitialReleaseDateOk() (*time.Time, bool) {
 
 // HasInitialReleaseDate returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasInitialReleaseDate() bool {
-	if o != nil && !isNil(o.InitialReleaseDate) {
+	if o != nil && !IsNil(o.InitialReleaseDate) {
 		return true
 	}
 
@@ -205,7 +208,7 @@ func (o *CvrfdocDocumentTracking) SetInitialReleaseDate(v time.Time) {
 
 // GetCurrentReleaseDate returns the CurrentReleaseDate field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetCurrentReleaseDate() time.Time {
-	if o == nil || isNil(o.CurrentReleaseDate) {
+	if o == nil || IsNil(o.CurrentReleaseDate) {
 		var ret time.Time
 		return ret
 	}
@@ -215,7 +218,7 @@ func (o *CvrfdocDocumentTracking) GetCurrentReleaseDate() time.Time {
 // GetCurrentReleaseDateOk returns a tuple with the CurrentReleaseDate field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetCurrentReleaseDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.CurrentReleaseDate) {
+	if o == nil || IsNil(o.CurrentReleaseDate) {
 		return nil, false
 	}
 	return o.CurrentReleaseDate, true
@@ -223,7 +226,7 @@ func (o *CvrfdocDocumentTracking) GetCurrentReleaseDateOk() (*time.Time, bool) {
 
 // HasCurrentReleaseDate returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasCurrentReleaseDate() bool {
-	if o != nil && !isNil(o.CurrentReleaseDate) {
+	if o != nil && !IsNil(o.CurrentReleaseDate) {
 		return true
 	}
 
@@ -237,7 +240,7 @@ func (o *CvrfdocDocumentTracking) SetCurrentReleaseDate(v time.Time) {
 
 // GetGenerator returns the Generator field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTracking) GetGenerator() CvrfdocDocumentTrackingGenerator {
-	if o == nil || isNil(o.Generator) {
+	if o == nil || IsNil(o.Generator) {
 		var ret CvrfdocDocumentTrackingGenerator
 		return ret
 	}
@@ -247,7 +250,7 @@ func (o *CvrfdocDocumentTracking) GetGenerator() CvrfdocDocumentTrackingGenerato
 // GetGeneratorOk returns a tuple with the Generator field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTracking) GetGeneratorOk() (*CvrfdocDocumentTrackingGenerator, bool) {
-	if o == nil || isNil(o.Generator) {
+	if o == nil || IsNil(o.Generator) {
 		return nil, false
 	}
 	return o.Generator, true
@@ -255,7 +258,7 @@ func (o *CvrfdocDocumentTracking) GetGeneratorOk() (*CvrfdocDocumentTrackingGene
 
 // HasGenerator returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTracking) HasGenerator() bool {
-	if o != nil && !isNil(o.Generator) {
+	if o != nil && !IsNil(o.Generator) {
 		return true
 	}
 
@@ -268,29 +271,37 @@ func (o *CvrfdocDocumentTracking) SetGenerator(v CvrfdocDocumentTrackingGenerato
 }
 
 func (o CvrfdocDocumentTracking) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Identification) {
-		toSerialize["Identification"] = o.Identification
-	}
-	if !isNil(o.Status) {
-		toSerialize["Status"] = o.Status
-	}
-	if !isNil(o.Version) {
-		toSerialize["Version"] = o.Version
-	}
-	if !isNil(o.RevisionHistory) {
-		toSerialize["RevisionHistory"] = o.RevisionHistory
-	}
-	if !isNil(o.InitialReleaseDate) {
-		toSerialize["InitialReleaseDate"] = o.InitialReleaseDate
-	}
-	if !isNil(o.CurrentReleaseDate) {
-		toSerialize["CurrentReleaseDate"] = o.CurrentReleaseDate
-	}
-	if !isNil(o.Generator) {
-		toSerialize["Generator"] = o.Generator
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocDocumentTracking) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Identification) {
+		toSerialize["Identification"] = o.Identification
+	}
+	if !IsNil(o.Status) {
+		toSerialize["Status"] = o.Status
+	}
+	if !IsNil(o.Version) {
+		toSerialize["Version"] = o.Version
+	}
+	if !IsNil(o.RevisionHistory) {
+		toSerialize["RevisionHistory"] = o.RevisionHistory
+	}
+	if !IsNil(o.InitialReleaseDate) {
+		toSerialize["InitialReleaseDate"] = o.InitialReleaseDate
+	}
+	if !IsNil(o.CurrentReleaseDate) {
+		toSerialize["CurrentReleaseDate"] = o.CurrentReleaseDate
+	}
+	if !IsNil(o.Generator) {
+		toSerialize["Generator"] = o.Generator
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocDocumentTracking struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocAcknowledgment type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocAcknowledgment{}
+
 // CvrfdocAcknowledgment struct for CvrfdocAcknowledgment
 type CvrfdocAcknowledgment struct {
 	Name         []CvrfdocAcknowledgmentName         `json:"Name,omitempty"`
@@ -41,7 +44,7 @@ func NewCvrfdocAcknowledgmentWithDefaults() *CvrfdocAcknowledgment {
 
 // GetName returns the Name field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgment) GetName() []CvrfdocAcknowledgmentName {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		var ret []CvrfdocAcknowledgmentName
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CvrfdocAcknowledgment) GetName() []CvrfdocAcknowledgmentName {
 // GetNameOk returns a tuple with the Name field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgment) GetNameOk() ([]CvrfdocAcknowledgmentName, bool) {
-	if o == nil || isNil(o.Name) {
+	if o == nil || IsNil(o.Name) {
 		return nil, false
 	}
 	return o.Name, true
@@ -59,7 +62,7 @@ func (o *CvrfdocAcknowledgment) GetNameOk() ([]CvrfdocAcknowledgmentName, bool) 
 
 // HasName returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgment) HasName() bool {
-	if o != nil && !isNil(o.Name) {
+	if o != nil && !IsNil(o.Name) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CvrfdocAcknowledgment) SetName(v []CvrfdocAcknowledgmentName) {
 
 // GetOrganization returns the Organization field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgment) GetOrganization() []CvrfdocAcknowledgmentOrganization {
-	if o == nil || isNil(o.Organization) {
+	if o == nil || IsNil(o.Organization) {
 		var ret []CvrfdocAcknowledgmentOrganization
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CvrfdocAcknowledgment) GetOrganization() []CvrfdocAcknowledgmentOrganiz
 // GetOrganizationOk returns a tuple with the Organization field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgment) GetOrganizationOk() ([]CvrfdocAcknowledgmentOrganization, bool) {
-	if o == nil || isNil(o.Organization) {
+	if o == nil || IsNil(o.Organization) {
 		return nil, false
 	}
 	return o.Organization, true
@@ -91,7 +94,7 @@ func (o *CvrfdocAcknowledgment) GetOrganizationOk() ([]CvrfdocAcknowledgmentOrga
 
 // HasOrganization returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgment) HasOrganization() bool {
-	if o != nil && !isNil(o.Organization) {
+	if o != nil && !IsNil(o.Organization) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CvrfdocAcknowledgment) SetOrganization(v []CvrfdocAcknowledgmentOrganiz
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgment) GetDescription() CvrfdocAcknowledgmentDescription {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret CvrfdocAcknowledgmentDescription
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *CvrfdocAcknowledgment) GetDescription() CvrfdocAcknowledgmentDescriptio
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgment) GetDescriptionOk() (*CvrfdocAcknowledgmentDescription, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -123,7 +126,7 @@ func (o *CvrfdocAcknowledgment) GetDescriptionOk() (*CvrfdocAcknowledgmentDescri
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgment) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -137,7 +140,7 @@ func (o *CvrfdocAcknowledgment) SetDescription(v CvrfdocAcknowledgmentDescriptio
 
 // GetURL returns the URL field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgment) GetURL() []string {
-	if o == nil || isNil(o.URL) {
+	if o == nil || IsNil(o.URL) {
 		var ret []string
 		return ret
 	}
@@ -147,7 +150,7 @@ func (o *CvrfdocAcknowledgment) GetURL() []string {
 // GetURLOk returns a tuple with the URL field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgment) GetURLOk() ([]string, bool) {
-	if o == nil || isNil(o.URL) {
+	if o == nil || IsNil(o.URL) {
 		return nil, false
 	}
 	return o.URL, true
@@ -155,7 +158,7 @@ func (o *CvrfdocAcknowledgment) GetURLOk() ([]string, bool) {
 
 // HasURL returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgment) HasURL() bool {
-	if o != nil && !isNil(o.URL) {
+	if o != nil && !IsNil(o.URL) {
 		return true
 	}
 
@@ -168,20 +171,28 @@ func (o *CvrfdocAcknowledgment) SetURL(v []string) {
 }
 
 func (o CvrfdocAcknowledgment) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Name) {
-		toSerialize["Name"] = o.Name
-	}
-	if !isNil(o.Organization) {
-		toSerialize["Organization"] = o.Organization
-	}
-	if !isNil(o.Description) {
-		toSerialize["Description"] = o.Description
-	}
-	if !isNil(o.URL) {
-		toSerialize["URL"] = o.URL
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocAcknowledgment) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Name) {
+		toSerialize["Name"] = o.Name
+	}
+	if !IsNil(o.Organization) {
+		toSerialize["Organization"] = o.Organization
+	}
+	if !IsNil(o.Description) {
+		toSerialize["Description"] = o.Description
+	}
+	if !IsNil(o.URL) {
+		toSerialize["URL"] = o.URL
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocAcknowledgment struct {

@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the CvrfdocDocumentTrackingRevision type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocDocumentTrackingRevision{}
+
 // CvrfdocDocumentTrackingRevision struct for CvrfdocDocumentTrackingRevision
 type CvrfdocDocumentTrackingRevision struct {
 	Number      *string                                     `json:"Number,omitempty"`
@@ -41,7 +44,7 @@ func NewCvrfdocDocumentTrackingRevisionWithDefaults() *CvrfdocDocumentTrackingRe
 
 // GetNumber returns the Number field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingRevision) GetNumber() string {
-	if o == nil || isNil(o.Number) {
+	if o == nil || IsNil(o.Number) {
 		var ret string
 		return ret
 	}
@@ -51,7 +54,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetNumber() string {
 // GetNumberOk returns a tuple with the Number field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingRevision) GetNumberOk() (*string, bool) {
-	if o == nil || isNil(o.Number) {
+	if o == nil || IsNil(o.Number) {
 		return nil, false
 	}
 	return o.Number, true
@@ -59,7 +62,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetNumberOk() (*string, bool) {
 
 // HasNumber returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingRevision) HasNumber() bool {
-	if o != nil && !isNil(o.Number) {
+	if o != nil && !IsNil(o.Number) {
 		return true
 	}
 
@@ -73,7 +76,7 @@ func (o *CvrfdocDocumentTrackingRevision) SetNumber(v string) {
 
 // GetDate returns the Date field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingRevision) GetDate() time.Time {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		var ret time.Time
 		return ret
 	}
@@ -83,7 +86,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetDate() time.Time {
 // GetDateOk returns a tuple with the Date field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingRevision) GetDateOk() (*time.Time, bool) {
-	if o == nil || isNil(o.Date) {
+	if o == nil || IsNil(o.Date) {
 		return nil, false
 	}
 	return o.Date, true
@@ -91,7 +94,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetDateOk() (*time.Time, bool) {
 
 // HasDate returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingRevision) HasDate() bool {
-	if o != nil && !isNil(o.Date) {
+	if o != nil && !IsNil(o.Date) {
 		return true
 	}
 
@@ -105,7 +108,7 @@ func (o *CvrfdocDocumentTrackingRevision) SetDate(v time.Time) {
 
 // GetDescription returns the Description field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingRevision) GetDescription() CvrfdocDocumentTrackingRevisionDescription {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		var ret CvrfdocDocumentTrackingRevisionDescription
 		return ret
 	}
@@ -115,7 +118,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetDescription() CvrfdocDocumentTracki
 // GetDescriptionOk returns a tuple with the Description field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingRevision) GetDescriptionOk() (*CvrfdocDocumentTrackingRevisionDescription, bool) {
-	if o == nil || isNil(o.Description) {
+	if o == nil || IsNil(o.Description) {
 		return nil, false
 	}
 	return o.Description, true
@@ -123,7 +126,7 @@ func (o *CvrfdocDocumentTrackingRevision) GetDescriptionOk() (*CvrfdocDocumentTr
 
 // HasDescription returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingRevision) HasDescription() bool {
-	if o != nil && !isNil(o.Description) {
+	if o != nil && !IsNil(o.Description) {
 		return true
 	}
 
@@ -136,17 +139,25 @@ func (o *CvrfdocDocumentTrackingRevision) SetDescription(v CvrfdocDocumentTracki
 }
 
 func (o CvrfdocDocumentTrackingRevision) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Number) {
-		toSerialize["Number"] = o.Number
-	}
-	if !isNil(o.Date) {
-		toSerialize["Date"] = o.Date
-	}
-	if !isNil(o.Description) {
-		toSerialize["Description"] = o.Description
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocDocumentTrackingRevision) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Number) {
+		toSerialize["Number"] = o.Number
+	}
+	if !IsNil(o.Date) {
+		toSerialize["Date"] = o.Date
+	}
+	if !IsNil(o.Description) {
+		toSerialize["Description"] = o.Description
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocDocumentTrackingRevision struct {

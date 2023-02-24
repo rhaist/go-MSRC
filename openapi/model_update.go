@@ -15,6 +15,9 @@ import (
 	"time"
 )
 
+// checks if the Update type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &Update{}
+
 // Update summary information about a security release (CVRF document)
 type Update struct {
 	// unique identifier for CVRF document, often yyyy-mmm
@@ -130,7 +133,7 @@ func (o *Update) SetDocumentTitle(v string) {
 
 // GetSeverity returns the Severity field value if set, zero value otherwise.
 func (o *Update) GetSeverity() string {
-	if o == nil || isNil(o.Severity) {
+	if o == nil || IsNil(o.Severity) {
 		var ret string
 		return ret
 	}
@@ -140,7 +143,7 @@ func (o *Update) GetSeverity() string {
 // GetSeverityOk returns a tuple with the Severity field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *Update) GetSeverityOk() (*string, bool) {
-	if o == nil || isNil(o.Severity) {
+	if o == nil || IsNil(o.Severity) {
 		return nil, false
 	}
 	return o.Severity, true
@@ -148,7 +151,7 @@ func (o *Update) GetSeverityOk() (*string, bool) {
 
 // HasSeverity returns a boolean if a field has been set.
 func (o *Update) HasSeverity() bool {
-	if o != nil && !isNil(o.Severity) {
+	if o != nil && !IsNil(o.Severity) {
 		return true
 	}
 
@@ -233,29 +236,25 @@ func (o *Update) SetCvrfUrl(v string) {
 }
 
 func (o Update) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if true {
-		toSerialize["ID"] = o.ID
-	}
-	if true {
-		toSerialize["Alias"] = o.Alias
-	}
-	if true {
-		toSerialize["DocumentTitle"] = o.DocumentTitle
-	}
-	if !isNil(o.Severity) {
-		toSerialize["Severity"] = o.Severity
-	}
-	if true {
-		toSerialize["InitialReleaseDate"] = o.InitialReleaseDate
-	}
-	if true {
-		toSerialize["CurrentReleaseDate"] = o.CurrentReleaseDate
-	}
-	if true {
-		toSerialize["CvrfUrl"] = o.CvrfUrl
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o Update) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	toSerialize["ID"] = o.ID
+	toSerialize["Alias"] = o.Alias
+	toSerialize["DocumentTitle"] = o.DocumentTitle
+	if !IsNil(o.Severity) {
+		toSerialize["Severity"] = o.Severity
+	}
+	toSerialize["InitialReleaseDate"] = o.InitialReleaseDate
+	toSerialize["CurrentReleaseDate"] = o.CurrentReleaseDate
+	toSerialize["CvrfUrl"] = o.CvrfUrl
+	return toSerialize, nil
 }
 
 type NullableUpdate struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocNote type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocNote{}
+
 // CvrfdocNote struct for CvrfdocNote
 type CvrfdocNote struct {
 	Title    *string `json:"Title,omitempty"`
@@ -43,7 +46,7 @@ func NewCvrfdocNoteWithDefaults() *CvrfdocNote {
 
 // GetTitle returns the Title field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetTitle() string {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		var ret string
 		return ret
 	}
@@ -53,7 +56,7 @@ func (o *CvrfdocNote) GetTitle() string {
 // GetTitleOk returns a tuple with the Title field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetTitleOk() (*string, bool) {
-	if o == nil || isNil(o.Title) {
+	if o == nil || IsNil(o.Title) {
 		return nil, false
 	}
 	return o.Title, true
@@ -61,7 +64,7 @@ func (o *CvrfdocNote) GetTitleOk() (*string, bool) {
 
 // HasTitle returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasTitle() bool {
-	if o != nil && !isNil(o.Title) {
+	if o != nil && !IsNil(o.Title) {
 		return true
 	}
 
@@ -75,7 +78,7 @@ func (o *CvrfdocNote) SetTitle(v string) {
 
 // GetAudience returns the Audience field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetAudience() string {
-	if o == nil || isNil(o.Audience) {
+	if o == nil || IsNil(o.Audience) {
 		var ret string
 		return ret
 	}
@@ -85,7 +88,7 @@ func (o *CvrfdocNote) GetAudience() string {
 // GetAudienceOk returns a tuple with the Audience field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetAudienceOk() (*string, bool) {
-	if o == nil || isNil(o.Audience) {
+	if o == nil || IsNil(o.Audience) {
 		return nil, false
 	}
 	return o.Audience, true
@@ -93,7 +96,7 @@ func (o *CvrfdocNote) GetAudienceOk() (*string, bool) {
 
 // HasAudience returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasAudience() bool {
-	if o != nil && !isNil(o.Audience) {
+	if o != nil && !IsNil(o.Audience) {
 		return true
 	}
 
@@ -107,7 +110,7 @@ func (o *CvrfdocNote) SetAudience(v string) {
 
 // GetType returns the Type field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetType() int32 {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		var ret int32
 		return ret
 	}
@@ -117,7 +120,7 @@ func (o *CvrfdocNote) GetType() int32 {
 // GetTypeOk returns a tuple with the Type field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetTypeOk() (*int32, bool) {
-	if o == nil || isNil(o.Type) {
+	if o == nil || IsNil(o.Type) {
 		return nil, false
 	}
 	return o.Type, true
@@ -125,7 +128,7 @@ func (o *CvrfdocNote) GetTypeOk() (*int32, bool) {
 
 // HasType returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasType() bool {
-	if o != nil && !isNil(o.Type) {
+	if o != nil && !IsNil(o.Type) {
 		return true
 	}
 
@@ -139,7 +142,7 @@ func (o *CvrfdocNote) SetType(v int32) {
 
 // GetOrdinal returns the Ordinal field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetOrdinal() string {
-	if o == nil || isNil(o.Ordinal) {
+	if o == nil || IsNil(o.Ordinal) {
 		var ret string
 		return ret
 	}
@@ -149,7 +152,7 @@ func (o *CvrfdocNote) GetOrdinal() string {
 // GetOrdinalOk returns a tuple with the Ordinal field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetOrdinalOk() (*string, bool) {
-	if o == nil || isNil(o.Ordinal) {
+	if o == nil || IsNil(o.Ordinal) {
 		return nil, false
 	}
 	return o.Ordinal, true
@@ -157,7 +160,7 @@ func (o *CvrfdocNote) GetOrdinalOk() (*string, bool) {
 
 // HasOrdinal returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasOrdinal() bool {
-	if o != nil && !isNil(o.Ordinal) {
+	if o != nil && !IsNil(o.Ordinal) {
 		return true
 	}
 
@@ -171,7 +174,7 @@ func (o *CvrfdocNote) SetOrdinal(v string) {
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetLang() string {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -181,7 +184,7 @@ func (o *CvrfdocNote) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetLangOk() (*string, bool) {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -189,7 +192,7 @@ func (o *CvrfdocNote) GetLangOk() (*string, bool) {
 
 // HasLang returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasLang() bool {
-	if o != nil && !isNil(o.Lang) {
+	if o != nil && !IsNil(o.Lang) {
 		return true
 	}
 
@@ -203,7 +206,7 @@ func (o *CvrfdocNote) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CvrfdocNote) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -213,7 +216,7 @@ func (o *CvrfdocNote) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocNote) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -221,7 +224,7 @@ func (o *CvrfdocNote) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *CvrfdocNote) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -234,26 +237,34 @@ func (o *CvrfdocNote) SetValue(v string) {
 }
 
 func (o CvrfdocNote) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Title) {
-		toSerialize["Title"] = o.Title
-	}
-	if !isNil(o.Audience) {
-		toSerialize["Audience"] = o.Audience
-	}
-	if !isNil(o.Type) {
-		toSerialize["Type"] = o.Type
-	}
-	if !isNil(o.Ordinal) {
-		toSerialize["Ordinal"] = o.Ordinal
-	}
-	if !isNil(o.Lang) {
-		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Value) {
-		toSerialize["Value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocNote) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Title) {
+		toSerialize["Title"] = o.Title
+	}
+	if !IsNil(o.Audience) {
+		toSerialize["Audience"] = o.Audience
+	}
+	if !IsNil(o.Type) {
+		toSerialize["Type"] = o.Type
+	}
+	if !IsNil(o.Ordinal) {
+		toSerialize["Ordinal"] = o.Ordinal
+	}
+	if !IsNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
+	}
+	if !IsNil(o.Value) {
+		toSerialize["Value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocNote struct {

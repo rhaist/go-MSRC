@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocDocumentTrackingRevisionDescription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocDocumentTrackingRevisionDescription{}
+
 // CvrfdocDocumentTrackingRevisionDescription struct for CvrfdocDocumentTrackingRevisionDescription
 type CvrfdocDocumentTrackingRevisionDescription struct {
 	Lang  *string `json:"lang,omitempty"`
@@ -39,7 +42,7 @@ func NewCvrfdocDocumentTrackingRevisionDescriptionWithDefaults() *CvrfdocDocumen
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingRevisionDescription) GetLang() string {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingRevisionDescription) GetLangOk() (*string, bool) {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -57,7 +60,7 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) GetLangOk() (*string, bool)
 
 // HasLang returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingRevisionDescription) HasLang() bool {
-	if o != nil && !isNil(o.Lang) {
+	if o != nil && !IsNil(o.Lang) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CvrfdocDocumentTrackingRevisionDescription) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentTrackingRevisionDescription) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -89,7 +92,7 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) GetValueOk() (*string, bool
 
 // HasValue returns a boolean if a field has been set.
 func (o *CvrfdocDocumentTrackingRevisionDescription) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CvrfdocDocumentTrackingRevisionDescription) SetValue(v string) {
 }
 
 func (o CvrfdocDocumentTrackingRevisionDescription) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Lang) {
-		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Value) {
-		toSerialize["Value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocDocumentTrackingRevisionDescription) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
+	}
+	if !IsNil(o.Value) {
+		toSerialize["Value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocDocumentTrackingRevisionDescription struct {

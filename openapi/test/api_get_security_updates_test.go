@@ -10,8 +10,8 @@ Testing GetSecurityUpdatesApiService
 package openapi
 
 import (
-	openapiclient "./openapi"
 	"context"
+	openapiclient "github.com/rhaist/go-MSRC/openapi"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"testing"

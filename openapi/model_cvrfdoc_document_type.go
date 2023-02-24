@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocDocumentType type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocDocumentType{}
+
 // CvrfdocDocumentType struct for CvrfdocDocumentType
 type CvrfdocDocumentType struct {
 	Lang  *string `json:"lang,omitempty"`
@@ -39,7 +42,7 @@ func NewCvrfdocDocumentTypeWithDefaults() *CvrfdocDocumentType {
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *CvrfdocDocumentType) GetLang() string {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CvrfdocDocumentType) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentType) GetLangOk() (*string, bool) {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -57,7 +60,7 @@ func (o *CvrfdocDocumentType) GetLangOk() (*string, bool) {
 
 // HasLang returns a boolean if a field has been set.
 func (o *CvrfdocDocumentType) HasLang() bool {
-	if o != nil && !isNil(o.Lang) {
+	if o != nil && !IsNil(o.Lang) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CvrfdocDocumentType) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CvrfdocDocumentType) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CvrfdocDocumentType) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocDocumentType) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -89,7 +92,7 @@ func (o *CvrfdocDocumentType) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *CvrfdocDocumentType) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CvrfdocDocumentType) SetValue(v string) {
 }
 
 func (o CvrfdocDocumentType) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Lang) {
-		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Value) {
-		toSerialize["Value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocDocumentType) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
+	}
+	if !IsNil(o.Value) {
+		toSerialize["Value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocDocumentType struct {

@@ -14,6 +14,9 @@ import (
 	"encoding/json"
 )
 
+// checks if the CvrfdocAcknowledgmentDescription type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &CvrfdocAcknowledgmentDescription{}
+
 // CvrfdocAcknowledgmentDescription struct for CvrfdocAcknowledgmentDescription
 type CvrfdocAcknowledgmentDescription struct {
 	Lang  *string `json:"lang,omitempty"`
@@ -39,7 +42,7 @@ func NewCvrfdocAcknowledgmentDescriptionWithDefaults() *CvrfdocAcknowledgmentDes
 
 // GetLang returns the Lang field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgmentDescription) GetLang() string {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		var ret string
 		return ret
 	}
@@ -49,7 +52,7 @@ func (o *CvrfdocAcknowledgmentDescription) GetLang() string {
 // GetLangOk returns a tuple with the Lang field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgmentDescription) GetLangOk() (*string, bool) {
-	if o == nil || isNil(o.Lang) {
+	if o == nil || IsNil(o.Lang) {
 		return nil, false
 	}
 	return o.Lang, true
@@ -57,7 +60,7 @@ func (o *CvrfdocAcknowledgmentDescription) GetLangOk() (*string, bool) {
 
 // HasLang returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgmentDescription) HasLang() bool {
-	if o != nil && !isNil(o.Lang) {
+	if o != nil && !IsNil(o.Lang) {
 		return true
 	}
 
@@ -71,7 +74,7 @@ func (o *CvrfdocAcknowledgmentDescription) SetLang(v string) {
 
 // GetValue returns the Value field value if set, zero value otherwise.
 func (o *CvrfdocAcknowledgmentDescription) GetValue() string {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		var ret string
 		return ret
 	}
@@ -81,7 +84,7 @@ func (o *CvrfdocAcknowledgmentDescription) GetValue() string {
 // GetValueOk returns a tuple with the Value field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 func (o *CvrfdocAcknowledgmentDescription) GetValueOk() (*string, bool) {
-	if o == nil || isNil(o.Value) {
+	if o == nil || IsNil(o.Value) {
 		return nil, false
 	}
 	return o.Value, true
@@ -89,7 +92,7 @@ func (o *CvrfdocAcknowledgmentDescription) GetValueOk() (*string, bool) {
 
 // HasValue returns a boolean if a field has been set.
 func (o *CvrfdocAcknowledgmentDescription) HasValue() bool {
-	if o != nil && !isNil(o.Value) {
+	if o != nil && !IsNil(o.Value) {
 		return true
 	}
 
@@ -102,14 +105,22 @@ func (o *CvrfdocAcknowledgmentDescription) SetValue(v string) {
 }
 
 func (o CvrfdocAcknowledgmentDescription) MarshalJSON() ([]byte, error) {
-	toSerialize := map[string]interface{}{}
-	if !isNil(o.Lang) {
-		toSerialize["lang"] = o.Lang
-	}
-	if !isNil(o.Value) {
-		toSerialize["Value"] = o.Value
+	toSerialize, err := o.ToMap()
+	if err != nil {
+		return []byte{}, err
 	}
 	return json.Marshal(toSerialize)
+}
+
+func (o CvrfdocAcknowledgmentDescription) ToMap() (map[string]interface{}, error) {
+	toSerialize := map[string]interface{}{}
+	if !IsNil(o.Lang) {
+		toSerialize["lang"] = o.Lang
+	}
+	if !IsNil(o.Value) {
+		toSerialize["Value"] = o.Value
+	}
+	return toSerialize, nil
 }
 
 type NullableCvrfdocAcknowledgmentDescription struct {
