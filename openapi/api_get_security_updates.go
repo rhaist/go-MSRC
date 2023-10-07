@@ -19,12 +19,12 @@ import (
 	"strings"
 )
 
-// GetSecurityUpdatesApiService GetSecurityUpdatesApi service
-type GetSecurityUpdatesApiService service
+// GetSecurityUpdatesAPIService GetSecurityUpdatesAPI service
+type GetSecurityUpdatesAPIService service
 
 type ApiCvrfGetCvrfRequest struct {
 	ctx        context.Context
-	ApiService *GetSecurityUpdatesApiService
+	ApiService *GetSecurityUpdatesAPIService
 	id         string
 }
 
@@ -44,7 +44,7 @@ ongoing effort to help you manage security risks and help keep your systems prot
  @param id CVRF document ID (yyyy-mmm)
  @return ApiCvrfGetCvrfRequest
 */
-func (a *GetSecurityUpdatesApiService) CvrfGetCvrf(ctx context.Context, id string) ApiCvrfGetCvrfRequest {
+func (a *GetSecurityUpdatesAPIService) CvrfGetCvrf(ctx context.Context, id string) ApiCvrfGetCvrfRequest {
 	return ApiCvrfGetCvrfRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -55,7 +55,7 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrf(ctx context.Context, id strin
 // Execute executes the request
 //
 //	@return Cvrfdoc
-func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfRequest) (*Cvrfdoc, *http.Response, error) {
+func (a *GetSecurityUpdatesAPIService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfRequest) (*Cvrfdoc, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -63,7 +63,7 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfReques
 		localVarReturnValue *Cvrfdoc
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.CvrfGetCvrf")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesAPIService.CvrfGetCvrf")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -131,7 +131,7 @@ func (a *GetSecurityUpdatesApiService) CvrfGetCvrfExecute(r ApiCvrfGetCvrfReques
 
 type ApiUpdatesGetUpdatesRequest struct {
 	ctx        context.Context
-	ApiService *GetSecurityUpdatesApiService
+	ApiService *GetSecurityUpdatesAPIService
 }
 
 func (r ApiUpdatesGetUpdatesRequest) Execute() (*UpdatesGetUpdates200Response, *http.Response, error) {
@@ -146,7 +146,7 @@ Get a list of all Microsoft security updates. Each includes a link to the update
 	@param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 	@return ApiUpdatesGetUpdatesRequest
 */
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdates(ctx context.Context) ApiUpdatesGetUpdatesRequest {
+func (a *GetSecurityUpdatesAPIService) UpdatesGetUpdates(ctx context.Context) ApiUpdatesGetUpdatesRequest {
 	return ApiUpdatesGetUpdatesRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -156,7 +156,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdates(ctx context.Context) Ap
 // Execute executes the request
 //
 //	@return UpdatesGetUpdates200Response
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetUpdatesRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
+func (a *GetSecurityUpdatesAPIService) UpdatesGetUpdatesExecute(r ApiUpdatesGetUpdatesRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -164,7 +164,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetU
 		localVarReturnValue *UpdatesGetUpdates200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdates")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesAPIService.UpdatesGetUpdates")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -231,7 +231,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesExecute(r ApiUpdatesGetU
 
 type ApiUpdatesGetUpdatesByKeyRequest struct {
 	ctx        context.Context
-	ApiService *GetSecurityUpdatesApiService
+	ApiService *GetSecurityUpdatesAPIService
 	key        string
 }
 
@@ -250,7 +250,7 @@ NOTE: this endpoint is case-sensitive.
  @param key update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
  @return ApiUpdatesGetUpdatesByKeyRequest
 */
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKey(ctx context.Context, key string) ApiUpdatesGetUpdatesByKeyRequest {
+func (a *GetSecurityUpdatesAPIService) UpdatesGetUpdatesByKey(ctx context.Context, key string) ApiUpdatesGetUpdatesByKeyRequest {
 	return ApiUpdatesGetUpdatesByKeyRequest{
 		ApiService: a,
 		ctx:        ctx,
@@ -261,7 +261,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKey(ctx context.Contex
 // Execute executes the request
 //
 //	@return UpdatesGetUpdates200Response
-func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdatesGetUpdatesByKeyRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
+func (a *GetSecurityUpdatesAPIService) UpdatesGetUpdatesByKeyExecute(r ApiUpdatesGetUpdatesByKeyRequest) (*UpdatesGetUpdates200Response, *http.Response, error) {
 	var (
 		localVarHTTPMethod  = http.MethodGet
 		localVarPostBody    interface{}
@@ -269,7 +269,7 @@ func (a *GetSecurityUpdatesApiService) UpdatesGetUpdatesByKeyExecute(r ApiUpdate
 		localVarReturnValue *UpdatesGetUpdates200Response
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesApiService.UpdatesGetUpdatesByKey")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "GetSecurityUpdatesAPIService.UpdatesGetUpdatesByKey")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

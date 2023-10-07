@@ -79,9 +79,9 @@ All URIs are relative to *https://api.msrc.microsoft.com/cvrf/v2.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GetSecurityUpdatesApi* | [**CvrfGetCvrf**](docs/GetSecurityUpdatesApi.md#cvrfgetcvrf) | **Get** /cvrf/{id} | Get security update details in CVRF format
-*GetSecurityUpdatesApi* | [**UpdatesGetUpdates**](docs/GetSecurityUpdatesApi.md#updatesgetupdates) | **Get** /updates | Get all security update summaries
-*GetSecurityUpdatesApi* | [**UpdatesGetUpdatesByKey**](docs/GetSecurityUpdatesApi.md#updatesgetupdatesbykey) | **Get** /Updates(&#39;{key}&#39;) | Get security update summaries by key
+*GetSecurityUpdatesAPI* | [**CvrfGetCvrf**](docs/GetSecurityUpdatesAPI.md#cvrfgetcvrf) | **Get** /cvrf/{id} | Get security update details in CVRF format
+*GetSecurityUpdatesAPI* | [**UpdatesGetUpdates**](docs/GetSecurityUpdatesAPI.md#updatesgetupdates) | **Get** /updates | Get all security update summaries
+*GetSecurityUpdatesAPI* | [**UpdatesGetUpdatesByKey**](docs/GetSecurityUpdatesAPI.md#updatesgetupdatesbykey) | **Get** /Updates(&#39;{key}&#39;) | Get security update summaries by key
 
 
 ## Documentation For Models
@@ -143,7 +143,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Authorization
 
- Endpoints do not require authorization.
+Endpoints do not require authorization.
 
 
 ## Documentation for Utility Methods

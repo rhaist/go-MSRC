@@ -1,7 +1,7 @@
 /*
 MSRC CVRF API
 
-Testing GetSecurityUpdatesApiService
+Testing GetSecurityUpdatesAPIService
 
 */
 
@@ -17,18 +17,18 @@ import (
 	"testing"
 )
 
-func Test_openapi_GetSecurityUpdatesApiService(t *testing.T) {
+func Test_openapi_GetSecurityUpdatesAPIService(t *testing.T) {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
-	t.Run("Test GetSecurityUpdatesApiService CvrfGetCvrf", func(t *testing.T) {
+	t.Run("Test GetSecurityUpdatesAPIService CvrfGetCvrf", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var id string
 
-		resp, httpRes, err := apiClient.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).Execute()
+		resp, httpRes, err := apiClient.GetSecurityUpdatesAPI.CvrfGetCvrf(context.Background(), id).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -36,11 +36,11 @@ func Test_openapi_GetSecurityUpdatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GetSecurityUpdatesApiService UpdatesGetUpdates", func(t *testing.T) {
+	t.Run("Test GetSecurityUpdatesAPIService UpdatesGetUpdates", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).Execute()
+		resp, httpRes, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdates(context.Background()).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -48,13 +48,13 @@ func Test_openapi_GetSecurityUpdatesApiService(t *testing.T) {
 
 	})
 
-	t.Run("Test GetSecurityUpdatesApiService UpdatesGetUpdatesByKey", func(t *testing.T) {
+	t.Run("Test GetSecurityUpdatesAPIService UpdatesGetUpdatesByKey", func(t *testing.T) {
 
 		t.Skip("skip test") // remove to run test
 
 		var key string
 
-		resp, httpRes, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
+		resp, httpRes, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

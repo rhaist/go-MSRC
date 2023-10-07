@@ -1,12 +1,12 @@
-# \GetSecurityUpdatesApi
+# \GetSecurityUpdatesAPI
 
 All URIs are relative to *https://api.msrc.microsoft.com/cvrf/v2.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**CvrfGetCvrf**](GetSecurityUpdatesApi.md#CvrfGetCvrf) | **Get** /cvrf/{id} | Get security update details in CVRF format
-[**UpdatesGetUpdates**](GetSecurityUpdatesApi.md#UpdatesGetUpdates) | **Get** /updates | Get all security update summaries
-[**UpdatesGetUpdatesByKey**](GetSecurityUpdatesApi.md#UpdatesGetUpdatesByKey) | **Get** /Updates(&#39;{key}&#39;) | Get security update summaries by key
+[**CvrfGetCvrf**](GetSecurityUpdatesAPI.md#CvrfGetCvrf) | **Get** /cvrf/{id} | Get security update details in CVRF format
+[**UpdatesGetUpdates**](GetSecurityUpdatesAPI.md#UpdatesGetUpdates) | **Get** /updates | Get all security update summaries
+[**UpdatesGetUpdatesByKey**](GetSecurityUpdatesAPI.md#UpdatesGetUpdatesByKey) | **Get** /Updates(&#39;{key}&#39;) | Get security update summaries by key
 
 
 
@@ -35,13 +35,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesApi.CvrfGetCvrf(context.Background(), id).Execute()
+    resp, r, err := apiClient.GetSecurityUpdatesAPI.CvrfGetCvrf(context.Background(), id).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.CvrfGetCvrf``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.CvrfGetCvrf``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `CvrfGetCvrf`: Cvrfdoc
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.CvrfGetCvrf`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.CvrfGetCvrf`: %v\n", resp)
 }
 ```
 
@@ -104,13 +104,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdates(context.Background()).Execute()
+    resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdates(context.Background()).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdates``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdates``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdatesGetUpdates`: UpdatesGetUpdates200Response
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.UpdatesGetUpdates`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdates`: %v\n", resp)
 }
 ```
 
@@ -166,13 +166,13 @@ func main() {
 
     configuration := openapiclient.NewConfiguration()
     apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
+    resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
     if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey``: %v\n", err)
+        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
     // response from `UpdatesGetUpdatesByKey`: UpdatesGetUpdates200Response
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey`: %v\n", resp)
+    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey`: %v\n", resp)
 }
 ```
 
