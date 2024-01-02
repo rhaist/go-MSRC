@@ -11,7 +11,9 @@ API version: v2
 package openapi
 
 import (
+	"bytes"
 	"encoding/json"
+	"fmt"
 )
 
 // checks if the UpdatesGetUpdates200Response type satisfies the MappedNullable interface at compile time
@@ -24,6 +26,8 @@ type UpdatesGetUpdates200Response struct {
 	// array of security update summaries
 	Value []Update `json:"value"`
 }
+
+type _UpdatesGetUpdates200Response UpdatesGetUpdates200Response
 
 // NewUpdatesGetUpdates200Response instantiates a new UpdatesGetUpdates200Response object
 // This constructor will assign default values to properties that have it defined,
@@ -105,6 +109,44 @@ func (o UpdatesGetUpdates200Response) ToMap() (map[string]interface{}, error) {
 	toSerialize["@odata.context"] = o.OdataContext
 	toSerialize["value"] = o.Value
 	return toSerialize, nil
+}
+
+func (o *UpdatesGetUpdates200Response) UnmarshalJSON(data []byte) (err error) {
+	// This validates that all required properties are included in the JSON object
+	// by unmarshalling the object into a generic map with string keys and checking
+	// that every required field exists as a key in the generic map.
+	requiredProperties := []string{
+		"@odata.context",
+		"value",
+	}
+
+	allProperties := make(map[string]interface{})
+
+	err = json.Unmarshal(data, &allProperties)
+
+	if err != nil {
+		return err
+	}
+
+	for _, requiredProperty := range requiredProperties {
+		if _, exists := allProperties[requiredProperty]; !exists {
+			return fmt.Errorf("no value given for required property %v", requiredProperty)
+		}
+	}
+
+	varUpdatesGetUpdates200Response := _UpdatesGetUpdates200Response{}
+
+	decoder := json.NewDecoder(bytes.NewReader(data))
+	decoder.DisallowUnknownFields()
+	err = decoder.Decode(&varUpdatesGetUpdates200Response)
+
+	if err != nil {
+		return err
+	}
+
+	*o = UpdatesGetUpdates200Response(varUpdatesGetUpdates200Response)
+
+	return err
 }
 
 type NullableUpdatesGetUpdates200Response struct {

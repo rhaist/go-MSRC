@@ -24,24 +24,24 @@ Get security update details in CVRF format
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/rhaist/go-MSRC/openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rhaist/go-MSRC/openapi"
 )
 
 func main() {
-    id := "id_example" // string | CVRF document ID (yyyy-mmm)
+	id := "id_example" // string | CVRF document ID (yyyy-mmm)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesAPI.CvrfGetCvrf(context.Background(), id).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.CvrfGetCvrf``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `CvrfGetCvrf`: Cvrfdoc
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.CvrfGetCvrf`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GetSecurityUpdatesAPI.CvrfGetCvrf(context.Background(), id).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.CvrfGetCvrf``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `CvrfGetCvrf`: Cvrfdoc
+	fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.CvrfGetCvrf`: %v\n", resp)
 }
 ```
 
@@ -94,23 +94,23 @@ Get all security update summaries
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/rhaist/go-MSRC/openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rhaist/go-MSRC/openapi"
 )
 
 func main() {
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdates(context.Background()).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdates``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatesGetUpdates`: UpdatesGetUpdates200Response
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdates`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdates(context.Background()).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdates``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatesGetUpdates`: UpdatesGetUpdates200Response
+	fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdates`: %v\n", resp)
 }
 ```
 
@@ -155,24 +155,24 @@ Get security update summaries by key
 package main
 
 import (
-    "context"
-    "fmt"
-    "os"
-    openapiclient "github.com/rhaist/go-MSRC/openapi"
+	"context"
+	"fmt"
+	"os"
+	openapiclient "github.com/rhaist/go-MSRC/openapi"
 )
 
 func main() {
-    key := "key_example" // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
+	key := "key_example" // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
 
-    configuration := openapiclient.NewConfiguration()
-    apiClient := openapiclient.NewAPIClient(configuration)
-    resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
-    if err != nil {
-        fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey``: %v\n", err)
-        fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
-    }
-    // response from `UpdatesGetUpdatesByKey`: UpdatesGetUpdates200Response
-    fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey`: %v\n", resp)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	resp, r, err := apiClient.GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey(context.Background(), key).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
+	}
+	// response from `UpdatesGetUpdatesByKey`: UpdatesGetUpdates200Response
+	fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesAPI.UpdatesGetUpdatesByKey`: %v\n", resp)
 }
 ```
 
