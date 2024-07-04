@@ -1,14 +1,9 @@
 openapi: 3.0.1
 info:
-  description: "Get security updates programmatically using this RESTful API. Sample\
-    \ client code is available on the [Microsoft Security Updates GitHub](https://github.com/microsoft/MSRC-Microsoft-Security-Updates-API).\
-    \ For more details, please visit [msrc.microsoft.com/update-guide](https://msrc.microsoft.com/update-guide).\r\
-    \n\r\n_**NOTE: If you're looking for the Engage API (CARS), please refer to the\
-    \ new [Abuse Reporting developer portal](https://msrc.microsoft.com/report/developer).**_"
   title: MSRC CVRF API
-  version: v2
+  version: v3
 servers:
-- url: https://api.msrc.microsoft.com/cvrf/v2.0
+- url: /
 paths:
   /cvrf/{id}:
     get:
@@ -17,2082 +12,3813 @@ paths:
         \ MSRC investigates all reports of\r\nsecurity vulnerabilities affecting Microsoft\
         \ products and services, and provides these updates as part of the\r\nongoing\
         \ effort to help you manage security risks and help keep your systems protected."
-      operationId: Cvrf_GetCvrf
       parameters:
       - description: CVRF document ID (yyyy-mmm)
+        explode: false
         in: path
         name: id
         required: true
         schema:
           type: string
+        style: simple
       responses:
         "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/cvrfdoc'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/cvrfdoc'
-            application/xml:
-              schema:
-                $ref: '#/components/schemas/cvrfdoc'
-            text/xml:
-              schema:
-                $ref: '#/components/schemas/cvrfdoc'
-          description: OK
-        "500":
-          content: {}
-          description: Internal Server Error
-        "400":
-          content: {}
-          description: Bad Request
-        "401":
-          content: {}
-          description: Unauthorized
-        "404":
-          content: {}
-          description: Not Found
+          description: Success
       summary: Get security update details in CVRF format
       tags:
-      - Get Security Updates
-  /updates:
+      - Cvrf
+  /cvrf({id}):
     get:
-      description: "Get a list of all Microsoft security updates. Each includes a\
-        \ link to the update details, formatted according to the [Common Vulnerability\
-        \ Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated\
-        \ using [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\
-        \ on current and initial release dates."
-      operationId: Updates_GetUpdates
-      responses:
-        "200":
-          content:
-            '*/*':
-              schema:
-                $ref: '#/components/schemas/Updates_GetUpdates_200_response'
-          description: OK
-        "400":
-          content: {}
-          description: Bad Request
-        "401":
-          content: {}
-          description: Unauthorized
-        "500":
-          content: {}
-          description: Internal Server Error
-      summary: Get all security update summaries
-      tags:
-      - Get Security Updates
-  /Updates('{key}'):
-    get:
-      description: "Get a list of Microsoft security updates by update ID, vulnerability\
-        \ ID ([CVE](https://cve.mitre.org/about)), or year. Each includes a link to\
-        \ the update details, formatted according to the [Common Vulnerability Reporting\
-        \ Framework](https://www.icasi.org/cvrf). This list can be manipulated using\
-        \ [OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\
-        \ on current and initial release dates.\r\n\r\nNOTE: this endpoint is case-sensitive."
-      operationId: Updates_GetUpdatesByKey
+      description: "Get detailed Microsoft security update, formatted according to\
+        \ the [Common Vulnerability Reporting\r\nFramework](http://www.icasi.org/cvrf/).\
+        \ MSRC investigates all reports of\r\nsecurity vulnerabilities affecting Microsoft\
+        \ products and services, and provides these updates as part of the\r\nongoing\
+        \ effort to help you manage security risks and help keep your systems protected."
       parameters:
-      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
-          \ (yyyy)"
+      - description: CVRF document ID (yyyy-mmm)
+        explode: false
         in: path
-        name: key
+        name: id
         required: true
         schema:
           type: string
+        style: simple
+      responses:
+        "200":
+          description: Success
+      summary: Get security update details in CVRF format
+      tags:
+      - Cvrf
+  /updates:
+    get:
+      description: "Get a list of all Microsoft security updates. Each includes a\
+        \ link to the update details, formatted according to\r\nthe [Common Vulnerability\
+        \ Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      parameters:
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
       responses:
         "200":
           content:
-            '*/*':
+            application/json;odata.metadata=minimal;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/Updates_GetUpdates_200_response'
-          description: OK
-        "400":
-          content: {}
-          description: Bad Request
-        "401":
-          content: {}
-          description: Unauthorized
-        "404":
-          content: {}
-          description: Not Found
-        "500":
-          content: {}
-          description: Internal Server Error
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get all security update summaries
+      tags:
+      - Updates
+  /Updates:
+    get:
+      description: "Get a list of all Microsoft security updates. Each includes a\
+        \ link to the update details, formatted according to\r\nthe [Common Vulnerability\
+        \ Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      operationId: Updates
+      parameters:
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get all security update summaries
+      tags:
+      - Updates
+  /Updates/$count:
+    get:
+      description: "Get a list of all Microsoft security updates. Each includes a\
+        \ link to the update details, formatted according to\r\nthe [Common Vulnerability\
+        \ Reporting Framework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      operationId: Updates/$count
+      parameters:
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get all security update summaries
+      tags:
+      - Updates
+  /updates({key}):
+    get:
+      description: "Get a list of Microsoft security updates by update ID, vulnerability\
+        \ ID ([CVE](https://cve.mitre.org/about)), or\r\nyear. Each includes a link\
+        \ to the update details, formatted according to the [Common Vulnerability\
+        \ Reporting\r\nFramework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      parameters:
+      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
+          \ (yyyy)"
+        explode: true
+        in: query
+        name: key
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
       summary: Get security update summaries by key
       tags:
-      - Get Security Updates
+      - Updates
+  /updates/{key}:
+    get:
+      description: "Get a list of Microsoft security updates by update ID, vulnerability\
+        \ ID ([CVE](https://cve.mitre.org/about)), or\r\nyear. Each includes a link\
+        \ to the update details, formatted according to the [Common Vulnerability\
+        \ Reporting\r\nFramework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      parameters:
+      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
+          \ (yyyy)"
+        explode: true
+        in: query
+        name: key
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get security update summaries by key
+      tags:
+      - Updates
+  /Updates({key}):
+    get:
+      description: "Get a list of Microsoft security updates by update ID, vulnerability\
+        \ ID ([CVE](https://cve.mitre.org/about)), or\r\nyear. Each includes a link\
+        \ to the update details, formatted according to the [Common Vulnerability\
+        \ Reporting\r\nFramework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      operationId: "Updates({key})"
+      parameters:
+      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
+          \ (yyyy)"
+        explode: true
+        in: query
+        name: key
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get security update summaries by key
+      tags:
+      - Updates
+  /Updates/{key}:
+    get:
+      description: "Get a list of Microsoft security updates by update ID, vulnerability\
+        \ ID ([CVE](https://cve.mitre.org/about)), or\r\nyear. Each includes a link\
+        \ to the update details, formatted according to the [Common Vulnerability\
+        \ Reporting\r\nFramework](https://www.icasi.org/cvrf). This list can be manipulated\
+        \ using\r\n[OData URL filtering](https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752356)\r\
+        \non current and initial release dates."
+      operationId: "Updates/{key}"
+      parameters:
+      - description: "update ID (yyyy-mmm), vulnerability ID (CVE number), or year\
+          \ (yyyy)"
+        explode: true
+        in: query
+        name: key
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: OData query options
+        explode: true
+        in: query
+        name: options
+        required: false
+        schema:
+          $ref: '#/components/schemas/UpdateODataQueryOptions'
+        style: form
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=minimal:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=full:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.metadata=none:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=true:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json;odata.streaming=false:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            application/octet-stream:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/xml:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Update'
+                type: array
+          description: Success
+      summary: Get security update summaries by key
+      tags:
+      - Updates
 components:
   schemas:
-    cvrfdoc:
-      example:
-        AggregateSeverity:
-          Value: Value
-          lang: lang
-          Namespace: Namespace
-        Acknowledgments:
-        - Organization:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          Description:
-            Value: Value
-            lang: lang
-          URL:
-          - URL
-          - URL
-          Name:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-        - Organization:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          Description:
-            Value: Value
-            lang: lang
-          URL:
-          - URL
-          - URL
-          Name:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-        DocumentPublisher:
-          Type: 0
-          ContactDetails:
-            Value: Value
-            lang: lang
-          VendorID: VendorID
-          IssuingAuthority:
-            Value: Value
-            lang: lang
-        DocumentType:
-          Value: Value
-          lang: lang
-        DocumentNotes:
-        - Type: 1
-          Audience: Audience
-          Ordinal: Ordinal
-          Value: Value
-          Title: Title
-          lang: lang
-        - Type: 1
-          Audience: Audience
-          Ordinal: Ordinal
-          Value: Value
-          Title: Title
-          lang: lang
-        DocumentDistribution:
-          Value: Value
-          lang: lang
-        Vulnerability:
-        - Threats:
-          - Type: 4
-            Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-          - Type: 4
-            Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-          Involvements:
-          - Status: 3
-            Description:
-              Value: Value
-              lang: lang
-            Party: 9
-          - Status: 3
-            Description:
-              Value: Value
-              lang: lang
-            Party: 9
-          ProductStatuses:
-          - Type: 2
-            ProductID:
-            - ProductID
-            - ProductID
-          - Type: 2
-            ProductID:
-            - ProductID
-            - ProductID
-          ReleaseDateSpecified: true
-          Title:
-            Value: Value
-            lang: lang
-          Remediations:
-          - Description:
-              Value: Value
-              lang: lang
-            RestartRequired:
-              Value: Value
-              lang: lang
-            SubType: SubType
-            AffectedFiles:
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            Supercedence: Supercedence
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            URL: URL
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-            Type: 1
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            FixedBuild: FixedBuild
-          - Description:
-              Value: Value
-              lang: lang
-            RestartRequired:
-              Value: Value
-              lang: lang
-            SubType: SubType
-            AffectedFiles:
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            Supercedence: Supercedence
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            URL: URL
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-            Type: 1
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            FixedBuild: FixedBuild
-          ReleaseDate: 2000-01-23T04:56:07.000+00:00
-          CWE:
-          - Value: Value
-            ID: ID
-            lang: lang
-          - Value: Value
-            ID: ID
-            lang: lang
-          CVE: CVE
-          CVSSScoreSets:
-          - TemporalScore: 1.2315135367772556
-            EnvironmentalScore: 1.0246457001441578
-            ProductID:
-            - ProductID
-            - ProductID
-            BaseScore: 7.386281948385884
-            Vector: Vector
-          - TemporalScore: 1.2315135367772556
-            EnvironmentalScore: 1.0246457001441578
-            ProductID:
-            - ProductID
-            - ProductID
-            BaseScore: 7.386281948385884
-            Vector: Vector
-          Acknowledgments:
-          - Organization:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            Description:
-              Value: Value
-              lang: lang
-            URL:
-            - URL
-            - URL
-            Name:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-          - Organization:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            Description:
-              Value: Value
-              lang: lang
-            URL:
-            - URL
-            - URL
-            Name:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-          DiscoveryDate: 2000-01-23T04:56:07.000+00:00
-          RevisionHistory:
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          References:
-          - Type: 6
-            Description:
-              Value: Value
-              lang: lang
-            URL: URL
-          - Type: 6
-            Description:
-              Value: Value
-              lang: lang
-            URL: URL
-          Ordinal: Ordinal
-          DiscoveryDateSpecified: true
-          ID:
-            Value: Value
-            SystemName: SystemName
-          Notes:
-          - Type: 7
-            Audience: Audience
-            Ordinal: Ordinal
-            Value: Value
-            Title: Title
-            lang: lang
-          - Type: 7
-            Audience: Audience
-            Ordinal: Ordinal
-            Value: Value
-            Title: Title
-            lang: lang
-        - Threats:
-          - Type: 4
-            Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-          - Type: 4
-            Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-          Involvements:
-          - Status: 3
-            Description:
-              Value: Value
-              lang: lang
-            Party: 9
-          - Status: 3
-            Description:
-              Value: Value
-              lang: lang
-            Party: 9
-          ProductStatuses:
-          - Type: 2
-            ProductID:
-            - ProductID
-            - ProductID
-          - Type: 2
-            ProductID:
-            - ProductID
-            - ProductID
-          ReleaseDateSpecified: true
-          Title:
-            Value: Value
-            lang: lang
-          Remediations:
-          - Description:
-              Value: Value
-              lang: lang
-            RestartRequired:
-              Value: Value
-              lang: lang
-            SubType: SubType
-            AffectedFiles:
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            Supercedence: Supercedence
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            URL: URL
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-            Type: 1
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            FixedBuild: FixedBuild
-          - Description:
-              Value: Value
-              lang: lang
-            RestartRequired:
-              Value: Value
-              lang: lang
-            SubType: SubType
-            AffectedFiles:
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            - FilePath: FilePath
-              FileArchitecture: FileArchitecture
-              FileName: FileName
-              FileVersion: FileVersion
-              FileLastModified: 2000-01-23T04:56:07.000+00:00
-              ProductId: ProductId
-            Supercedence: Supercedence
-            ProductID:
-            - ProductID
-            - ProductID
-            DateSpecified: true
-            URL: URL
-            Date: 2000-01-23T04:56:07.000+00:00
-            GroupID:
-            - GroupID
-            - GroupID
-            Type: 1
-            Entitlement:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            FixedBuild: FixedBuild
-          ReleaseDate: 2000-01-23T04:56:07.000+00:00
-          CWE:
-          - Value: Value
-            ID: ID
-            lang: lang
-          - Value: Value
-            ID: ID
-            lang: lang
-          CVE: CVE
-          CVSSScoreSets:
-          - TemporalScore: 1.2315135367772556
-            EnvironmentalScore: 1.0246457001441578
-            ProductID:
-            - ProductID
-            - ProductID
-            BaseScore: 7.386281948385884
-            Vector: Vector
-          - TemporalScore: 1.2315135367772556
-            EnvironmentalScore: 1.0246457001441578
-            ProductID:
-            - ProductID
-            - ProductID
-            BaseScore: 7.386281948385884
-            Vector: Vector
-          Acknowledgments:
-          - Organization:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            Description:
-              Value: Value
-              lang: lang
-            URL:
-            - URL
-            - URL
-            Name:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-          - Organization:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-            Description:
-              Value: Value
-              lang: lang
-            URL:
-            - URL
-            - URL
-            Name:
-            - Value: Value
-              lang: lang
-            - Value: Value
-              lang: lang
-          DiscoveryDate: 2000-01-23T04:56:07.000+00:00
-          RevisionHistory:
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          References:
-          - Type: 6
-            Description:
-              Value: Value
-              lang: lang
-            URL: URL
-          - Type: 6
-            Description:
-              Value: Value
-              lang: lang
-            URL: URL
-          Ordinal: Ordinal
-          DiscoveryDateSpecified: true
-          ID:
-            Value: Value
-            SystemName: SystemName
-          Notes:
-          - Type: 7
-            Audience: Audience
-            Ordinal: Ordinal
-            Value: Value
-            Title: Title
-            lang: lang
-          - Type: 7
-            Audience: Audience
-            Ordinal: Ordinal
-            Value: Value
-            Title: Title
-            lang: lang
-        DocumentTitle:
-          Value: Value
-          lang: lang
-        ProductTree:
-          Branch:
-          - Type: 5
-            Items:
-            - "{}"
-            - "{}"
-            Name: Name
-          - Type: 5
-            Items:
-            - "{}"
-            - "{}"
-            Name: Name
-          Relationship:
-          - RelatesToProductReference: RelatesToProductReference
-            ProductReference: ProductReference
-            RelationType: 2
-            FullProductName:
-            - Value: Value
-              CPE: CPE
-              ProductID: ProductID
-            - Value: Value
-              CPE: CPE
-              ProductID: ProductID
-          - RelatesToProductReference: RelatesToProductReference
-            ProductReference: ProductReference
-            RelationType: 2
-            FullProductName:
-            - Value: Value
-              CPE: CPE
-              ProductID: ProductID
-            - Value: Value
-              CPE: CPE
-              ProductID: ProductID
-          FullProductName:
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-          ProductGroups:
-          - Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            GroupID: GroupID
-          - Description:
-              Value: Value
-              lang: lang
-            ProductID:
-            - ProductID
-            - ProductID
-            GroupID: GroupID
-        DocumentTracking:
-          Status: 6
-          Version: Version
-          RevisionHistory:
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          - Description:
-              Value: Value
-              lang: lang
-            Number: Number
-            Date: 2000-01-23T04:56:07.000+00:00
-          Identification:
-            Alias:
-              Value: Value
-              lang: lang
-            ID:
-              Value: Value
-              lang: lang
-          CurrentReleaseDate: 2000-01-23T04:56:07.000+00:00
-          InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
-          Generator:
-            DateSpecified: true
-            Engine:
-              Value: Value
-              lang: lang
-            Date: 2000-01-23T04:56:07.000+00:00
-        DocumentReferences:
-        - Type: 5
-          Description:
-            Value: Value
-            lang: lang
-          URL: URL
-        - Type: 5
-          Description:
-            Value: Value
-            lang: lang
-          URL: URL
+    AddressFamily:
+      enum:
+      - Unspecified
+      - Unix
+      - InterNetwork
+      - ImpLink
+      - Pup
+      - Chaos
+      - NS
+      - Osi
+      - Ecma
+      - DataKit
+      - Ccitt
+      - Sna
+      - DecNet
+      - DataLink
+      - Lat
+      - HyperChannel
+      - AppleTalk
+      - NetBios
+      - VoiceView
+      - FireFox
+      - Banyan
+      - Atm
+      - InterNetworkV6
+      - Cluster
+      - Ieee12844
+      - Irda
+      - NetworkDesigners
+      - Max
+      - Packet
+      - ControllerAreaNetwork
+      - Unknown
+      type: string
+    ApplyClause:
+      additionalProperties: false
       properties:
-        DocumentTitle:
-          $ref: '#/components/schemas/cvrfdocDocumentTitle'
-        DocumentType:
-          $ref: '#/components/schemas/cvrfdocDocumentType'
-        DocumentPublisher:
-          $ref: '#/components/schemas/cvrfdocDocumentPublisher'
-        DocumentTracking:
-          $ref: '#/components/schemas/cvrfdocDocumentTracking'
-        DocumentNotes:
+        transformations:
           items:
-            $ref: '#/components/schemas/cvrfdocNote'
-          type: array
-        DocumentDistribution:
-          $ref: '#/components/schemas/cvrfdocDocumentDistribution'
-        AggregateSeverity:
-          $ref: '#/components/schemas/cvrfdocAggregateSeverity'
-        DocumentReferences:
-          items:
-            $ref: '#/components/schemas/cvrfdocReference'
-          type: array
-        Acknowledgments:
-          items:
-            $ref: '#/components/schemas/cvrfdocAcknowledgment'
-          type: array
-        ProductTree:
-          $ref: '#/components/schemas/ProductTree'
-        Vulnerability:
-          items:
-            $ref: '#/components/schemas/Vulnerability'
+            $ref: '#/components/schemas/TransformationNode'
+          nullable: true
           type: array
       type: object
-    cvrfdocDocumentTitle:
-      example:
-        Value: Value
-        lang: lang
+    ApplyQueryOption:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        resultClrType:
+          $ref: '#/components/schemas/Type'
+        applyClause:
+          $ref: '#/components/schemas/ApplyClause'
+        rawValue:
+          nullable: true
           type: string
       type: object
-    cvrfdocDocumentType:
-      example:
-        Value: Value
-        lang: lang
+    AsnEncodedData:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
+        oid:
+          $ref: '#/components/schemas/Oid'
+        rawData:
+          format: byte
+          nullable: true
           type: string
       type: object
-    cvrfdocDocumentPublisher:
-      example:
-        Type: 0
-        ContactDetails:
-          Value: Value
-          lang: lang
-        VendorID: VendorID
-        IssuingAuthority:
-          Value: Value
-          lang: lang
+    Assembly:
+      additionalProperties: false
       properties:
-        ContactDetails:
-          $ref: '#/components/schemas/cvrfdocDocumentPublisherContactDetails'
-        IssuingAuthority:
-          $ref: '#/components/schemas/cvrfdocDocumentPublisherIssuingAuthority'
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
+        definedTypes:
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        exportedTypes:
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+          type: array
+        codeBase:
+          nullable: true
+          readOnly: true
+          type: string
+        entryPoint:
+          $ref: '#/components/schemas/MethodInfo'
+        fullName:
+          nullable: true
+          readOnly: true
+          type: string
+        imageRuntimeVersion:
+          nullable: true
+          readOnly: true
+          type: string
+        isDynamic:
+          readOnly: true
+          type: boolean
+        location:
+          nullable: true
+          readOnly: true
+          type: string
+        reflectionOnly:
+          readOnly: true
+          type: boolean
+        isCollectible:
+          readOnly: true
+          type: boolean
+        isFullyTrusted:
+          readOnly: true
+          type: boolean
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        escapedCodeBase:
+          nullable: true
+          readOnly: true
+          type: string
+        manifestModule:
+          $ref: '#/components/schemas/Module'
+        modules:
+          items:
+            $ref: '#/components/schemas/Module'
+          nullable: true
+          readOnly: true
+          type: array
+        globalAssemblyCache:
+          deprecated: true
+          readOnly: true
+          type: boolean
+        hostContext:
+          format: int64
+          readOnly: true
+          type: integer
+        securityRuleSet:
+          $ref: '#/components/schemas/SecurityRuleSet'
+      type: object
+    AsymmetricAlgorithm:
+      additionalProperties: false
+      properties:
+        keySize:
           format: int32
           type: integer
-        VendorID:
-          type: string
-      type: object
-    cvrfdocDocumentTracking:
-      example:
-        Status: 6
-        Version: Version
-        RevisionHistory:
-        - Description:
-            Value: Value
-            lang: lang
-          Number: Number
-          Date: 2000-01-23T04:56:07.000+00:00
-        - Description:
-            Value: Value
-            lang: lang
-          Number: Number
-          Date: 2000-01-23T04:56:07.000+00:00
-        Identification:
-          Alias:
-            Value: Value
-            lang: lang
-          ID:
-            Value: Value
-            lang: lang
-        CurrentReleaseDate: 2000-01-23T04:56:07.000+00:00
-        InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
-        Generator:
-          DateSpecified: true
-          Engine:
-            Value: Value
-            lang: lang
-          Date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        Identification:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingIdentification'
-        Status:
-          enum:
-          - 0
-          - 1
-          - 2
-          format: int32
-          type: integer
-        Version:
-          type: string
-        RevisionHistory:
+        legalKeySizes:
           items:
-            $ref: '#/components/schemas/cvrfdocDocumentTrackingRevision'
+            $ref: '#/components/schemas/KeySizes'
+          nullable: true
+          readOnly: true
           type: array
-        InitialReleaseDate:
-          format: date-time
+        signatureAlgorithm:
+          nullable: true
+          readOnly: true
           type: string
-        CurrentReleaseDate:
-          format: date-time
-          type: string
-        Generator:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingGenerator'
-      type: object
-    cvrfdocNote:
-      example:
-        Type: 1
-        Audience: Audience
-        Ordinal: Ordinal
-        Value: Value
-        Title: Title
-        lang: lang
-      properties:
-        Title:
-          type: string
-        Audience:
-          type: string
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          format: int32
-          type: integer
-        Ordinal:
-          type: string
-        lang:
-          type: string
-        Value:
+        keyExchangeAlgorithm:
+          nullable: true
+          readOnly: true
           type: string
       type: object
-    cvrfdocDocumentDistribution:
-      example:
-        Value: Value
-        lang: lang
+    CallingConventions:
+      enum:
+      - Standard
+      - VarArgs
+      - Any
+      - HasThis
+      - ExplicitThis
+      type: string
+    CancellationToken:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
+        isCancellationRequested:
+          readOnly: true
+          type: boolean
+        canBeCanceled:
+          readOnly: true
+          type: boolean
+        waitHandle:
+          $ref: '#/components/schemas/WaitHandle'
       type: object
-    cvrfdocAggregateSeverity:
-      example:
-        Value: Value
-        lang: lang
-        Namespace: Namespace
+    Claim:
+      additionalProperties: false
       properties:
-        Namespace:
+        issuer:
+          nullable: true
+          readOnly: true
           type: string
-        lang:
+        originalIssuer:
+          nullable: true
+          readOnly: true
           type: string
-        Value:
-          type: string
-      type: object
-    cvrfdocReference:
-      example:
-        Type: 5
-        Description:
-          Value: Value
-          lang: lang
-        URL: URL
-      properties:
-        URL:
-          type: string
-        Description:
-          $ref: '#/components/schemas/cvrfdocReferenceDescription'
-        Type:
-          enum:
-          - 0
-          - 1
-          format: int32
-          type: integer
-      type: object
-    cvrfdocAcknowledgment:
-      example:
-        Organization:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
-        Description:
-          Value: Value
-          lang: lang
-        URL:
-        - URL
-        - URL
-        Name:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
-      properties:
-        Name:
-          items:
-            $ref: '#/components/schemas/cvrfdocAcknowledgmentName'
-          type: array
-        Organization:
-          items:
-            $ref: '#/components/schemas/cvrfdocAcknowledgmentOrganization'
-          type: array
-        Description:
-          $ref: '#/components/schemas/cvrfdocAcknowledgmentDescription'
-        URL:
-          items:
+        properties:
+          additionalProperties:
             type: string
-          type: array
-      type: object
-    ProductTree:
-      example:
-        Branch:
-        - Type: 5
-          Items:
-          - "{}"
-          - "{}"
-          Name: Name
-        - Type: 5
-          Items:
-          - "{}"
-          - "{}"
-          Name: Name
-        Relationship:
-        - RelatesToProductReference: RelatesToProductReference
-          ProductReference: ProductReference
-          RelationType: 2
-          FullProductName:
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-        - RelatesToProductReference: RelatesToProductReference
-          ProductReference: ProductReference
-          RelationType: 2
-          FullProductName:
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-          - Value: Value
-            CPE: CPE
-            ProductID: ProductID
-        FullProductName:
-        - Value: Value
-          CPE: CPE
-          ProductID: ProductID
-        - Value: Value
-          CPE: CPE
-          ProductID: ProductID
-        ProductGroups:
-        - Description:
-            Value: Value
-            lang: lang
-          ProductID:
-          - ProductID
-          - ProductID
-          GroupID: GroupID
-        - Description:
-            Value: Value
-            lang: lang
-          ProductID:
-          - ProductID
-          - ProductID
-          GroupID: GroupID
-      properties:
-        Branch:
-          items:
-            $ref: '#/components/schemas/BranchType'
-          type: array
-        FullProductName:
-          items:
-            $ref: '#/components/schemas/FullProductName'
-          type: array
-        Relationship:
-          items:
-            $ref: '#/components/schemas/ProductTreeRelationship'
-          type: array
-        ProductGroups:
-          items:
-            $ref: '#/components/schemas/ProductTreeGroup'
-          type: array
-      type: object
-    Vulnerability:
-      example:
-        Threats:
-        - Type: 4
-          Description:
-            Value: Value
-            lang: lang
-          ProductID:
-          - ProductID
-          - ProductID
-          DateSpecified: true
-          Date: 2000-01-23T04:56:07.000+00:00
-          GroupID:
-          - GroupID
-          - GroupID
-        - Type: 4
-          Description:
-            Value: Value
-            lang: lang
-          ProductID:
-          - ProductID
-          - ProductID
-          DateSpecified: true
-          Date: 2000-01-23T04:56:07.000+00:00
-          GroupID:
-          - GroupID
-          - GroupID
-        Involvements:
-        - Status: 3
-          Description:
-            Value: Value
-            lang: lang
-          Party: 9
-        - Status: 3
-          Description:
-            Value: Value
-            lang: lang
-          Party: 9
-        ProductStatuses:
-        - Type: 2
-          ProductID:
-          - ProductID
-          - ProductID
-        - Type: 2
-          ProductID:
-          - ProductID
-          - ProductID
-        ReleaseDateSpecified: true
-        Title:
-          Value: Value
-          lang: lang
-        Remediations:
-        - Description:
-            Value: Value
-            lang: lang
-          RestartRequired:
-            Value: Value
-            lang: lang
-          SubType: SubType
-          AffectedFiles:
-          - FilePath: FilePath
-            FileArchitecture: FileArchitecture
-            FileName: FileName
-            FileVersion: FileVersion
-            FileLastModified: 2000-01-23T04:56:07.000+00:00
-            ProductId: ProductId
-          - FilePath: FilePath
-            FileArchitecture: FileArchitecture
-            FileName: FileName
-            FileVersion: FileVersion
-            FileLastModified: 2000-01-23T04:56:07.000+00:00
-            ProductId: ProductId
-          Supercedence: Supercedence
-          ProductID:
-          - ProductID
-          - ProductID
-          DateSpecified: true
-          URL: URL
-          Date: 2000-01-23T04:56:07.000+00:00
-          GroupID:
-          - GroupID
-          - GroupID
-          Type: 1
-          Entitlement:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          FixedBuild: FixedBuild
-        - Description:
-            Value: Value
-            lang: lang
-          RestartRequired:
-            Value: Value
-            lang: lang
-          SubType: SubType
-          AffectedFiles:
-          - FilePath: FilePath
-            FileArchitecture: FileArchitecture
-            FileName: FileName
-            FileVersion: FileVersion
-            FileLastModified: 2000-01-23T04:56:07.000+00:00
-            ProductId: ProductId
-          - FilePath: FilePath
-            FileArchitecture: FileArchitecture
-            FileName: FileName
-            FileVersion: FileVersion
-            FileLastModified: 2000-01-23T04:56:07.000+00:00
-            ProductId: ProductId
-          Supercedence: Supercedence
-          ProductID:
-          - ProductID
-          - ProductID
-          DateSpecified: true
-          URL: URL
-          Date: 2000-01-23T04:56:07.000+00:00
-          GroupID:
-          - GroupID
-          - GroupID
-          Type: 1
-          Entitlement:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          FixedBuild: FixedBuild
-        ReleaseDate: 2000-01-23T04:56:07.000+00:00
-        CWE:
-        - Value: Value
-          ID: ID
-          lang: lang
-        - Value: Value
-          ID: ID
-          lang: lang
-        CVE: CVE
-        CVSSScoreSets:
-        - TemporalScore: 1.2315135367772556
-          EnvironmentalScore: 1.0246457001441578
-          ProductID:
-          - ProductID
-          - ProductID
-          BaseScore: 7.386281948385884
-          Vector: Vector
-        - TemporalScore: 1.2315135367772556
-          EnvironmentalScore: 1.0246457001441578
-          ProductID:
-          - ProductID
-          - ProductID
-          BaseScore: 7.386281948385884
-          Vector: Vector
-        Acknowledgments:
-        - Organization:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          Description:
-            Value: Value
-            lang: lang
-          URL:
-          - URL
-          - URL
-          Name:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-        - Organization:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-          Description:
-            Value: Value
-            lang: lang
-          URL:
-          - URL
-          - URL
-          Name:
-          - Value: Value
-            lang: lang
-          - Value: Value
-            lang: lang
-        DiscoveryDate: 2000-01-23T04:56:07.000+00:00
-        RevisionHistory:
-        - Description:
-            Value: Value
-            lang: lang
-          Number: Number
-          Date: 2000-01-23T04:56:07.000+00:00
-        - Description:
-            Value: Value
-            lang: lang
-          Number: Number
-          Date: 2000-01-23T04:56:07.000+00:00
-        References:
-        - Type: 6
-          Description:
-            Value: Value
-            lang: lang
-          URL: URL
-        - Type: 6
-          Description:
-            Value: Value
-            lang: lang
-          URL: URL
-        Ordinal: Ordinal
-        DiscoveryDateSpecified: true
-        ID:
-          Value: Value
-          SystemName: SystemName
-        Notes:
-        - Type: 7
-          Audience: Audience
-          Ordinal: Ordinal
-          Value: Value
-          Title: Title
-          lang: lang
-        - Type: 7
-          Audience: Audience
-          Ordinal: Ordinal
-          Value: Value
-          Title: Title
-          lang: lang
-      properties:
-        Title:
-          $ref: '#/components/schemas/VulnerabilityTitle'
-        ID:
-          $ref: '#/components/schemas/VulnerabilityID'
-        Notes:
-          items:
-            $ref: '#/components/schemas/VulnerabilityNote'
-          type: array
-        DiscoveryDate:
-          format: date-time
+          nullable: true
+          readOnly: true
+          type: object
+        subject:
+          $ref: '#/components/schemas/ClaimsIdentity'
+        type:
+          nullable: true
+          readOnly: true
           type: string
-        DiscoveryDateSpecified:
+        value:
+          nullable: true
+          readOnly: true
+          type: string
+        valueType:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    ClaimsIdentity:
+      additionalProperties: false
+      properties:
+        authenticationType:
+          nullable: true
+          readOnly: true
+          type: string
+        isAuthenticated:
+          readOnly: true
           type: boolean
-        ReleaseDate:
-          format: date-time
+        actor:
+          $ref: '#/components/schemas/ClaimsIdentity'
+        bootstrapContext:
+          nullable: true
+        claims:
+          items:
+            $ref: '#/components/schemas/Claim'
+          nullable: true
+          readOnly: true
+          type: array
+        label:
+          nullable: true
           type: string
-        ReleaseDateSpecified:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        nameClaimType:
+          nullable: true
+          readOnly: true
+          type: string
+        roleClaimType:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    ClaimsPrincipal:
+      additionalProperties: false
+      properties:
+        claims:
+          items:
+            $ref: '#/components/schemas/Claim'
+          nullable: true
+          readOnly: true
+          type: array
+        identities:
+          items:
+            $ref: '#/components/schemas/ClaimsIdentity'
+          nullable: true
+          readOnly: true
+          type: array
+        identity:
+          $ref: '#/components/schemas/IIdentity'
+      type: object
+    ComputeClause:
+      additionalProperties: false
+      properties:
+        computedItems:
+          items:
+            $ref: '#/components/schemas/ComputeExpression'
+          nullable: true
+          type: array
+      type: object
+    ComputeExpression:
+      additionalProperties: false
+      properties:
+        expression:
+          $ref: '#/components/schemas/SingleValueNode'
+        alias:
+          nullable: true
+          type: string
+        typeReference:
+          $ref: '#/components/schemas/IEdmTypeReference'
+      type: object
+    ComputeQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        resultClrType:
+          $ref: '#/components/schemas/Type'
+        computeClause:
+          $ref: '#/components/schemas/ComputeClause'
+        rawValue:
+          nullable: true
+          type: string
+        validator:
+          additionalProperties: false
+          type: object
+      type: object
+    ConnectionInfo:
+      additionalProperties: false
+      properties:
+        id:
+          nullable: true
+          type: string
+        remoteIpAddress:
+          $ref: '#/components/schemas/IPAddress'
+        remotePort:
+          format: int32
+          type: integer
+        localIpAddress:
+          $ref: '#/components/schemas/IPAddress'
+        localPort:
+          format: int32
+          type: integer
+        clientCertificate:
+          $ref: '#/components/schemas/X509Certificate2'
+      type: object
+    ConstructorInfo:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
           type: boolean
-        Involvements:
-          items:
-            $ref: '#/components/schemas/VulnerabilityInvolvement'
-          type: array
-        CVE:
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isConstructor:
+          readOnly: true
+          type: boolean
+        isFinal:
+          readOnly: true
+          type: boolean
+        isHideBySig:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isStatic:
+          readOnly: true
+          type: boolean
+        isVirtual:
+          readOnly: true
+          type: boolean
+        isAssembly:
+          readOnly: true
+          type: boolean
+        isFamily:
+          readOnly: true
+          type: boolean
+        isFamilyAndAssembly:
+          readOnly: true
+          type: boolean
+        isFamilyOrAssembly:
+          readOnly: true
+          type: boolean
+        isPrivate:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isConstructedGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethodDefinition:
+          readOnly: true
+          type: boolean
+        containsGenericParameters:
+          readOnly: true
+          type: boolean
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+      type: object
+    CountQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        rawValue:
+          nullable: true
           type: string
-        CWE:
+        value:
+          readOnly: true
+          type: boolean
+        validator:
+          additionalProperties: false
+          type: object
+      type: object
+    CustomAttributeData:
+      additionalProperties: false
+      properties:
+        attributeType:
+          $ref: '#/components/schemas/Type'
+        constructor:
+          $ref: '#/components/schemas/ConstructorInfo'
+        constructorArguments:
           items:
-            $ref: '#/components/schemas/VulnerabilityCWE'
+            $ref: '#/components/schemas/CustomAttributeTypedArgument'
+          nullable: true
+          readOnly: true
           type: array
-        ProductStatuses:
+        namedArguments:
           items:
-            $ref: '#/components/schemas/VulnerabilityStatus'
-          type: array
-        Threats:
-          items:
-            $ref: '#/components/schemas/VulnerabilityThreat'
-          type: array
-        CVSSScoreSets:
-          items:
-            $ref: '#/components/schemas/VulnerabilityScoreSet'
-          type: array
-        Remediations:
-          items:
-            $ref: '#/components/schemas/VulnerabilityRemediation'
-          type: array
-        References:
-          items:
-            $ref: '#/components/schemas/VulnerabilityReference'
-          type: array
-        Acknowledgments:
-          items:
-            $ref: '#/components/schemas/VulnerabilityAcknowledgment'
-          type: array
-        Ordinal:
-          type: string
-        RevisionHistory:
-          items:
-            $ref: '#/components/schemas/cvrfdocDocumentTrackingRevision'
+            $ref: '#/components/schemas/CustomAttributeNamedArgument'
+          nullable: true
+          readOnly: true
           type: array
       type: object
-    cvrfdocDocumentPublisherContactDetails:
-      example:
-        Value: Value
-        lang: lang
+    CustomAttributeNamedArgument:
+      additionalProperties: false
       properties:
-        lang:
+        memberInfo:
+          $ref: '#/components/schemas/MemberInfo'
+        typedValue:
+          $ref: '#/components/schemas/CustomAttributeTypedArgument'
+        memberName:
+          nullable: true
+          readOnly: true
           type: string
-        Value:
-          type: string
-      type: object
-    cvrfdocDocumentPublisherIssuingAuthority:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    cvrfdocDocumentTrackingIdentification:
-      example:
-        Alias:
-          Value: Value
-          lang: lang
-        ID:
-          Value: Value
-          lang: lang
-      properties:
-        ID:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingIdentificationID'
-        Alias:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingIdentificationAlias'
-      type: object
-    cvrfdocDocumentTrackingRevision:
-      example:
-        Description:
-          Value: Value
-          lang: lang
-        Number: Number
-        Date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        Number:
-          type: string
-        Date:
-          format: date-time
-          type: string
-        Description:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingRevisionDescription'
-      type: object
-    cvrfdocDocumentTrackingGenerator:
-      example:
-        DateSpecified: true
-        Engine:
-          Value: Value
-          lang: lang
-        Date: 2000-01-23T04:56:07.000+00:00
-      properties:
-        Engine:
-          $ref: '#/components/schemas/cvrfdocDocumentTrackingGeneratorEngine'
-        Date:
-          format: date-time
-          type: string
-        DateSpecified:
+        isField:
+          readOnly: true
           type: boolean
       type: object
-    cvrfdocReferenceDescription:
-      example:
-        Value: Value
-        lang: lang
+    CustomAttributeTypedArgument:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
+        argumentType:
+          $ref: '#/components/schemas/Type'
+        value:
+          nullable: true
       type: object
-    cvrfdocAcknowledgmentName:
-      example:
-        Value: Value
-        lang: lang
+    DefaultQueryConfigurations:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    cvrfdocAcknowledgmentOrganization:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    cvrfdocAcknowledgmentDescription:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    BranchType:
-      example:
-        Type: 5
-        Items:
-        - "{}"
-        - "{}"
-        Name: Name
-      properties:
-        Items:
-          items:
-            properties: {}
-            type: object
-          type: array
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          - 9
-          - 10
-          - 11
-          - 12
+        enableExpand:
+          type: boolean
+        enableSelect:
+          type: boolean
+        enableCount:
+          type: boolean
+        enableOrderBy:
+          type: boolean
+        enableFilter:
+          type: boolean
+        maxTop:
           format: int32
+          nullable: true
           type: integer
-        Name:
-          type: string
-      type: object
-    FullProductName:
-      example:
-        Value: Value
-        CPE: CPE
-        ProductID: ProductID
-      properties:
-        ProductID:
-          type: string
-        CPE:
-          type: string
-        Value:
-          type: string
-      type: object
-    ProductTreeRelationship:
-      example:
-        RelatesToProductReference: RelatesToProductReference
-        ProductReference: ProductReference
-        RelationType: 2
-        FullProductName:
-        - Value: Value
-          CPE: CPE
-          ProductID: ProductID
-        - Value: Value
-          CPE: CPE
-          ProductID: ProductID
-      properties:
-        FullProductName:
-          items:
-            $ref: '#/components/schemas/FullProductName'
-          type: array
-        ProductReference:
-          type: string
-        RelationType:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          format: int32
-          type: integer
-        RelatesToProductReference:
-          type: string
-      type: object
-    ProductTreeGroup:
-      example:
-        Description:
-          Value: Value
-          lang: lang
-        ProductID:
-        - ProductID
-        - ProductID
-        GroupID: GroupID
-      properties:
-        Description:
-          $ref: '#/components/schemas/ProductTreeGroupDescription'
-        ProductID:
-          items:
-            type: string
-          type: array
-        GroupID:
-          type: string
-      type: object
-    VulnerabilityTitle:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityID:
-      example:
-        Value: Value
-        SystemName: SystemName
-      properties:
-        SystemName:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityNote:
-      example:
-        Type: 7
-        Audience: Audience
-        Ordinal: Ordinal
-        Value: Value
-        Title: Title
-        lang: lang
-      properties:
-        Title:
-          type: string
-        Audience:
-          type: string
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          - 7
-          - 8
-          format: int32
-          type: integer
-        Ordinal:
-          type: string
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityInvolvement:
-      example:
-        Status: 3
-        Description:
-          Value: Value
-          lang: lang
-        Party: 9
-      properties:
-        Description:
-          $ref: '#/components/schemas/VulnerabilityInvolvementDescription'
-        Party:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          format: int32
-          type: integer
-        Status:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          format: int32
-          type: integer
-      type: object
-    VulnerabilityCWE:
-      example:
-        Value: Value
-        ID: ID
-        lang: lang
-      properties:
-        ID:
-          type: string
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityStatus:
-      example:
-        Type: 2
-        ProductID:
-        - ProductID
-        - ProductID
-      properties:
-        ProductID:
-          items:
-            type: string
-          type: array
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          - 6
-          format: int32
-          type: integer
-      type: object
-    VulnerabilityThreat:
-      example:
-        Type: 4
-        Description:
-          Value: Value
-          lang: lang
-        ProductID:
-        - ProductID
-        - ProductID
-        DateSpecified: true
-        Date: 2000-01-23T04:56:07.000+00:00
-        GroupID:
-        - GroupID
-        - GroupID
-      properties:
-        Description:
-          $ref: '#/components/schemas/VulnerabilityThreatDescription'
-        ProductID:
-          items:
-            type: string
-          type: array
-        GroupID:
-          items:
-            type: string
-          type: array
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          format: int32
-          type: integer
-        Date:
-          format: date-time
-          type: string
-        DateSpecified:
+        enableSkipToken:
           type: boolean
       type: object
-    VulnerabilityScoreSet:
-      example:
-        TemporalScore: 1.2315135367772556
-        EnvironmentalScore: 1.0246457001441578
-        ProductID:
-        - ProductID
-        - ProductID
-        BaseScore: 7.386281948385884
-        Vector: Vector
+    ETag:
+      additionalProperties: false
       properties:
-        BaseScore:
-          format: double
-          type: number
-        TemporalScore:
-          format: double
-          type: number
-        EnvironmentalScore:
-          format: double
-          type: number
-        Vector:
-          type: string
-        ProductID:
-          items:
-            type: string
-          type: array
-      type: object
-    VulnerabilityRemediation:
-      example:
-        Description:
-          Value: Value
-          lang: lang
-        RestartRequired:
-          Value: Value
-          lang: lang
-        SubType: SubType
-        AffectedFiles:
-        - FilePath: FilePath
-          FileArchitecture: FileArchitecture
-          FileName: FileName
-          FileVersion: FileVersion
-          FileLastModified: 2000-01-23T04:56:07.000+00:00
-          ProductId: ProductId
-        - FilePath: FilePath
-          FileArchitecture: FileArchitecture
-          FileName: FileName
-          FileVersion: FileVersion
-          FileLastModified: 2000-01-23T04:56:07.000+00:00
-          ProductId: ProductId
-        Supercedence: Supercedence
-        ProductID:
-        - ProductID
-        - ProductID
-        DateSpecified: true
-        URL: URL
-        Date: 2000-01-23T04:56:07.000+00:00
-        GroupID:
-        - GroupID
-        - GroupID
-        Type: 1
-        Entitlement:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
-        FixedBuild: FixedBuild
-      properties:
-        Description:
-          $ref: '#/components/schemas/VulnerabilityRemediationDescription'
-        Entitlement:
-          items:
-            $ref: '#/components/schemas/VulnerabilityRemediationEntitlement'
-          type: array
-        URL:
-          type: string
-        Supercedence:
-          type: string
-        ProductID:
-          items:
-            type: string
-          type: array
-        GroupID:
-          items:
-            type: string
-          type: array
-        Type:
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 4
-          - 5
-          format: int32
-          type: integer
-        Date:
-          format: date-time
-          type: string
-        DateSpecified:
+        isWellFormed:
           type: boolean
-        AffectedFiles:
-          items:
-            $ref: '#/components/schemas/AffectedFile'
-          type: array
-        RestartRequired:
-          $ref: '#/components/schemas/VulnerabilityRemediationRestartRequired'
-        SubType:
+        entityType:
+          $ref: '#/components/schemas/Type'
+        isAny:
+          type: boolean
+        isIfNoneMatch:
+          type: boolean
+      type: object
+    EdmContainerElementKind:
+      enum:
+      - None
+      - EntitySet
+      - ActionImport
+      - FunctionImport
+      - Singleton
+      type: string
+    EdmExpressionKind:
+      enum:
+      - None
+      - BinaryConstant
+      - BooleanConstant
+      - DateTimeOffsetConstant
+      - DecimalConstant
+      - FloatingConstant
+      - GuidConstant
+      - IntegerConstant
+      - StringConstant
+      - DurationConstant
+      - "Null"
+      - Record
+      - Collection
+      - Path
+      - If
+      - Cast
+      - IsType
+      - FunctionApplication
+      - LabeledExpressionReference
+      - Labeled
+      - PropertyPath
+      - NavigationPropertyPath
+      - DateConstant
+      - TimeOfDayConstant
+      - EnumMember
+      - AnnotationPath
+      type: string
+    EdmOnDeleteAction:
+      enum:
+      - None
+      - Cascade
+      type: string
+    EdmPropertyKind:
+      enum:
+      - None
+      - Structural
+      - Navigation
+      type: string
+    EdmReferentialConstraintPropertyPair:
+      additionalProperties: false
+      properties:
+        dependentProperty:
+          $ref: '#/components/schemas/IEdmStructuralProperty'
+        principalProperty:
+          $ref: '#/components/schemas/IEdmStructuralProperty'
+      type: object
+    EdmSchemaElementKind:
+      enum:
+      - None
+      - TypeDefinition
+      - Term
+      - Action
+      - EntityContainer
+      - Function
+      type: string
+    EdmTypeKind:
+      enum:
+      - None
+      - Primitive
+      - Entity
+      - Complex
+      - Collection
+      - EntityReference
+      - Enum
+      - TypeDefinition
+      - Untyped
+      - Path
+      type: string
+    EventAttributes:
+      enum:
+      - None
+      - SpecialName
+      - RTSpecialName
+      type: string
+    EventInfo:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
           type: string
-        FixedBuild:
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/EventAttributes'
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        addMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        removeMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        raiseMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        isMulticast:
+          readOnly: true
+          type: boolean
+        eventHandlerType:
+          $ref: '#/components/schemas/Type'
+      type: object
+    FieldAttributes:
+      enum:
+      - PrivateScope
+      - Private
+      - FamANDAssem
+      - Assembly
+      - Family
+      - FamORAssem
+      - Public
+      - FieldAccessMask
+      - Static
+      - InitOnly
+      - Literal
+      - NotSerialized
+      - HasFieldRVA
+      - SpecialName
+      - RTSpecialName
+      - HasFieldMarshal
+      - PinvokeImpl
+      - HasDefault
+      - ReservedMask
+      type: string
+    FieldInfo:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        attributes:
+          $ref: '#/components/schemas/FieldAttributes'
+        fieldType:
+          $ref: '#/components/schemas/Type'
+        isInitOnly:
+          readOnly: true
+          type: boolean
+        isLiteral:
+          readOnly: true
+          type: boolean
+        isNotSerialized:
+          readOnly: true
+          type: boolean
+        isPinvokeImpl:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isStatic:
+          readOnly: true
+          type: boolean
+        isAssembly:
+          readOnly: true
+          type: boolean
+        isFamily:
+          readOnly: true
+          type: boolean
+        isFamilyAndAssembly:
+          readOnly: true
+          type: boolean
+        isFamilyOrAssembly:
+          readOnly: true
+          type: boolean
+        isPrivate:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+        fieldHandle:
+          $ref: '#/components/schemas/RuntimeFieldHandle'
+      type: object
+    FilterClause:
+      additionalProperties: false
+      properties:
+        expression:
+          $ref: '#/components/schemas/SingleValueNode'
+        rangeVariable:
+          $ref: '#/components/schemas/RangeVariable'
+        itemType:
+          $ref: '#/components/schemas/IEdmTypeReference'
+      type: object
+    FilterQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        validator:
+          additionalProperties: false
+          type: object
+        compute:
+          $ref: '#/components/schemas/ComputeQueryOption'
+        filterClause:
+          $ref: '#/components/schemas/FilterClause'
+        rawValue:
+          nullable: true
           type: string
       type: object
-    VulnerabilityReference:
-      example:
-        Type: 6
-        Description:
-          Value: Value
-          lang: lang
-        URL: URL
+    GenericParameterAttributes:
+      enum:
+      - None
+      - Covariant
+      - Contravariant
+      - VarianceMask
+      - ReferenceTypeConstraint
+      - NotNullableValueTypeConstraint
+      - DefaultConstructorConstraint
+      - SpecialConstraintMask
+      type: string
+    HostString:
+      additionalProperties: false
       properties:
-        URL:
+        value:
+          nullable: true
           type: string
-        Description:
-          $ref: '#/components/schemas/VulnerabilityReferenceDescription'
-        Type:
-          enum:
-          - 0
-          - 1
+        hasValue:
+          readOnly: true
+          type: boolean
+        host:
+          nullable: true
+          readOnly: true
+          type: string
+        port:
+          format: int32
+          nullable: true
+          readOnly: true
+          type: integer
+      type: object
+    HttpContext:
+      additionalProperties: false
+      properties:
+        features:
+          items:
+            $ref: '#/components/schemas/TypeObjectKeyValuePair'
+          nullable: true
+          readOnly: true
+          type: array
+        request:
+          $ref: '#/components/schemas/HttpRequest'
+        response:
+          $ref: '#/components/schemas/HttpResponse'
+        connection:
+          $ref: '#/components/schemas/ConnectionInfo'
+        webSockets:
+          $ref: '#/components/schemas/WebSocketManager'
+        user:
+          $ref: '#/components/schemas/ClaimsPrincipal'
+        items:
+          additionalProperties: {}
+          nullable: true
+          type: object
+        requestServices:
+          additionalProperties: false
+          type: object
+        requestAborted:
+          $ref: '#/components/schemas/CancellationToken'
+        traceIdentifier:
+          nullable: true
+          type: string
+        session:
+          $ref: '#/components/schemas/ISession'
+      type: object
+    HttpRequest:
+      additionalProperties: false
+      properties:
+        httpContext:
+          $ref: '#/components/schemas/HttpContext'
+        method:
+          nullable: true
+          type: string
+        scheme:
+          nullable: true
+          type: string
+        isHttps:
+          type: boolean
+        host:
+          $ref: '#/components/schemas/HostString'
+        pathBase:
+          $ref: '#/components/schemas/PathString'
+        path:
+          $ref: '#/components/schemas/PathString'
+        queryString:
+          $ref: '#/components/schemas/QueryString'
+        query:
+          items:
+            $ref: '#/components/schemas/StringStringValuesKeyValuePair'
+          nullable: true
+          type: array
+        protocol:
+          nullable: true
+          type: string
+        headers:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          readOnly: true
+          type: object
+        cookies:
+          items:
+            $ref: '#/components/schemas/StringStringKeyValuePair'
+          nullable: true
+          type: array
+        contentLength:
+          format: int64
+          nullable: true
+          type: integer
+        contentType:
+          nullable: true
+          type: string
+        body:
+          $ref: '#/components/schemas/Stream'
+        bodyReader:
+          additionalProperties: false
+          type: object
+        hasFormContentType:
+          readOnly: true
+          type: boolean
+        form:
+          items:
+            $ref: '#/components/schemas/StringStringValuesKeyValuePair'
+          nullable: true
+          type: array
+        routeValues:
+          additionalProperties: {}
+          nullable: true
+          type: object
+      type: object
+    HttpResponse:
+      additionalProperties: false
+      properties:
+        httpContext:
+          $ref: '#/components/schemas/HttpContext'
+        statusCode:
+          format: int32
+          type: integer
+        headers:
+          additionalProperties:
+            items:
+              type: string
+            type: array
+          nullable: true
+          readOnly: true
+          type: object
+        body:
+          $ref: '#/components/schemas/Stream'
+        bodyWriter:
+          $ref: '#/components/schemas/PipeWriter'
+        contentLength:
+          format: int64
+          nullable: true
+          type: integer
+        contentType:
+          nullable: true
+          type: string
+        cookies:
+          additionalProperties: false
+          type: object
+        hasStarted:
+          readOnly: true
+          type: boolean
+      type: object
+    IComputeQueryValidator:
+      additionalProperties: false
+      type: object
+    ICountQueryValidator:
+      additionalProperties: false
+      type: object
+    ICustomAttributeProvider:
+      additionalProperties: false
+      type: object
+    IEdmDirectValueAnnotationsManager:
+      additionalProperties: false
+      type: object
+    IEdmEntityContainer:
+      additionalProperties: false
+      properties:
+        elements:
+          items:
+            $ref: '#/components/schemas/IEdmEntityContainerElement'
+          nullable: true
+          readOnly: true
+          type: array
+        schemaElementKind:
+          $ref: '#/components/schemas/EdmSchemaElementKind'
+        namespace:
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmEntityContainerElement:
+      additionalProperties: false
+      properties:
+        containerElementKind:
+          $ref: '#/components/schemas/EdmContainerElementKind'
+        container:
+          $ref: '#/components/schemas/IEdmEntityContainer'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmExpression:
+      additionalProperties: false
+      properties:
+        expressionKind:
+          $ref: '#/components/schemas/EdmExpressionKind'
+      type: object
+    IEdmModel:
+      additionalProperties: false
+      properties:
+        schemaElements:
+          items:
+            $ref: '#/components/schemas/IEdmSchemaElement'
+          nullable: true
+          readOnly: true
+          type: array
+        vocabularyAnnotations:
+          items:
+            $ref: '#/components/schemas/IEdmVocabularyAnnotation'
+          nullable: true
+          readOnly: true
+          type: array
+        referencedModels:
+          items:
+            $ref: '#/components/schemas/IEdmModel'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredNamespaces:
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+          type: array
+        directValueAnnotationsManager:
+          additionalProperties: false
+          type: object
+        entityContainer:
+          $ref: '#/components/schemas/IEdmEntityContainer'
+      type: object
+    IEdmNavigationProperty:
+      additionalProperties: false
+      properties:
+        partner:
+          $ref: '#/components/schemas/IEdmNavigationProperty'
+        onDelete:
+          $ref: '#/components/schemas/EdmOnDeleteAction'
+        containsTarget:
+          readOnly: true
+          type: boolean
+        referentialConstraint:
+          $ref: '#/components/schemas/IEdmReferentialConstraint'
+        propertyKind:
+          $ref: '#/components/schemas/EdmPropertyKind'
+        type:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        declaringType:
+          $ref: '#/components/schemas/IEdmStructuredType'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmNavigationPropertyBinding:
+      additionalProperties: false
+      properties:
+        navigationProperty:
+          $ref: '#/components/schemas/IEdmNavigationProperty'
+        target:
+          $ref: '#/components/schemas/IEdmNavigationSource'
+        path:
+          $ref: '#/components/schemas/IEdmPathExpression'
+      type: object
+    IEdmNavigationSource:
+      additionalProperties: false
+      properties:
+        navigationPropertyBindings:
+          items:
+            $ref: '#/components/schemas/IEdmNavigationPropertyBinding'
+          nullable: true
+          readOnly: true
+          type: array
+        path:
+          $ref: '#/components/schemas/IEdmPathExpression'
+        type:
+          $ref: '#/components/schemas/IEdmType'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmPathExpression:
+      additionalProperties: false
+      properties:
+        pathSegments:
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+          type: array
+        path:
+          nullable: true
+          readOnly: true
+          type: string
+        expressionKind:
+          $ref: '#/components/schemas/EdmExpressionKind'
+      type: object
+    IEdmProperty:
+      additionalProperties: false
+      properties:
+        propertyKind:
+          $ref: '#/components/schemas/EdmPropertyKind'
+        type:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        declaringType:
+          $ref: '#/components/schemas/IEdmStructuredType'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmReferentialConstraint:
+      additionalProperties: false
+      properties:
+        propertyPairs:
+          items:
+            $ref: '#/components/schemas/EdmReferentialConstraintPropertyPair'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IEdmSchemaElement:
+      additionalProperties: false
+      properties:
+        schemaElementKind:
+          $ref: '#/components/schemas/EdmSchemaElementKind'
+        namespace:
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmStructuralProperty:
+      additionalProperties: false
+      properties:
+        defaultValueString:
+          nullable: true
+          readOnly: true
+          type: string
+        propertyKind:
+          $ref: '#/components/schemas/EdmPropertyKind'
+        type:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        declaringType:
+          $ref: '#/components/schemas/IEdmStructuredType'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmStructuredType:
+      additionalProperties: false
+      properties:
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isOpen:
+          readOnly: true
+          type: boolean
+        baseType:
+          $ref: '#/components/schemas/IEdmStructuredType'
+        declaredProperties:
+          items:
+            $ref: '#/components/schemas/IEdmProperty'
+          nullable: true
+          readOnly: true
+          type: array
+        typeKind:
+          $ref: '#/components/schemas/EdmTypeKind'
+      type: object
+    IEdmTerm:
+      additionalProperties: false
+      properties:
+        type:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        appliesTo:
+          nullable: true
+          readOnly: true
+          type: string
+        defaultValue:
+          nullable: true
+          readOnly: true
+          type: string
+        schemaElementKind:
+          $ref: '#/components/schemas/EdmSchemaElementKind'
+        namespace:
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    IEdmType:
+      additionalProperties: false
+      properties:
+        typeKind:
+          $ref: '#/components/schemas/EdmTypeKind'
+      type: object
+    IEdmTypeReference:
+      additionalProperties: false
+      properties:
+        isNullable:
+          readOnly: true
+          type: boolean
+        definition:
+          $ref: '#/components/schemas/IEdmType'
+      type: object
+    IEdmVocabularyAnnotatable:
+      additionalProperties: false
+      type: object
+    IEdmVocabularyAnnotation:
+      additionalProperties: false
+      properties:
+        qualifier:
+          nullable: true
+          readOnly: true
+          type: string
+        term:
+          $ref: '#/components/schemas/IEdmTerm'
+        target:
+          additionalProperties: false
+          type: object
+        value:
+          $ref: '#/components/schemas/IEdmExpression'
+      type: object
+    IFilterQueryValidator:
+      additionalProperties: false
+      type: object
+    IIdentity:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        authenticationType:
+          nullable: true
+          readOnly: true
+          type: string
+        isAuthenticated:
+          readOnly: true
+          type: boolean
+      type: object
+    IODataQueryValidator:
+      additionalProperties: false
+      type: object
+    IOrderByQueryValidator:
+      additionalProperties: false
+      type: object
+    IPAddress:
+      additionalProperties: false
+      properties:
+        addressFamily:
+          $ref: '#/components/schemas/AddressFamily'
+        scopeId:
+          format: int64
+          type: integer
+        isIPv6Multicast:
+          readOnly: true
+          type: boolean
+        isIPv6LinkLocal:
+          readOnly: true
+          type: boolean
+        isIPv6SiteLocal:
+          readOnly: true
+          type: boolean
+        isIPv6Teredo:
+          readOnly: true
+          type: boolean
+        isIPv6UniqueLocal:
+          readOnly: true
+          type: boolean
+        isIPv4MappedToIPv6:
+          readOnly: true
+          type: boolean
+        address:
+          deprecated: true
+          format: int64
+          type: integer
+      type: object
+    IResponseCookies:
+      additionalProperties: false
+      type: object
+    ISelectExpandQueryValidator:
+      additionalProperties: false
+      type: object
+    IServiceProvider:
+      additionalProperties: false
+      type: object
+    ISession:
+      additionalProperties: false
+      properties:
+        isAvailable:
+          readOnly: true
+          type: boolean
+        id:
+          nullable: true
+          readOnly: true
+          type: string
+        keys:
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    ISkipQueryValidator:
+      additionalProperties: false
+      type: object
+    ISkipTokenQueryValidator:
+      additionalProperties: false
+      type: object
+    ITopQueryValidator:
+      additionalProperties: false
+      type: object
+    IntPtr:
+      additionalProperties: false
+      type: object
+    KeySizes:
+      additionalProperties: false
+      properties:
+        minSize:
+          format: int32
+          type: integer
+        maxSize:
+          format: int32
+          type: integer
+        skipSize:
           format: int32
           type: integer
       type: object
-    VulnerabilityAcknowledgment:
-      example:
-        Organization:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
-        Description:
-          Value: Value
-          lang: lang
-        URL:
-        - URL
-        - URL
-        Name:
-        - Value: Value
-          lang: lang
-        - Value: Value
-          lang: lang
+    LayoutKind:
+      enum:
+      - Sequential
+      - Explicit
+      - Auto
+      type: string
+    MemberInfo:
+      additionalProperties: false
       properties:
-        Name:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
           items:
-            $ref: '#/components/schemas/VulnerabilityAcknowledgmentName'
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
           type: array
-        Organization:
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    MemberTypes:
+      enum:
+      - Constructor
+      - Event
+      - Field
+      - Method
+      - Property
+      - TypeInfo
+      - Custom
+      - NestedType
+      - All
+      type: string
+    MethodAttributes:
+      enum:
+      - ReuseSlot
+      - Private
+      - FamANDAssem
+      - Assembly
+      - Family
+      - FamORAssem
+      - Public
+      - MemberAccessMask
+      - UnmanagedExport
+      - Static
+      - Final
+      - Virtual
+      - HideBySig
+      - NewSlot
+      - CheckAccessOnOverride
+      - Abstract
+      - SpecialName
+      - RTSpecialName
+      - PinvokeImpl
+      - HasSecurity
+      - RequireSecObject
+      - ReservedMask
+      type: string
+    MethodBase:
+      additionalProperties: false
+      properties:
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
           items:
-            $ref: '#/components/schemas/VulnerabilityAcknowledgmentOrganization'
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
           type: array
-        Description:
-          $ref: '#/components/schemas/VulnerabilityAcknowledgmentDescription'
-        URL:
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isConstructor:
+          readOnly: true
+          type: boolean
+        isFinal:
+          readOnly: true
+          type: boolean
+        isHideBySig:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isStatic:
+          readOnly: true
+          type: boolean
+        isVirtual:
+          readOnly: true
+          type: boolean
+        isAssembly:
+          readOnly: true
+          type: boolean
+        isFamily:
+          readOnly: true
+          type: boolean
+        isFamilyAndAssembly:
+          readOnly: true
+          type: boolean
+        isFamilyOrAssembly:
+          readOnly: true
+          type: boolean
+        isPrivate:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isConstructedGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethodDefinition:
+          readOnly: true
+          type: boolean
+        containsGenericParameters:
+          readOnly: true
+          type: boolean
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+      type: object
+    MethodImplAttributes:
+      enum:
+      - IL
+      - Native
+      - OPTIL
+      - Runtime
+      - Unmanaged
+      - NoInlining
+      - ForwardRef
+      - Synchronized
+      - NoOptimization
+      - PreserveSig
+      - AggressiveInlining
+      - AggressiveOptimization
+      - InternalCall
+      - MaxMethodImplVal
+      type: string
+    MethodInfo:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        attributes:
+          $ref: '#/components/schemas/MethodAttributes'
+        methodImplementationFlags:
+          $ref: '#/components/schemas/MethodImplAttributes'
+        callingConvention:
+          $ref: '#/components/schemas/CallingConventions'
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isConstructor:
+          readOnly: true
+          type: boolean
+        isFinal:
+          readOnly: true
+          type: boolean
+        isHideBySig:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isStatic:
+          readOnly: true
+          type: boolean
+        isVirtual:
+          readOnly: true
+          type: boolean
+        isAssembly:
+          readOnly: true
+          type: boolean
+        isFamily:
+          readOnly: true
+          type: boolean
+        isFamilyAndAssembly:
+          readOnly: true
+          type: boolean
+        isFamilyOrAssembly:
+          readOnly: true
+          type: boolean
+        isPrivate:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isConstructedGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethod:
+          readOnly: true
+          type: boolean
+        isGenericMethodDefinition:
+          readOnly: true
+          type: boolean
+        containsGenericParameters:
+          readOnly: true
+          type: boolean
+        methodHandle:
+          $ref: '#/components/schemas/RuntimeMethodHandle'
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        returnParameter:
+          $ref: '#/components/schemas/ParameterInfo'
+        returnType:
+          $ref: '#/components/schemas/Type'
+        returnTypeCustomAttributes:
+          additionalProperties: false
+          type: object
+      type: object
+    Module:
+      additionalProperties: false
+      properties:
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        fullyQualifiedName:
+          nullable: true
+          readOnly: true
+          type: string
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        mdStreamVersion:
+          format: int32
+          readOnly: true
+          type: integer
+        moduleVersionId:
+          format: uuid
+          readOnly: true
+          type: string
+        scopeName:
+          nullable: true
+          readOnly: true
+          type: string
+        moduleHandle:
+          $ref: '#/components/schemas/ModuleHandle'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    ModuleHandle:
+      additionalProperties: false
+      properties:
+        mdStreamVersion:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    ODataPathSegment:
+      additionalProperties: false
+      properties:
+        edmType:
+          $ref: '#/components/schemas/IEdmType'
+        identifier:
+          nullable: true
+          type: string
+      type: object
+    ODataQueryContext:
+      additionalProperties: false
+      properties:
+        defaultQueryConfigurations:
+          $ref: '#/components/schemas/DefaultQueryConfigurations'
+        model:
+          $ref: '#/components/schemas/IEdmModel'
+        elementType:
+          $ref: '#/components/schemas/IEdmType'
+        navigationSource:
+          $ref: '#/components/schemas/IEdmNavigationSource'
+        elementClrType:
+          $ref: '#/components/schemas/Type'
+        path:
+          items:
+            $ref: '#/components/schemas/ODataPathSegment'
+          nullable: true
+          type: array
+        requestContainer:
+          additionalProperties: false
+          type: object
+      type: object
+    ODataRawQueryOptions:
+      additionalProperties: false
+      properties:
+        filter:
+          nullable: true
+          readOnly: true
+          type: string
+        apply:
+          nullable: true
+          readOnly: true
+          type: string
+        compute:
+          nullable: true
+          readOnly: true
+          type: string
+        search:
+          nullable: true
+          readOnly: true
+          type: string
+        orderBy:
+          nullable: true
+          readOnly: true
+          type: string
+        top:
+          nullable: true
+          readOnly: true
+          type: string
+        skip:
+          nullable: true
+          readOnly: true
+          type: string
+        select:
+          nullable: true
+          readOnly: true
+          type: string
+        expand:
+          nullable: true
+          readOnly: true
+          type: string
+        count:
+          nullable: true
+          readOnly: true
+          type: string
+        format:
+          nullable: true
+          readOnly: true
+          type: string
+        skipToken:
+          nullable: true
+          readOnly: true
+          type: string
+        deltaToken:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    Oid:
+      additionalProperties: false
+      properties:
+        value:
+          nullable: true
+          type: string
+        friendlyName:
+          nullable: true
+          type: string
+      type: object
+    OrderByClause:
+      additionalProperties: false
+      properties:
+        thenBy:
+          $ref: '#/components/schemas/OrderByClause'
+        expression:
+          $ref: '#/components/schemas/SingleValueNode'
+        direction:
+          $ref: '#/components/schemas/OrderByDirection'
+        rangeVariable:
+          $ref: '#/components/schemas/RangeVariable'
+        itemType:
+          $ref: '#/components/schemas/IEdmTypeReference'
+      type: object
+    OrderByDirection:
+      enum:
+      - Ascending
+      - Descending
+      type: string
+    OrderByNode:
+      additionalProperties: false
+      properties:
+        direction:
+          $ref: '#/components/schemas/OrderByDirection'
+      type: object
+    OrderByQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        orderByNodes:
+          items:
+            $ref: '#/components/schemas/OrderByNode'
+          nullable: true
+          readOnly: true
+          type: array
+        rawValue:
+          nullable: true
+          type: string
+        validator:
+          additionalProperties: false
+          type: object
+        compute:
+          $ref: '#/components/schemas/ComputeQueryOption'
+        orderByClause:
+          $ref: '#/components/schemas/OrderByClause'
+      type: object
+    ParameterAttributes:
+      enum:
+      - None
+      - In
+      - Out
+      - Lcid
+      - Retval
+      - Optional
+      - HasDefault
+      - HasFieldMarshal
+      - Reserved3
+      - Reserved4
+      - ReservedMask
+      type: string
+    ParameterInfo:
+      additionalProperties: false
+      properties:
+        attributes:
+          $ref: '#/components/schemas/ParameterAttributes'
+        member:
+          $ref: '#/components/schemas/MemberInfo'
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        parameterType:
+          $ref: '#/components/schemas/Type'
+        position:
+          format: int32
+          readOnly: true
+          type: integer
+        isIn:
+          readOnly: true
+          type: boolean
+        isLcid:
+          readOnly: true
+          type: boolean
+        isOptional:
+          readOnly: true
+          type: boolean
+        isOut:
+          readOnly: true
+          type: boolean
+        isRetval:
+          readOnly: true
+          type: boolean
+        defaultValue:
+          nullable: true
+          readOnly: true
+        rawDefaultValue:
+          nullable: true
+          readOnly: true
+        hasDefaultValue:
+          readOnly: true
+          type: boolean
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    PathString:
+      additionalProperties: false
+      properties:
+        value:
+          nullable: true
+          type: string
+        hasValue:
+          readOnly: true
+          type: boolean
+      type: object
+    PipeReader:
+      additionalProperties: false
+      type: object
+    PipeWriter:
+      additionalProperties: false
+      properties:
+        canGetUnflushedBytes:
+          readOnly: true
+          type: boolean
+        unflushedBytes:
+          format: int64
+          readOnly: true
+          type: integer
+      type: object
+    PropertyAttributes:
+      enum:
+      - None
+      - SpecialName
+      - RTSpecialName
+      - HasDefault
+      - Reserved2
+      - Reserved3
+      - Reserved4
+      - ReservedMask
+      type: string
+    PropertyInfo:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        module:
+          $ref: '#/components/schemas/Module'
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        propertyType:
+          $ref: '#/components/schemas/Type'
+        attributes:
+          $ref: '#/components/schemas/PropertyAttributes'
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        canRead:
+          readOnly: true
+          type: boolean
+        canWrite:
+          readOnly: true
+          type: boolean
+        getMethod:
+          $ref: '#/components/schemas/MethodInfo'
+        setMethod:
+          $ref: '#/components/schemas/MethodInfo'
+      type: object
+    PublicKey:
+      additionalProperties: false
+      properties:
+        encodedKeyValue:
+          $ref: '#/components/schemas/AsnEncodedData'
+        encodedParameters:
+          $ref: '#/components/schemas/AsnEncodedData'
+        key:
+          $ref: '#/components/schemas/AsymmetricAlgorithm'
+        oid:
+          $ref: '#/components/schemas/Oid'
+      type: object
+    QueryNodeKind:
+      enum:
+      - None
+      - Constant
+      - Convert
+      - NonResourceRangeVariableReference
+      - BinaryOperator
+      - UnaryOperator
+      - SingleValuePropertyAccess
+      - CollectionPropertyAccess
+      - SingleValueFunctionCall
+      - Any
+      - CollectionNavigationNode
+      - SingleNavigationNode
+      - SingleValueOpenPropertyAccess
+      - SingleResourceCast
+      - All
+      - CollectionResourceCast
+      - ResourceRangeVariableReference
+      - SingleResourceFunctionCall
+      - CollectionFunctionCall
+      - CollectionResourceFunctionCall
+      - NamedFunctionParameter
+      - ParameterAlias
+      - EntitySet
+      - KeyLookup
+      - SearchTerm
+      - CollectionOpenPropertyAccess
+      - CollectionComplexNode
+      - SingleComplexNode
+      - Count
+      - SingleValueCast
+      - CollectionPropertyNode
+      - AggregatedCollectionPropertyNode
+      - In
+      - CollectionConstant
+      type: string
+    QueryString:
+      additionalProperties: false
+      properties:
+        value:
+          nullable: true
+          type: string
+        hasValue:
+          readOnly: true
+          type: boolean
+      type: object
+    RangeVariable:
+      additionalProperties: false
+      properties:
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+        typeReference:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        kind:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    RuntimeFieldHandle:
+      additionalProperties: false
+      properties:
+        value:
+          additionalProperties: false
+          type: object
+      type: object
+    RuntimeMethodHandle:
+      additionalProperties: false
+      properties:
+        value:
+          additionalProperties: false
+          type: object
+      type: object
+    RuntimeTypeHandle:
+      additionalProperties: false
+      properties:
+        value:
+          additionalProperties: false
+          type: object
+      type: object
+    SafeWaitHandle:
+      additionalProperties: false
+      properties:
+        isClosed:
+          readOnly: true
+          type: boolean
+        isInvalid:
+          readOnly: true
+          type: boolean
+      type: object
+    SearchClause:
+      additionalProperties: false
+      properties:
+        expression:
+          $ref: '#/components/schemas/SingleValueNode'
+      type: object
+    SearchQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        resultClrType:
+          $ref: '#/components/schemas/Type'
+        searchClause:
+          $ref: '#/components/schemas/SearchClause'
+        rawValue:
+          nullable: true
+          type: string
+      type: object
+    SecurityRuleSet:
+      enum:
+      - None
+      - Level1
+      - Level2
+      type: string
+    SelectExpandClause:
+      additionalProperties: false
+      properties:
+        selectedItems:
+          items:
+            $ref: '#/components/schemas/SelectItem'
+          nullable: true
+          type: array
+        allSelected:
+          type: boolean
+      type: object
+    SelectExpandQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        rawSelect:
+          nullable: true
+          readOnly: true
+          type: string
+        rawExpand:
+          nullable: true
+          readOnly: true
+          type: string
+        compute:
+          $ref: '#/components/schemas/ComputeQueryOption'
+        validator:
+          additionalProperties: false
+          type: object
+        selectExpandClause:
+          $ref: '#/components/schemas/SelectExpandClause'
+        levelsMaxLiteralExpansionDepth:
+          format: int32
+          type: integer
+      type: object
+    SelectItem:
+      additionalProperties: false
+      type: object
+    SingleValueNode:
+      additionalProperties: false
+      properties:
+        typeReference:
+          $ref: '#/components/schemas/IEdmTypeReference'
+        kind:
+          $ref: '#/components/schemas/QueryNodeKind'
+      type: object
+    SkipQueryOption:
+      additionalProperties: false
+      properties:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        rawValue:
+          nullable: true
+          type: string
+        value:
+          format: int32
+          readOnly: true
+          type: integer
+        validator:
+          additionalProperties: false
+          type: object
+      type: object
+    SkipTokenHandler:
+      additionalProperties: false
+      type: object
+    SkipTokenQueryOption:
+      additionalProperties: false
+      properties:
+        rawValue:
+          nullable: true
+          type: string
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        validator:
+          additionalProperties: false
+          type: object
+        handler:
+          additionalProperties: false
+          type: object
+      type: object
+    Stream:
+      additionalProperties: false
+      properties:
+        canRead:
+          readOnly: true
+          type: boolean
+        canWrite:
+          readOnly: true
+          type: boolean
+        canSeek:
+          readOnly: true
+          type: boolean
+        canTimeout:
+          readOnly: true
+          type: boolean
+        length:
+          format: int64
+          readOnly: true
+          type: integer
+        position:
+          format: int64
+          type: integer
+        readTimeout:
+          format: int32
+          type: integer
+        writeTimeout:
+          format: int32
+          type: integer
+      type: object
+    StringStringKeyValuePair:
+      additionalProperties: false
+      properties:
+        key:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    StringStringValuesKeyValuePair:
+      additionalProperties: false
+      properties:
+        key:
+          nullable: true
+          type: string
+        value:
           items:
             type: string
           type: array
       type: object
-    cvrfdocDocumentTrackingIdentificationID:
-      example:
-        Value: Value
-        lang: lang
+    StructLayoutAttribute:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
+        typeId:
+          nullable: true
+          readOnly: true
+        value:
+          $ref: '#/components/schemas/LayoutKind'
       type: object
-    cvrfdocDocumentTrackingIdentificationAlias:
-      example:
-        Value: Value
-        lang: lang
+    TopQueryOption:
+      additionalProperties: false
       properties:
-        lang:
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        rawValue:
+          nullable: true
           type: string
-        Value:
-          type: string
+        value:
+          format: int32
+          readOnly: true
+          type: integer
+        validator:
+          additionalProperties: false
+          type: object
       type: object
-    cvrfdocDocumentTrackingRevisionDescription:
-      example:
-        Value: Value
-        lang: lang
+    TransformationNode:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
+        kind:
+          $ref: '#/components/schemas/TransformationNodeKind'
       type: object
-    cvrfdocDocumentTrackingGeneratorEngine:
-      example:
-        Value: Value
-        lang: lang
+    TransformationNodeKind:
+      enum:
+      - Aggregate
+      - GroupBy
+      - Filter
+      - Compute
+      - Expand
+      type: string
+    Type:
+      additionalProperties: false
       properties:
-        lang:
+        name:
+          nullable: true
+          readOnly: true
           type: string
-        Value:
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        isInterface:
+          readOnly: true
+          type: boolean
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          nullable: true
+          readOnly: true
           type: string
+        assemblyQualifiedName:
+          nullable: true
+          readOnly: true
+          type: string
+        fullName:
+          nullable: true
+          readOnly: true
+          type: string
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          readOnly: true
+          type: boolean
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          readOnly: true
+          type: boolean
+        isArray:
+          readOnly: true
+          type: boolean
+        isByRef:
+          readOnly: true
+          type: boolean
+        isPointer:
+          readOnly: true
+          type: boolean
+        isConstructedGenericType:
+          readOnly: true
+          type: boolean
+        isGenericParameter:
+          readOnly: true
+          type: boolean
+        isGenericTypeParameter:
+          readOnly: true
+          type: boolean
+        isGenericMethodParameter:
+          readOnly: true
+          type: boolean
+        isGenericType:
+          readOnly: true
+          type: boolean
+        isGenericTypeDefinition:
+          readOnly: true
+          type: boolean
+        isSZArray:
+          readOnly: true
+          type: boolean
+        isVariableBoundArray:
+          readOnly: true
+          type: boolean
+        isByRefLike:
+          readOnly: true
+          type: boolean
+        hasElementType:
+          readOnly: true
+          type: boolean
+        genericTypeArguments:
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+          type: array
+        genericParameterPosition:
+          format: int32
+          readOnly: true
+          type: integer
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isImport:
+          readOnly: true
+          type: boolean
+        isSealed:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isClass:
+          readOnly: true
+          type: boolean
+        isNestedAssembly:
+          readOnly: true
+          type: boolean
+        isNestedFamANDAssem:
+          readOnly: true
+          type: boolean
+        isNestedFamily:
+          readOnly: true
+          type: boolean
+        isNestedFamORAssem:
+          readOnly: true
+          type: boolean
+        isNestedPrivate:
+          readOnly: true
+          type: boolean
+        isNestedPublic:
+          readOnly: true
+          type: boolean
+        isNotPublic:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isAutoLayout:
+          readOnly: true
+          type: boolean
+        isExplicitLayout:
+          readOnly: true
+          type: boolean
+        isLayoutSequential:
+          readOnly: true
+          type: boolean
+        isAnsiClass:
+          readOnly: true
+          type: boolean
+        isAutoClass:
+          readOnly: true
+          type: boolean
+        isUnicodeClass:
+          readOnly: true
+          type: boolean
+        isCOMObject:
+          readOnly: true
+          type: boolean
+        isContextful:
+          readOnly: true
+          type: boolean
+        isEnum:
+          readOnly: true
+          type: boolean
+        isMarshalByRef:
+          readOnly: true
+          type: boolean
+        isPrimitive:
+          readOnly: true
+          type: boolean
+        isValueType:
+          readOnly: true
+          type: boolean
+        isSignatureType:
+          readOnly: true
+          type: boolean
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          format: uuid
+          readOnly: true
+          type: string
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          readOnly: true
+          type: boolean
+        containsGenericParameters:
+          readOnly: true
+          type: boolean
+        isVisible:
+          readOnly: true
+          type: boolean
       type: object
-    ProductTreeGroupDescription:
-      example:
-        Value: Value
-        lang: lang
+    TypeAttributes:
+      enum:
+      - NotPublic
+      - Public
+      - NestedPublic
+      - NestedPrivate
+      - NestedFamily
+      - NestedAssembly
+      - NestedFamANDAssem
+      - NestedFamORAssem
+      - SequentialLayout
+      - ExplicitLayout
+      - LayoutMask
+      - Interface
+      - Abstract
+      - Sealed
+      - SpecialName
+      - RTSpecialName
+      - Import
+      - Serializable
+      - WindowsRuntime
+      - UnicodeClass
+      - AutoClass
+      - CustomFormatClass
+      - HasSecurity
+      - ReservedMask
+      - BeforeFieldInit
+      - CustomFormatMask
+      type: string
+    TypeInfo:
+      additionalProperties: false
       properties:
-        lang:
+        name:
+          nullable: true
+          readOnly: true
           type: string
-        Value:
+        customAttributes:
+          items:
+            $ref: '#/components/schemas/CustomAttributeData'
+          nullable: true
+          readOnly: true
+          type: array
+        isCollectible:
+          readOnly: true
+          type: boolean
+        metadataToken:
+          format: int32
+          readOnly: true
+          type: integer
+        isInterface:
+          readOnly: true
+          type: boolean
+        memberType:
+          $ref: '#/components/schemas/MemberTypes'
+        namespace:
+          nullable: true
+          readOnly: true
           type: string
+        assemblyQualifiedName:
+          nullable: true
+          readOnly: true
+          type: string
+        fullName:
+          nullable: true
+          readOnly: true
+          type: string
+        assembly:
+          $ref: '#/components/schemas/Assembly'
+        module:
+          $ref: '#/components/schemas/Module'
+        isNested:
+          readOnly: true
+          type: boolean
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        declaringMethod:
+          $ref: '#/components/schemas/MethodBase'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
+        underlyingSystemType:
+          $ref: '#/components/schemas/Type'
+        isTypeDefinition:
+          readOnly: true
+          type: boolean
+        isArray:
+          readOnly: true
+          type: boolean
+        isByRef:
+          readOnly: true
+          type: boolean
+        isPointer:
+          readOnly: true
+          type: boolean
+        isConstructedGenericType:
+          readOnly: true
+          type: boolean
+        isGenericParameter:
+          readOnly: true
+          type: boolean
+        isGenericTypeParameter:
+          readOnly: true
+          type: boolean
+        isGenericMethodParameter:
+          readOnly: true
+          type: boolean
+        isGenericType:
+          readOnly: true
+          type: boolean
+        isGenericTypeDefinition:
+          readOnly: true
+          type: boolean
+        isSZArray:
+          readOnly: true
+          type: boolean
+        isVariableBoundArray:
+          readOnly: true
+          type: boolean
+        isByRefLike:
+          readOnly: true
+          type: boolean
+        hasElementType:
+          readOnly: true
+          type: boolean
+        genericTypeArguments:
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+          type: array
+        genericParameterPosition:
+          format: int32
+          readOnly: true
+          type: integer
+        genericParameterAttributes:
+          $ref: '#/components/schemas/GenericParameterAttributes'
+        attributes:
+          $ref: '#/components/schemas/TypeAttributes'
+        isAbstract:
+          readOnly: true
+          type: boolean
+        isImport:
+          readOnly: true
+          type: boolean
+        isSealed:
+          readOnly: true
+          type: boolean
+        isSpecialName:
+          readOnly: true
+          type: boolean
+        isClass:
+          readOnly: true
+          type: boolean
+        isNestedAssembly:
+          readOnly: true
+          type: boolean
+        isNestedFamANDAssem:
+          readOnly: true
+          type: boolean
+        isNestedFamily:
+          readOnly: true
+          type: boolean
+        isNestedFamORAssem:
+          readOnly: true
+          type: boolean
+        isNestedPrivate:
+          readOnly: true
+          type: boolean
+        isNestedPublic:
+          readOnly: true
+          type: boolean
+        isNotPublic:
+          readOnly: true
+          type: boolean
+        isPublic:
+          readOnly: true
+          type: boolean
+        isAutoLayout:
+          readOnly: true
+          type: boolean
+        isExplicitLayout:
+          readOnly: true
+          type: boolean
+        isLayoutSequential:
+          readOnly: true
+          type: boolean
+        isAnsiClass:
+          readOnly: true
+          type: boolean
+        isAutoClass:
+          readOnly: true
+          type: boolean
+        isUnicodeClass:
+          readOnly: true
+          type: boolean
+        isCOMObject:
+          readOnly: true
+          type: boolean
+        isContextful:
+          readOnly: true
+          type: boolean
+        isEnum:
+          readOnly: true
+          type: boolean
+        isMarshalByRef:
+          readOnly: true
+          type: boolean
+        isPrimitive:
+          readOnly: true
+          type: boolean
+        isValueType:
+          readOnly: true
+          type: boolean
+        isSignatureType:
+          readOnly: true
+          type: boolean
+        isSecurityCritical:
+          readOnly: true
+          type: boolean
+        isSecuritySafeCritical:
+          readOnly: true
+          type: boolean
+        isSecurityTransparent:
+          readOnly: true
+          type: boolean
+        structLayoutAttribute:
+          $ref: '#/components/schemas/StructLayoutAttribute'
+        typeInitializer:
+          $ref: '#/components/schemas/ConstructorInfo'
+        typeHandle:
+          $ref: '#/components/schemas/RuntimeTypeHandle'
+        guid:
+          format: uuid
+          readOnly: true
+          type: string
+        baseType:
+          $ref: '#/components/schemas/Type'
+        isSerializable:
+          readOnly: true
+          type: boolean
+        containsGenericParameters:
+          readOnly: true
+          type: boolean
+        isVisible:
+          readOnly: true
+          type: boolean
+        genericTypeParameters:
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredConstructors:
+          items:
+            $ref: '#/components/schemas/ConstructorInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredEvents:
+          items:
+            $ref: '#/components/schemas/EventInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredFields:
+          items:
+            $ref: '#/components/schemas/FieldInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredMembers:
+          items:
+            $ref: '#/components/schemas/MemberInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredMethods:
+          items:
+            $ref: '#/components/schemas/MethodInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredNestedTypes:
+          items:
+            $ref: '#/components/schemas/TypeInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        declaredProperties:
+          items:
+            $ref: '#/components/schemas/PropertyInfo'
+          nullable: true
+          readOnly: true
+          type: array
+        implementedInterfaces:
+          items:
+            $ref: '#/components/schemas/Type'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
-    VulnerabilityInvolvementDescription:
-      example:
-        Value: Value
-        lang: lang
+    TypeObjectKeyValuePair:
+      additionalProperties: false
       properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityThreatDescription:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityRemediationDescription:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityRemediationEntitlement:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    AffectedFile:
-      example:
-        FilePath: FilePath
-        FileArchitecture: FileArchitecture
-        FileName: FileName
-        FileVersion: FileVersion
-        FileLastModified: 2000-01-23T04:56:07.000+00:00
-        ProductId: ProductId
-      properties:
-        ProductId:
-          type: string
-        FileName:
-          type: string
-        FileVersion:
-          type: string
-        FilePath:
-          type: string
-        FileLastModified:
-          format: date-time
-          type: string
-        FileArchitecture:
-          type: string
-      type: object
-    VulnerabilityRemediationRestartRequired:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityReferenceDescription:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityAcknowledgmentName:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityAcknowledgmentOrganization:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
-      type: object
-    VulnerabilityAcknowledgmentDescription:
-      example:
-        Value: Value
-        lang: lang
-      properties:
-        lang:
-          type: string
-        Value:
-          type: string
+        key:
+          $ref: '#/components/schemas/Type'
+        value:
+          nullable: true
       type: object
     Update:
-      description: summary information about a security release (CVRF document)
+      additionalProperties: false
       example:
-        Alias: Alias
-        Severity: Severity
-        ID: ID
-        CvrfUrl: CvrfUrl
-        DocumentTitle: DocumentTitle
-        CurrentReleaseDate: 2000-01-23T04:56:07.000+00:00
-        InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
+        severity: severity
+        currentReleaseDate: 2000-01-23T04:56:07.000+00:00
+        cvrfUrl: cvrfUrl
+        alias: alias
+        id: id
+        documentTitle: documentTitle
+        initialReleaseDate: 2000-01-23T04:56:07.000+00:00
       properties:
-        ID:
-          description: "unique identifier for CVRF document, often yyyy-mmm"
+        id:
+          minLength: 1
           type: string
-        Alias:
-          description: alternative ID for CVRF document
+        alias:
+          minLength: 1
           type: string
-        DocumentTitle:
-          description: title of CVRF document
+        documentTitle:
+          minLength: 1
           type: string
-        Severity:
-          description: aggregate severity
+        severity:
+          nullable: true
           type: string
-        InitialReleaseDate:
-          description: date that the CVRF document was initially released
+        initialReleaseDate:
           format: date-time
           type: string
-        CurrentReleaseDate:
-          description: date that the CVRF document was last modified
+        currentReleaseDate:
           format: date-time
           type: string
-        CvrfUrl:
-          description: URL of CVRF document (for CVRF endpoint)
+        cvrfUrl:
+          minLength: 1
           type: string
       required:
-      - Alias
-      - CurrentReleaseDate
-      - CvrfUrl
-      - DocumentTitle
-      - ID
-      - InitialReleaseDate
+      - alias
+      - currentReleaseDate
+      - cvrfUrl
+      - documentTitle
+      - id
+      - initialReleaseDate
       type: object
-    Updates_GetUpdates_200_response:
-      example:
-        '@odata.context': http://example.com/aeiou
-        value:
-        - Alias: Alias
-          Severity: Severity
-          ID: ID
-          CvrfUrl: CvrfUrl
-          DocumentTitle: DocumentTitle
-          CurrentReleaseDate: 2000-01-23T04:56:07.000+00:00
-          InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
-        - Alias: Alias
-          Severity: Severity
-          ID: ID
-          CvrfUrl: CvrfUrl
-          DocumentTitle: DocumentTitle
-          CurrentReleaseDate: 2000-01-23T04:56:07.000+00:00
-          InitialReleaseDate: 2000-01-23T04:56:07.000+00:00
+    UpdateETag:
+      additionalProperties: false
       properties:
-        '@odata.context':
-          description: OData metadata for the request
-          format: url
-          type: string
-        value:
-          description: array of security update summaries
+        isWellFormed:
+          type: boolean
+        entityType:
+          $ref: '#/components/schemas/Type'
+        isAny:
+          type: boolean
+        isIfNoneMatch:
+          type: boolean
+      type: object
+    UpdateODataQueryOptions:
+      additionalProperties: false
+      properties:
+        request:
+          $ref: '#/components/schemas/HttpRequest'
+        context:
+          $ref: '#/components/schemas/ODataQueryContext'
+        rawValues:
+          $ref: '#/components/schemas/ODataRawQueryOptions'
+        selectExpand:
+          $ref: '#/components/schemas/SelectExpandQueryOption'
+        apply:
+          $ref: '#/components/schemas/ApplyQueryOption'
+        compute:
+          $ref: '#/components/schemas/ComputeQueryOption'
+        filter:
+          $ref: '#/components/schemas/FilterQueryOption'
+        search:
+          $ref: '#/components/schemas/SearchQueryOption'
+        orderBy:
+          $ref: '#/components/schemas/OrderByQueryOption'
+        skip:
+          $ref: '#/components/schemas/SkipQueryOption'
+        skipToken:
+          $ref: '#/components/schemas/SkipTokenQueryOption'
+        top:
+          $ref: '#/components/schemas/TopQueryOption'
+        count:
+          $ref: '#/components/schemas/CountQueryOption'
+        validator:
+          additionalProperties: false
+          type: object
+        ifMatch:
+          $ref: '#/components/schemas/UpdateETag'
+        ifNoneMatch:
+          $ref: '#/components/schemas/UpdateETag'
+      type: object
+    WaitHandle:
+      additionalProperties: false
+      properties:
+        handle:
+          additionalProperties: false
+          type: object
+        safeWaitHandle:
+          $ref: '#/components/schemas/SafeWaitHandle'
+      type: object
+    WebSocketManager:
+      additionalProperties: false
+      properties:
+        isWebSocketRequest:
+          readOnly: true
+          type: boolean
+        webSocketRequestedProtocols:
           items:
-            $ref: '#/components/schemas/Update'
+            type: string
+          nullable: true
+          readOnly: true
           type: array
-      required:
-      - '@odata.context'
-      - value
       type: object
-x-original-swagger-version: "2.0"
+    X500DistinguishedName:
+      additionalProperties: false
+      properties:
+        oid:
+          $ref: '#/components/schemas/Oid'
+        rawData:
+          format: byte
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    X509Certificate2:
+      additionalProperties: false
+      properties:
+        handle:
+          additionalProperties: false
+          type: object
+        issuer:
+          nullable: true
+          readOnly: true
+          type: string
+        subject:
+          nullable: true
+          readOnly: true
+          type: string
+        archived:
+          type: boolean
+        extensions:
+          items:
+            $ref: '#/components/schemas/X509Extension'
+          nullable: true
+          readOnly: true
+          type: array
+        friendlyName:
+          nullable: true
+          type: string
+        hasPrivateKey:
+          readOnly: true
+          type: boolean
+        privateKey:
+          $ref: '#/components/schemas/AsymmetricAlgorithm'
+        issuerName:
+          $ref: '#/components/schemas/X500DistinguishedName'
+        notAfter:
+          format: date-time
+          readOnly: true
+          type: string
+        notBefore:
+          format: date-time
+          readOnly: true
+          type: string
+        publicKey:
+          $ref: '#/components/schemas/PublicKey'
+        rawData:
+          format: byte
+          nullable: true
+          readOnly: true
+          type: string
+        serialNumber:
+          nullable: true
+          readOnly: true
+          type: string
+        signatureAlgorithm:
+          $ref: '#/components/schemas/Oid'
+        subjectName:
+          $ref: '#/components/schemas/X500DistinguishedName'
+        thumbprint:
+          nullable: true
+          readOnly: true
+          type: string
+        version:
+          format: int32
+          readOnly: true
+          type: integer
+      type: object
+    X509Extension:
+      additionalProperties: false
+      properties:
+        oid:
+          $ref: '#/components/schemas/Oid'
+        rawData:
+          format: byte
+          nullable: true
+          type: string
+        critical:
+          type: boolean
+      type: object

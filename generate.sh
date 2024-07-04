@@ -19,6 +19,7 @@ openapi-generator-cli generate \
 	--git-repo-id $GIT_REPO_ID \
 	--enable-post-process-file \
 	--additional-properties=isGoSubmodule=true \
+	--skip-validate-spec \
 	-g go \
 	-o openapi \
-	-i https://api.msrc.microsoft.com/cvrf/v2.0/swagger/docs/v2
+	-i https://api.msrc.microsoft.com/cvrf/v3.0/swagger/v3/swagger.json

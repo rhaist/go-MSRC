@@ -4,19 +4,19 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**ID** | **string** | unique identifier for CVRF document, often yyyy-mmm | 
-**Alias** | **string** | alternative ID for CVRF document | 
-**DocumentTitle** | **string** | title of CVRF document | 
-**Severity** | Pointer to **string** | aggregate severity | [optional] 
-**InitialReleaseDate** | **time.Time** | date that the CVRF document was initially released | 
-**CurrentReleaseDate** | **time.Time** | date that the CVRF document was last modified | 
-**CvrfUrl** | **string** | URL of CVRF document (for CVRF endpoint) | 
+**Id** | **string** |  | 
+**Alias** | **string** |  | 
+**DocumentTitle** | **string** |  | 
+**Severity** | Pointer to **NullableString** |  | [optional] 
+**InitialReleaseDate** | **time.Time** |  | 
+**CurrentReleaseDate** | **time.Time** |  | 
+**CvrfUrl** | **string** |  | 
 
 ## Methods
 
 ### NewUpdate
 
-`func NewUpdate(iD string, alias string, documentTitle string, initialReleaseDate time.Time, currentReleaseDate time.Time, cvrfUrl string, ) *Update`
+`func NewUpdate(id string, alias string, documentTitle string, initialReleaseDate time.Time, currentReleaseDate time.Time, cvrfUrl string, ) *Update`
 
 NewUpdate instantiates a new Update object
 This constructor will assign default values to properties that have it defined,
@@ -31,24 +31,24 @@ NewUpdateWithDefaults instantiates a new Update object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetID
+### GetId
 
-`func (o *Update) GetID() string`
+`func (o *Update) GetId() string`
 
-GetID returns the ID field if non-nil, zero value otherwise.
+GetId returns the Id field if non-nil, zero value otherwise.
 
-### GetIDOk
+### GetIdOk
 
-`func (o *Update) GetIDOk() (*string, bool)`
+`func (o *Update) GetIdOk() (*string, bool)`
 
-GetIDOk returns a tuple with the ID field if it's non-nil, zero value otherwise
+GetIdOk returns a tuple with the Id field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetID
+### SetId
 
-`func (o *Update) SetID(v string)`
+`func (o *Update) SetId(v string)`
 
-SetID sets ID field to given value.
+SetId sets Id field to given value.
 
 
 ### GetAlias
@@ -116,6 +116,16 @@ SetSeverity sets Severity field to given value.
 
 HasSeverity returns a boolean if a field has been set.
 
+### SetSeverityNil
+
+`func (o *Update) SetSeverityNil(b bool)`
+
+ SetSeverityNil sets the value for Severity to be an explicit nil
+
+### UnsetSeverity
+`func (o *Update) UnsetSeverity()`
+
+UnsetSeverity ensures that no value is present for Severity, not even an explicit nil
 ### GetInitialReleaseDate
 
 `func (o *Update) GetInitialReleaseDate() time.Time`
