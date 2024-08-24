@@ -78,7 +78,7 @@ func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) ([]Update, *http
 	localVarFormParams := url.Values{}
 
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -191,7 +191,7 @@ func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) ([]Upd
 	localVarFormParams := url.Values{}
 
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -304,7 +304,7 @@ func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) ([]Update,
 	localVarFormParams := url.Values{}
 
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -425,10 +425,10 @@ func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) ([]Update,
 	localVarFormParams := url.Values{}
 
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -549,10 +549,10 @@ func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) ([]U
 	localVarFormParams := url.Values{}
 
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -673,10 +673,10 @@ func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) 
 	localVarFormParams := url.Values{}
 
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
@@ -797,10 +797,10 @@ func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) ([]Upd
 	localVarFormParams := url.Values{}
 
 	if r.key != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "key", r.key, "form", "")
 	}
 	if r.options != nil {
-		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "")
+		parameterAddToHeaderOrQuery(localVarQueryParams, "options", r.options, "form", "")
 	}
 	// to determine the Content-Type header
 	localVarHTTPContentTypes := []string{}
