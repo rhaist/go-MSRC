@@ -19,32 +19,33 @@ var _ MappedNullable = &FieldInfo{}
 
 // FieldInfo struct for FieldInfo
 type FieldInfo struct {
-	Name                   NullableString        `json:"name,omitempty"`
-	DeclaringType          *Type                 `json:"declaringType,omitempty"`
-	ReflectedType          *Type                 `json:"reflectedType,omitempty"`
-	Module                 *Module               `json:"module,omitempty"`
-	CustomAttributes       []CustomAttributeData `json:"customAttributes,omitempty"`
-	IsCollectible          *bool                 `json:"isCollectible,omitempty"`
-	MetadataToken          *int32                `json:"metadataToken,omitempty"`
-	MemberType             *MemberTypes          `json:"memberType,omitempty"`
-	Attributes             *FieldAttributes      `json:"attributes,omitempty"`
-	FieldType              *Type                 `json:"fieldType,omitempty"`
-	IsInitOnly             *bool                 `json:"isInitOnly,omitempty"`
-	IsLiteral              *bool                 `json:"isLiteral,omitempty"`
-	IsNotSerialized        *bool                 `json:"isNotSerialized,omitempty"`
-	IsPinvokeImpl          *bool                 `json:"isPinvokeImpl,omitempty"`
-	IsSpecialName          *bool                 `json:"isSpecialName,omitempty"`
-	IsStatic               *bool                 `json:"isStatic,omitempty"`
-	IsAssembly             *bool                 `json:"isAssembly,omitempty"`
-	IsFamily               *bool                 `json:"isFamily,omitempty"`
-	IsFamilyAndAssembly    *bool                 `json:"isFamilyAndAssembly,omitempty"`
-	IsFamilyOrAssembly     *bool                 `json:"isFamilyOrAssembly,omitempty"`
-	IsPrivate              *bool                 `json:"isPrivate,omitempty"`
-	IsPublic               *bool                 `json:"isPublic,omitempty"`
-	IsSecurityCritical     *bool                 `json:"isSecurityCritical,omitempty"`
-	IsSecuritySafeCritical *bool                 `json:"isSecuritySafeCritical,omitempty"`
-	IsSecurityTransparent  *bool                 `json:"isSecurityTransparent,omitempty"`
-	FieldHandle            *RuntimeFieldHandle   `json:"fieldHandle,omitempty"`
+	Name             NullableString        `json:"name,omitempty"`
+	DeclaringType    *Type                 `json:"declaringType,omitempty"`
+	ReflectedType    *Type                 `json:"reflectedType,omitempty"`
+	Module           *Module               `json:"module,omitempty"`
+	CustomAttributes []CustomAttributeData `json:"customAttributes,omitempty"`
+	IsCollectible    *bool                 `json:"isCollectible,omitempty"`
+	MetadataToken    *int32                `json:"metadataToken,omitempty"`
+	MemberType       *MemberTypes          `json:"memberType,omitempty"`
+	Attributes       *FieldAttributes      `json:"attributes,omitempty"`
+	FieldType        *Type                 `json:"fieldType,omitempty"`
+	IsInitOnly       *bool                 `json:"isInitOnly,omitempty"`
+	IsLiteral        *bool                 `json:"isLiteral,omitempty"`
+	// Deprecated
+	IsNotSerialized        *bool               `json:"isNotSerialized,omitempty"`
+	IsPinvokeImpl          *bool               `json:"isPinvokeImpl,omitempty"`
+	IsSpecialName          *bool               `json:"isSpecialName,omitempty"`
+	IsStatic               *bool               `json:"isStatic,omitempty"`
+	IsAssembly             *bool               `json:"isAssembly,omitempty"`
+	IsFamily               *bool               `json:"isFamily,omitempty"`
+	IsFamilyAndAssembly    *bool               `json:"isFamilyAndAssembly,omitempty"`
+	IsFamilyOrAssembly     *bool               `json:"isFamilyOrAssembly,omitempty"`
+	IsPrivate              *bool               `json:"isPrivate,omitempty"`
+	IsPublic               *bool               `json:"isPublic,omitempty"`
+	IsSecurityCritical     *bool               `json:"isSecurityCritical,omitempty"`
+	IsSecuritySafeCritical *bool               `json:"isSecuritySafeCritical,omitempty"`
+	IsSecurityTransparent  *bool               `json:"isSecurityTransparent,omitempty"`
+	FieldHandle            *RuntimeFieldHandle `json:"fieldHandle,omitempty"`
 }
 
 // NewFieldInfo instantiates a new FieldInfo object
@@ -461,6 +462,7 @@ func (o *FieldInfo) SetIsLiteral(v bool) {
 }
 
 // GetIsNotSerialized returns the IsNotSerialized field value if set, zero value otherwise.
+// Deprecated
 func (o *FieldInfo) GetIsNotSerialized() bool {
 	if o == nil || IsNil(o.IsNotSerialized) {
 		var ret bool
@@ -471,6 +473,7 @@ func (o *FieldInfo) GetIsNotSerialized() bool {
 
 // GetIsNotSerializedOk returns a tuple with the IsNotSerialized field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *FieldInfo) GetIsNotSerializedOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsNotSerialized) {
 		return nil, false
@@ -488,6 +491,7 @@ func (o *FieldInfo) HasIsNotSerialized() bool {
 }
 
 // SetIsNotSerialized gets a reference to the given bool and assigns it to the IsNotSerialized field.
+// Deprecated
 func (o *FieldInfo) SetIsNotSerialized(v bool) {
 	o.IsNotSerialized = &v
 }

@@ -27,7 +27,7 @@ const (
 	PUP                     AddressFamily = "Pup"
 	CHAOS                   AddressFamily = "Chaos"
 	NS                      AddressFamily = "NS"
-	OSI                     AddressFamily = "Osi"
+	ISO                     AddressFamily = "Iso"
 	ECMA                    AddressFamily = "Ecma"
 	DATA_KIT                AddressFamily = "DataKit"
 	CCITT                   AddressFamily = "Ccitt"
@@ -62,7 +62,7 @@ var AllowedAddressFamilyEnumValues = []AddressFamily{
 	"Pup",
 	"Chaos",
 	"NS",
-	"Osi",
+	"Iso",
 	"Ecma",
 	"DataKit",
 	"Ccitt",

@@ -20,9 +20,9 @@ var _ MappedNullable = &MemberInfo{}
 // MemberInfo struct for MemberInfo
 type MemberInfo struct {
 	MemberType       *MemberTypes          `json:"memberType,omitempty"`
+	Name             NullableString        `json:"name,omitempty"`
 	DeclaringType    *Type                 `json:"declaringType,omitempty"`
 	ReflectedType    *Type                 `json:"reflectedType,omitempty"`
-	Name             NullableString        `json:"name,omitempty"`
 	Module           *Module               `json:"module,omitempty"`
 	CustomAttributes []CustomAttributeData `json:"customAttributes,omitempty"`
 	IsCollectible    *bool                 `json:"isCollectible,omitempty"`
@@ -76,6 +76,49 @@ func (o *MemberInfo) HasMemberType() bool {
 // SetMemberType gets a reference to the given MemberTypes and assigns it to the MemberType field.
 func (o *MemberInfo) SetMemberType(v MemberTypes) {
 	o.MemberType = &v
+}
+
+// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
+func (o *MemberInfo) GetName() string {
+	if o == nil || IsNil(o.Name.Get()) {
+		var ret string
+		return ret
+	}
+	return *o.Name.Get()
+}
+
+// GetNameOk returns a tuple with the Name field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+// NOTE: If the value is an explicit nil, `nil, true` will be returned
+func (o *MemberInfo) GetNameOk() (*string, bool) {
+	if o == nil {
+		return nil, false
+	}
+	return o.Name.Get(), o.Name.IsSet()
+}
+
+// HasName returns a boolean if a field has been set.
+func (o *MemberInfo) HasName() bool {
+	if o != nil && o.Name.IsSet() {
+		return true
+	}
+
+	return false
+}
+
+// SetName gets a reference to the given NullableString and assigns it to the Name field.
+func (o *MemberInfo) SetName(v string) {
+	o.Name.Set(&v)
+}
+
+// SetNameNil sets the value for Name to be an explicit nil
+func (o *MemberInfo) SetNameNil() {
+	o.Name.Set(nil)
+}
+
+// UnsetName ensures that no value is present for Name, not even an explicit nil
+func (o *MemberInfo) UnsetName() {
+	o.Name.Unset()
 }
 
 // GetDeclaringType returns the DeclaringType field value if set, zero value otherwise.
@@ -140,49 +183,6 @@ func (o *MemberInfo) HasReflectedType() bool {
 // SetReflectedType gets a reference to the given Type and assigns it to the ReflectedType field.
 func (o *MemberInfo) SetReflectedType(v Type) {
 	o.ReflectedType = &v
-}
-
-// GetName returns the Name field value if set, zero value otherwise (both if not set or set to explicit null).
-func (o *MemberInfo) GetName() string {
-	if o == nil || IsNil(o.Name.Get()) {
-		var ret string
-		return ret
-	}
-	return *o.Name.Get()
-}
-
-// GetNameOk returns a tuple with the Name field value if set, nil otherwise
-// and a boolean to check if the value has been set.
-// NOTE: If the value is an explicit nil, `nil, true` will be returned
-func (o *MemberInfo) GetNameOk() (*string, bool) {
-	if o == nil {
-		return nil, false
-	}
-	return o.Name.Get(), o.Name.IsSet()
-}
-
-// HasName returns a boolean if a field has been set.
-func (o *MemberInfo) HasName() bool {
-	if o != nil && o.Name.IsSet() {
-		return true
-	}
-
-	return false
-}
-
-// SetName gets a reference to the given NullableString and assigns it to the Name field.
-func (o *MemberInfo) SetName(v string) {
-	o.Name.Set(&v)
-}
-
-// SetNameNil sets the value for Name to be an explicit nil
-func (o *MemberInfo) SetNameNil() {
-	o.Name.Set(nil)
-}
-
-// UnsetName ensures that no value is present for Name, not even an explicit nil
-func (o *MemberInfo) UnsetName() {
-	o.Name.Unset()
 }
 
 // GetModule returns the Module field value if set, zero value otherwise.
@@ -327,14 +327,14 @@ func (o MemberInfo) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.MemberType) {
 		toSerialize["memberType"] = o.MemberType
 	}
+	if o.Name.IsSet() {
+		toSerialize["name"] = o.Name.Get()
+	}
 	if !IsNil(o.DeclaringType) {
 		toSerialize["declaringType"] = o.DeclaringType
 	}
 	if !IsNil(o.ReflectedType) {
 		toSerialize["reflectedType"] = o.ReflectedType
-	}
-	if o.Name.IsSet() {
-		toSerialize["name"] = o.Name.Get()
 	}
 	if !IsNil(o.Module) {
 		toSerialize["module"] = o.Module

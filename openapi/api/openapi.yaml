@@ -860,7 +860,7 @@ components:
       - Pup
       - Chaos
       - NS
-      - Osi
+      - Iso
       - Ecma
       - DataKit
       - Ccitt
@@ -933,6 +933,7 @@ components:
           readOnly: true
           type: array
         codeBase:
+          deprecated: true
           nullable: true
           readOnly: true
           type: string
@@ -969,6 +970,7 @@ components:
           readOnly: true
           type: array
         escapedCodeBase:
+          deprecated: true
           nullable: true
           readOnly: true
           type: string
@@ -1011,6 +1013,30 @@ components:
           nullable: true
           readOnly: true
           type: string
+      type: object
+    ByteReadOnlyMemory:
+      additionalProperties: false
+      properties:
+        length:
+          format: int32
+          readOnly: true
+          type: integer
+        isEmpty:
+          readOnly: true
+          type: boolean
+        span:
+          $ref: '#/components/schemas/ByteReadOnlySpan'
+      type: object
+    ByteReadOnlySpan:
+      additionalProperties: false
+      properties:
+        length:
+          format: int32
+          readOnly: true
+          type: integer
+        isEmpty:
+          readOnly: true
+          type: boolean
       type: object
     CallingConventions:
       enum:
@@ -1550,6 +1576,7 @@ components:
           readOnly: true
           type: boolean
         isNotSerialized:
+          deprecated: true
           readOnly: true
           type: boolean
         isPinvokeImpl:
@@ -2182,14 +2209,14 @@ components:
       properties:
         memberType:
           $ref: '#/components/schemas/MemberTypes'
-        declaringType:
-          $ref: '#/components/schemas/Type'
-        reflectedType:
-          $ref: '#/components/schemas/Type'
         name:
           nullable: true
           readOnly: true
           type: string
+        declaringType:
+          $ref: '#/components/schemas/Type'
+        reflectedType:
+          $ref: '#/components/schemas/Type'
         module:
           $ref: '#/components/schemas/Module'
         customAttributes:
@@ -2220,7 +2247,7 @@ components:
       type: string
     MethodAttributes:
       enum:
-      - ReuseSlot
+      - PrivateScope
       - Private
       - FamANDAssem
       - Assembly
@@ -2345,8 +2372,8 @@ components:
       - IL
       - Native
       - OPTIL
-      - Runtime
-      - Unmanaged
+      - CodeTypeMask
+      - ManagedMask
       - NoInlining
       - ForwardRef
       - Synchronized
@@ -3187,6 +3214,12 @@ components:
         isByRefLike:
           readOnly: true
           type: boolean
+        isFunctionPointer:
+          readOnly: true
+          type: boolean
+        isUnmanagedFunctionPointer:
+          readOnly: true
+          type: boolean
         hasElementType:
           readOnly: true
           type: boolean
@@ -3304,6 +3337,7 @@ components:
         baseType:
           $ref: '#/components/schemas/Type'
         isSerializable:
+          deprecated: true
           readOnly: true
           type: boolean
         containsGenericParameters:
@@ -3322,7 +3356,7 @@ components:
       - NestedFamily
       - NestedAssembly
       - NestedFamANDAssem
-      - NestedFamORAssem
+      - VisibilityMask
       - SequentialLayout
       - ExplicitLayout
       - LayoutMask
@@ -3336,7 +3370,7 @@ components:
       - WindowsRuntime
       - UnicodeClass
       - AutoClass
-      - CustomFormatClass
+      - StringFormatMask
       - HasSecurity
       - ReservedMask
       - BeforeFieldInit
@@ -3433,6 +3467,12 @@ components:
         isByRefLike:
           readOnly: true
           type: boolean
+        isFunctionPointer:
+          readOnly: true
+          type: boolean
+        isUnmanagedFunctionPointer:
+          readOnly: true
+          type: boolean
         hasElementType:
           readOnly: true
           type: boolean
@@ -3550,6 +3590,7 @@ components:
         baseType:
           $ref: '#/components/schemas/Type'
         isSerializable:
+          deprecated: true
           readOnly: true
           type: boolean
         containsGenericParameters:
@@ -3760,6 +3801,8 @@ components:
           nullable: true
           readOnly: true
           type: string
+        serialNumberBytes:
+          $ref: '#/components/schemas/ByteReadOnlyMemory'
         archived:
           type: boolean
         extensions:
@@ -3793,6 +3836,8 @@ components:
           nullable: true
           readOnly: true
           type: string
+        rawDataMemory:
+          $ref: '#/components/schemas/ByteReadOnlyMemory'
         serialNumber:
           nullable: true
           readOnly: true

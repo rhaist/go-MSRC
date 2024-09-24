@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Handle** | Pointer to **map[string]interface{}** |  | [optional] 
 **Issuer** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Subject** | Pointer to **NullableString** |  | [optional] [readonly] 
+**SerialNumberBytes** | Pointer to [**ByteReadOnlyMemory**](ByteReadOnlyMemory.md) |  | [optional] 
 **Archived** | Pointer to **bool** |  | [optional] 
 **Extensions** | Pointer to [**[]X509Extension**](X509Extension.md) |  | [optional] [readonly] 
 **FriendlyName** | Pointer to **NullableString** |  | [optional] 
@@ -17,6 +18,7 @@ Name | Type | Description | Notes
 **NotBefore** | Pointer to **time.Time** |  | [optional] [readonly] 
 **PublicKey** | Pointer to [**PublicKey**](PublicKey.md) |  | [optional] 
 **RawData** | Pointer to **NullableString** |  | [optional] [readonly] 
+**RawDataMemory** | Pointer to [**ByteReadOnlyMemory**](ByteReadOnlyMemory.md) |  | [optional] 
 **SerialNumber** | Pointer to **NullableString** |  | [optional] [readonly] 
 **SignatureAlgorithm** | Pointer to [**Oid**](Oid.md) |  | [optional] 
 **SubjectName** | Pointer to [**X500DistinguishedName**](X500DistinguishedName.md) |  | [optional] 
@@ -137,6 +139,31 @@ HasSubject returns a boolean if a field has been set.
 `func (o *X509Certificate2) UnsetSubject()`
 
 UnsetSubject ensures that no value is present for Subject, not even an explicit nil
+### GetSerialNumberBytes
+
+`func (o *X509Certificate2) GetSerialNumberBytes() ByteReadOnlyMemory`
+
+GetSerialNumberBytes returns the SerialNumberBytes field if non-nil, zero value otherwise.
+
+### GetSerialNumberBytesOk
+
+`func (o *X509Certificate2) GetSerialNumberBytesOk() (*ByteReadOnlyMemory, bool)`
+
+GetSerialNumberBytesOk returns a tuple with the SerialNumberBytes field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetSerialNumberBytes
+
+`func (o *X509Certificate2) SetSerialNumberBytes(v ByteReadOnlyMemory)`
+
+SetSerialNumberBytes sets SerialNumberBytes field to given value.
+
+### HasSerialNumberBytes
+
+`func (o *X509Certificate2) HasSerialNumberBytes() bool`
+
+HasSerialNumberBytes returns a boolean if a field has been set.
+
 ### GetArchived
 
 `func (o *X509Certificate2) GetArchived() bool`
@@ -417,6 +444,31 @@ HasRawData returns a boolean if a field has been set.
 `func (o *X509Certificate2) UnsetRawData()`
 
 UnsetRawData ensures that no value is present for RawData, not even an explicit nil
+### GetRawDataMemory
+
+`func (o *X509Certificate2) GetRawDataMemory() ByteReadOnlyMemory`
+
+GetRawDataMemory returns the RawDataMemory field if non-nil, zero value otherwise.
+
+### GetRawDataMemoryOk
+
+`func (o *X509Certificate2) GetRawDataMemoryOk() (*ByteReadOnlyMemory, bool)`
+
+GetRawDataMemoryOk returns a tuple with the RawDataMemory field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetRawDataMemory
+
+`func (o *X509Certificate2) SetRawDataMemory(v ByteReadOnlyMemory)`
+
+SetRawDataMemory sets RawDataMemory field to given value.
+
+### HasRawDataMemory
+
+`func (o *X509Certificate2) HasRawDataMemory() bool`
+
+HasRawDataMemory returns a boolean if a field has been set.
+
 ### GetSerialNumber
 
 `func (o *X509Certificate2) GetSerialNumber() string`

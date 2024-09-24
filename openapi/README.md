@@ -97,6 +97,8 @@ Class | Method | HTTP request | Description
  - [AsnEncodedData](docs/AsnEncodedData.md)
  - [Assembly](docs/Assembly.md)
  - [AsymmetricAlgorithm](docs/AsymmetricAlgorithm.md)
+ - [ByteReadOnlyMemory](docs/ByteReadOnlyMemory.md)
+ - [ByteReadOnlySpan](docs/ByteReadOnlySpan.md)
  - [CallingConventions](docs/CallingConventions.md)
  - [CancellationToken](docs/CancellationToken.md)
  - [Claim](docs/Claim.md)

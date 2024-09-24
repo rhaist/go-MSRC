@@ -27,7 +27,7 @@ const (
 	NESTED_FAMILY        TypeAttributes = "NestedFamily"
 	NESTED_ASSEMBLY      TypeAttributes = "NestedAssembly"
 	NESTED_FAM_AND_ASSEM TypeAttributes = "NestedFamANDAssem"
-	NESTED_FAM_OR_ASSEM  TypeAttributes = "NestedFamORAssem"
+	VISIBILITY_MASK      TypeAttributes = "VisibilityMask"
 	SEQUENTIAL_LAYOUT    TypeAttributes = "SequentialLayout"
 	EXPLICIT_LAYOUT      TypeAttributes = "ExplicitLayout"
 	LAYOUT_MASK          TypeAttributes = "LayoutMask"
@@ -41,7 +41,7 @@ const (
 	WINDOWS_RUNTIME      TypeAttributes = "WindowsRuntime"
 	UNICODE_CLASS        TypeAttributes = "UnicodeClass"
 	AUTO_CLASS           TypeAttributes = "AutoClass"
-	CUSTOM_FORMAT_CLASS  TypeAttributes = "CustomFormatClass"
+	STRING_FORMAT_MASK   TypeAttributes = "StringFormatMask"
 	HAS_SECURITY         TypeAttributes = "HasSecurity"
 	RESERVED_MASK        TypeAttributes = "ReservedMask"
 	BEFORE_FIELD_INIT    TypeAttributes = "BeforeFieldInit"
@@ -57,7 +57,7 @@ var AllowedTypeAttributesEnumValues = []TypeAttributes{
 	"NestedFamily",
 	"NestedAssembly",
 	"NestedFamANDAssem",
-	"NestedFamORAssem",
+	"VisibilityMask",
 	"SequentialLayout",
 	"ExplicitLayout",
 	"LayoutMask",
@@ -71,7 +71,7 @@ var AllowedTypeAttributesEnumValues = []TypeAttributes{
 	"WindowsRuntime",
 	"UnicodeClass",
 	"AutoClass",
-	"CustomFormatClass",
+	"StringFormatMask",
 	"HasSecurity",
 	"ReservedMask",
 	"BeforeFieldInit",

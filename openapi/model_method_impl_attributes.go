@@ -23,8 +23,8 @@ const (
 	IL                      MethodImplAttributes = "IL"
 	NATIVE                  MethodImplAttributes = "Native"
 	OPTIL                   MethodImplAttributes = "OPTIL"
-	RUNTIME                 MethodImplAttributes = "Runtime"
-	UNMANAGED               MethodImplAttributes = "Unmanaged"
+	CODE_TYPE_MASK          MethodImplAttributes = "CodeTypeMask"
+	MANAGED_MASK            MethodImplAttributes = "ManagedMask"
 	NO_INLINING             MethodImplAttributes = "NoInlining"
 	FORWARD_REF             MethodImplAttributes = "ForwardRef"
 	SYNCHRONIZED            MethodImplAttributes = "Synchronized"
@@ -41,8 +41,8 @@ var AllowedMethodImplAttributesEnumValues = []MethodImplAttributes{
 	"IL",
 	"Native",
 	"OPTIL",
-	"Runtime",
-	"Unmanaged",
+	"CodeTypeMask",
+	"ManagedMask",
 	"NoInlining",
 	"ForwardRef",
 	"Synchronized",

@@ -12,6 +12,8 @@ docs/ApplyQueryOption.md
 docs/AsnEncodedData.md
 docs/Assembly.md
 docs/AsymmetricAlgorithm.md
+docs/ByteReadOnlyMemory.md
+docs/ByteReadOnlySpan.md
 docs/CallingConventions.md
 docs/CancellationToken.md
 docs/Claim.md
@@ -136,6 +138,8 @@ model_apply_query_option.go
 model_asn_encoded_data.go
 model_assembly.go
 model_asymmetric_algorithm.go
+model_byte_read_only_memory.go
+model_byte_read_only_span.go
 model_calling_conventions.go
 model_cancellation_token.go
 model_claim.go

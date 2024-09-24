@@ -3,7 +3,7 @@
 ## Enum
 
 
-* `REUSE_SLOT` (value: `"ReuseSlot"`)
+* `PRIVATE_SCOPE` (value: `"PrivateScope"`)
 
 * `PRIVATE` (value: `"Private"`)
 

@@ -17,7 +17,7 @@
 
 * `NESTED_FAM_AND_ASSEM` (value: `"NestedFamANDAssem"`)
 
-* `NESTED_FAM_OR_ASSEM` (value: `"NestedFamORAssem"`)
+* `VISIBILITY_MASK` (value: `"VisibilityMask"`)
 
 * `SEQUENTIAL_LAYOUT` (value: `"SequentialLayout"`)
 
@@ -45,7 +45,7 @@
 
 * `AUTO_CLASS` (value: `"AutoClass"`)
 
-* `CUSTOM_FORMAT_CLASS` (value: `"CustomFormatClass"`)
+* `STRING_FORMAT_MASK` (value: `"StringFormatMask"`)
 
 * `HAS_SECURITY` (value: `"HasSecurity"`)
 

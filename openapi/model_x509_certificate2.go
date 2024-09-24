@@ -23,6 +23,7 @@ type X509Certificate2 struct {
 	Handle             map[string]interface{} `json:"handle,omitempty"`
 	Issuer             NullableString         `json:"issuer,omitempty"`
 	Subject            NullableString         `json:"subject,omitempty"`
+	SerialNumberBytes  *ByteReadOnlyMemory    `json:"serialNumberBytes,omitempty"`
 	Archived           *bool                  `json:"archived,omitempty"`
 	Extensions         []X509Extension        `json:"extensions,omitempty"`
 	FriendlyName       NullableString         `json:"friendlyName,omitempty"`
@@ -33,6 +34,7 @@ type X509Certificate2 struct {
 	NotBefore          *time.Time             `json:"notBefore,omitempty"`
 	PublicKey          *PublicKey             `json:"publicKey,omitempty"`
 	RawData            NullableString         `json:"rawData,omitempty"`
+	RawDataMemory      *ByteReadOnlyMemory    `json:"rawDataMemory,omitempty"`
 	SerialNumber       NullableString         `json:"serialNumber,omitempty"`
 	SignatureAlgorithm *Oid                   `json:"signatureAlgorithm,omitempty"`
 	SubjectName        *X500DistinguishedName `json:"subjectName,omitempty"`
@@ -173,6 +175,38 @@ func (o *X509Certificate2) SetSubjectNil() {
 // UnsetSubject ensures that no value is present for Subject, not even an explicit nil
 func (o *X509Certificate2) UnsetSubject() {
 	o.Subject.Unset()
+}
+
+// GetSerialNumberBytes returns the SerialNumberBytes field value if set, zero value otherwise.
+func (o *X509Certificate2) GetSerialNumberBytes() ByteReadOnlyMemory {
+	if o == nil || IsNil(o.SerialNumberBytes) {
+		var ret ByteReadOnlyMemory
+		return ret
+	}
+	return *o.SerialNumberBytes
+}
+
+// GetSerialNumberBytesOk returns a tuple with the SerialNumberBytes field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *X509Certificate2) GetSerialNumberBytesOk() (*ByteReadOnlyMemory, bool) {
+	if o == nil || IsNil(o.SerialNumberBytes) {
+		return nil, false
+	}
+	return o.SerialNumberBytes, true
+}
+
+// HasSerialNumberBytes returns a boolean if a field has been set.
+func (o *X509Certificate2) HasSerialNumberBytes() bool {
+	if o != nil && !IsNil(o.SerialNumberBytes) {
+		return true
+	}
+
+	return false
+}
+
+// SetSerialNumberBytes gets a reference to the given ByteReadOnlyMemory and assigns it to the SerialNumberBytes field.
+func (o *X509Certificate2) SetSerialNumberBytes(v ByteReadOnlyMemory) {
+	o.SerialNumberBytes = &v
 }
 
 // GetArchived returns the Archived field value if set, zero value otherwise.
@@ -518,6 +552,38 @@ func (o *X509Certificate2) UnsetRawData() {
 	o.RawData.Unset()
 }
 
+// GetRawDataMemory returns the RawDataMemory field value if set, zero value otherwise.
+func (o *X509Certificate2) GetRawDataMemory() ByteReadOnlyMemory {
+	if o == nil || IsNil(o.RawDataMemory) {
+		var ret ByteReadOnlyMemory
+		return ret
+	}
+	return *o.RawDataMemory
+}
+
+// GetRawDataMemoryOk returns a tuple with the RawDataMemory field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *X509Certificate2) GetRawDataMemoryOk() (*ByteReadOnlyMemory, bool) {
+	if o == nil || IsNil(o.RawDataMemory) {
+		return nil, false
+	}
+	return o.RawDataMemory, true
+}
+
+// HasRawDataMemory returns a boolean if a field has been set.
+func (o *X509Certificate2) HasRawDataMemory() bool {
+	if o != nil && !IsNil(o.RawDataMemory) {
+		return true
+	}
+
+	return false
+}
+
+// SetRawDataMemory gets a reference to the given ByteReadOnlyMemory and assigns it to the RawDataMemory field.
+func (o *X509Certificate2) SetRawDataMemory(v ByteReadOnlyMemory) {
+	o.RawDataMemory = &v
+}
+
 // GetSerialNumber returns the SerialNumber field value if set, zero value otherwise (both if not set or set to explicit null).
 func (o *X509Certificate2) GetSerialNumber() string {
 	if o == nil || IsNil(o.SerialNumber.Get()) {
@@ -719,6 +785,9 @@ func (o X509Certificate2) ToMap() (map[string]interface{}, error) {
 	if o.Subject.IsSet() {
 		toSerialize["subject"] = o.Subject.Get()
 	}
+	if !IsNil(o.SerialNumberBytes) {
+		toSerialize["serialNumberBytes"] = o.SerialNumberBytes
+	}
 	if !IsNil(o.Archived) {
 		toSerialize["archived"] = o.Archived
 	}
@@ -748,6 +817,9 @@ func (o X509Certificate2) ToMap() (map[string]interface{}, error) {
 	}
 	if o.RawData.IsSet() {
 		toSerialize["rawData"] = o.RawData.Get()
+	}
+	if !IsNil(o.RawDataMemory) {
+		toSerialize["rawDataMemory"] = o.RawDataMemory
 	}
 	if o.SerialNumber.IsSet() {
 		toSerialize["serialNumber"] = o.SerialNumber.Get()

@@ -5,9 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **MemberType** | Pointer to [**MemberTypes**](MemberTypes.md) |  | [optional] 
+**Name** | Pointer to **NullableString** |  | [optional] [readonly] 
 **DeclaringType** | Pointer to [**Type**](Type.md) |  | [optional] 
 **ReflectedType** | Pointer to [**Type**](Type.md) |  | [optional] 
-**Name** | Pointer to **NullableString** |  | [optional] [readonly] 
 **Module** | Pointer to [**Module**](Module.md) |  | [optional] 
 **CustomAttributes** | Pointer to [**[]CustomAttributeData**](CustomAttributeData.md) |  | [optional] [readonly] 
 **IsCollectible** | Pointer to **bool** |  | [optional] [readonly] 
@@ -57,6 +57,41 @@ SetMemberType sets MemberType field to given value.
 
 HasMemberType returns a boolean if a field has been set.
 
+### GetName
+
+`func (o *MemberInfo) GetName() string`
+
+GetName returns the Name field if non-nil, zero value otherwise.
+
+### GetNameOk
+
+`func (o *MemberInfo) GetNameOk() (*string, bool)`
+
+GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetName
+
+`func (o *MemberInfo) SetName(v string)`
+
+SetName sets Name field to given value.
+
+### HasName
+
+`func (o *MemberInfo) HasName() bool`
+
+HasName returns a boolean if a field has been set.
+
+### SetNameNil
+
+`func (o *MemberInfo) SetNameNil(b bool)`
+
+ SetNameNil sets the value for Name to be an explicit nil
+
+### UnsetName
+`func (o *MemberInfo) UnsetName()`
+
+UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetDeclaringType
 
 `func (o *MemberInfo) GetDeclaringType() Type`
@@ -107,41 +142,6 @@ SetReflectedType sets ReflectedType field to given value.
 
 HasReflectedType returns a boolean if a field has been set.
 
-### GetName
-
-`func (o *MemberInfo) GetName() string`
-
-GetName returns the Name field if non-nil, zero value otherwise.
-
-### GetNameOk
-
-`func (o *MemberInfo) GetNameOk() (*string, bool)`
-
-GetNameOk returns a tuple with the Name field if it's non-nil, zero value otherwise
-and a boolean to check if the value has been set.
-
-### SetName
-
-`func (o *MemberInfo) SetName(v string)`
-
-SetName sets Name field to given value.
-
-### HasName
-
-`func (o *MemberInfo) HasName() bool`
-
-HasName returns a boolean if a field has been set.
-
-### SetNameNil
-
-`func (o *MemberInfo) SetNameNil(b bool)`
-
- SetNameNil sets the value for Name to be an explicit nil
-
-### UnsetName
-`func (o *MemberInfo) UnsetName()`
-
-UnsetName ensures that no value is present for Name, not even an explicit nil
 ### GetModule
 
 `func (o *MemberInfo) GetModule() Module`

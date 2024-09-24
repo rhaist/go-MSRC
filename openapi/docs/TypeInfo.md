@@ -33,6 +33,8 @@ Name | Type | Description | Notes
 **IsSZArray** | Pointer to **bool** |  | [optional] [readonly] 
 **IsVariableBoundArray** | Pointer to **bool** |  | [optional] [readonly] 
 **IsByRefLike** | Pointer to **bool** |  | [optional] [readonly] 
+**IsFunctionPointer** | Pointer to **bool** |  | [optional] [readonly] 
+**IsUnmanagedFunctionPointer** | Pointer to **bool** |  | [optional] [readonly] 
 **HasElementType** | Pointer to **bool** |  | [optional] [readonly] 
 **GenericTypeArguments** | Pointer to [**[]Type**](Type.md) |  | [optional] [readonly] 
 **GenericParameterPosition** | Pointer to **int32** |  | [optional] [readonly] 
@@ -878,6 +880,56 @@ SetIsByRefLike sets IsByRefLike field to given value.
 `func (o *TypeInfo) HasIsByRefLike() bool`
 
 HasIsByRefLike returns a boolean if a field has been set.
+
+### GetIsFunctionPointer
+
+`func (o *TypeInfo) GetIsFunctionPointer() bool`
+
+GetIsFunctionPointer returns the IsFunctionPointer field if non-nil, zero value otherwise.
+
+### GetIsFunctionPointerOk
+
+`func (o *TypeInfo) GetIsFunctionPointerOk() (*bool, bool)`
+
+GetIsFunctionPointerOk returns a tuple with the IsFunctionPointer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsFunctionPointer
+
+`func (o *TypeInfo) SetIsFunctionPointer(v bool)`
+
+SetIsFunctionPointer sets IsFunctionPointer field to given value.
+
+### HasIsFunctionPointer
+
+`func (o *TypeInfo) HasIsFunctionPointer() bool`
+
+HasIsFunctionPointer returns a boolean if a field has been set.
+
+### GetIsUnmanagedFunctionPointer
+
+`func (o *TypeInfo) GetIsUnmanagedFunctionPointer() bool`
+
+GetIsUnmanagedFunctionPointer returns the IsUnmanagedFunctionPointer field if non-nil, zero value otherwise.
+
+### GetIsUnmanagedFunctionPointerOk
+
+`func (o *TypeInfo) GetIsUnmanagedFunctionPointerOk() (*bool, bool)`
+
+GetIsUnmanagedFunctionPointerOk returns a tuple with the IsUnmanagedFunctionPointer field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetIsUnmanagedFunctionPointer
+
+`func (o *TypeInfo) SetIsUnmanagedFunctionPointer(v bool)`
+
+SetIsUnmanagedFunctionPointer sets IsUnmanagedFunctionPointer field to given value.
+
+### HasIsUnmanagedFunctionPointer
+
+`func (o *TypeInfo) HasIsUnmanagedFunctionPointer() bool`
+
+HasIsUnmanagedFunctionPointer returns a boolean if a field has been set.
 
 ### GetHasElementType
 

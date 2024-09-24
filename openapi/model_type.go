@@ -48,6 +48,8 @@ type Type struct {
 	IsSZArray                  *bool                       `json:"isSZArray,omitempty"`
 	IsVariableBoundArray       *bool                       `json:"isVariableBoundArray,omitempty"`
 	IsByRefLike                *bool                       `json:"isByRefLike,omitempty"`
+	IsFunctionPointer          *bool                       `json:"isFunctionPointer,omitempty"`
+	IsUnmanagedFunctionPointer *bool                       `json:"isUnmanagedFunctionPointer,omitempty"`
 	HasElementType             *bool                       `json:"hasElementType,omitempty"`
 	GenericTypeArguments       []Type                      `json:"genericTypeArguments,omitempty"`
 	GenericParameterPosition   *int32                      `json:"genericParameterPosition,omitempty"`
@@ -87,9 +89,10 @@ type Type struct {
 	TypeHandle                 *RuntimeTypeHandle          `json:"typeHandle,omitempty"`
 	Guid                       *string                     `json:"guid,omitempty"`
 	BaseType                   *Type                       `json:"baseType,omitempty"`
-	IsSerializable             *bool                       `json:"isSerializable,omitempty"`
-	ContainsGenericParameters  *bool                       `json:"containsGenericParameters,omitempty"`
-	IsVisible                  *bool                       `json:"isVisible,omitempty"`
+	// Deprecated
+	IsSerializable            *bool `json:"isSerializable,omitempty"`
+	ContainsGenericParameters *bool `json:"containsGenericParameters,omitempty"`
+	IsVisible                 *bool `json:"isVisible,omitempty"`
 }
 
 // NewType instantiates a new Type object
@@ -1080,6 +1083,70 @@ func (o *Type) HasIsByRefLike() bool {
 // SetIsByRefLike gets a reference to the given bool and assigns it to the IsByRefLike field.
 func (o *Type) SetIsByRefLike(v bool) {
 	o.IsByRefLike = &v
+}
+
+// GetIsFunctionPointer returns the IsFunctionPointer field value if set, zero value otherwise.
+func (o *Type) GetIsFunctionPointer() bool {
+	if o == nil || IsNil(o.IsFunctionPointer) {
+		var ret bool
+		return ret
+	}
+	return *o.IsFunctionPointer
+}
+
+// GetIsFunctionPointerOk returns a tuple with the IsFunctionPointer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Type) GetIsFunctionPointerOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsFunctionPointer) {
+		return nil, false
+	}
+	return o.IsFunctionPointer, true
+}
+
+// HasIsFunctionPointer returns a boolean if a field has been set.
+func (o *Type) HasIsFunctionPointer() bool {
+	if o != nil && !IsNil(o.IsFunctionPointer) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsFunctionPointer gets a reference to the given bool and assigns it to the IsFunctionPointer field.
+func (o *Type) SetIsFunctionPointer(v bool) {
+	o.IsFunctionPointer = &v
+}
+
+// GetIsUnmanagedFunctionPointer returns the IsUnmanagedFunctionPointer field value if set, zero value otherwise.
+func (o *Type) GetIsUnmanagedFunctionPointer() bool {
+	if o == nil || IsNil(o.IsUnmanagedFunctionPointer) {
+		var ret bool
+		return ret
+	}
+	return *o.IsUnmanagedFunctionPointer
+}
+
+// GetIsUnmanagedFunctionPointerOk returns a tuple with the IsUnmanagedFunctionPointer field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *Type) GetIsUnmanagedFunctionPointerOk() (*bool, bool) {
+	if o == nil || IsNil(o.IsUnmanagedFunctionPointer) {
+		return nil, false
+	}
+	return o.IsUnmanagedFunctionPointer, true
+}
+
+// HasIsUnmanagedFunctionPointer returns a boolean if a field has been set.
+func (o *Type) HasIsUnmanagedFunctionPointer() bool {
+	if o != nil && !IsNil(o.IsUnmanagedFunctionPointer) {
+		return true
+	}
+
+	return false
+}
+
+// SetIsUnmanagedFunctionPointer gets a reference to the given bool and assigns it to the IsUnmanagedFunctionPointer field.
+func (o *Type) SetIsUnmanagedFunctionPointer(v bool) {
+	o.IsUnmanagedFunctionPointer = &v
 }
 
 // GetHasElementType returns the HasElementType field value if set, zero value otherwise.
@@ -2332,6 +2399,7 @@ func (o *Type) SetBaseType(v Type) {
 }
 
 // GetIsSerializable returns the IsSerializable field value if set, zero value otherwise.
+// Deprecated
 func (o *Type) GetIsSerializable() bool {
 	if o == nil || IsNil(o.IsSerializable) {
 		var ret bool
@@ -2342,6 +2410,7 @@ func (o *Type) GetIsSerializable() bool {
 
 // GetIsSerializableOk returns a tuple with the IsSerializable field value if set, nil otherwise
 // and a boolean to check if the value has been set.
+// Deprecated
 func (o *Type) GetIsSerializableOk() (*bool, bool) {
 	if o == nil || IsNil(o.IsSerializable) {
 		return nil, false
@@ -2359,6 +2428,7 @@ func (o *Type) HasIsSerializable() bool {
 }
 
 // SetIsSerializable gets a reference to the given bool and assigns it to the IsSerializable field.
+// Deprecated
 func (o *Type) SetIsSerializable(v bool) {
 	o.IsSerializable = &v
 }
@@ -2523,6 +2593,12 @@ func (o Type) ToMap() (map[string]interface{}, error) {
 	}
 	if !IsNil(o.IsByRefLike) {
 		toSerialize["isByRefLike"] = o.IsByRefLike
+	}
+	if !IsNil(o.IsFunctionPointer) {
+		toSerialize["isFunctionPointer"] = o.IsFunctionPointer
+	}
+	if !IsNil(o.IsUnmanagedFunctionPointer) {
+		toSerialize["isUnmanagedFunctionPointer"] = o.IsUnmanagedFunctionPointer
 	}
 	if !IsNil(o.HasElementType) {
 		toSerialize["hasElementType"] = o.HasElementType

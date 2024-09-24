@@ -9,9 +9,9 @@
 
 * `OPTIL` (value: `"OPTIL"`)
 
-* `RUNTIME` (value: `"Runtime"`)
+* `CODE_TYPE_MASK` (value: `"CodeTypeMask"`)
 
-* `UNMANAGED` (value: `"Unmanaged"`)
+* `MANAGED_MASK` (value: `"ManagedMask"`)
 
 * `NO_INLINING` (value: `"NoInlining"`)
 

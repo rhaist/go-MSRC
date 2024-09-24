@@ -17,7 +17,7 @@
 
 * `NS` (value: `"NS"`)
 
-* `OSI` (value: `"Osi"`)
+* `ISO` (value: `"Iso"`)
 
 * `ECMA` (value: `"Ecma"`)
 

@@ -20,7 +20,7 @@ type MethodAttributes string
 
 // List of MethodAttributes
 const (
-	REUSE_SLOT               MethodAttributes = "ReuseSlot"
+	PRIVATE_SCOPE            MethodAttributes = "PrivateScope"
 	PRIVATE                  MethodAttributes = "Private"
 	FAM_AND_ASSEM            MethodAttributes = "FamANDAssem"
 	ASSEMBLY                 MethodAttributes = "Assembly"
@@ -46,7 +46,7 @@ const (
 
 // All allowed values of MethodAttributes enum
 var AllowedMethodAttributesEnumValues = []MethodAttributes{
-	"ReuseSlot",
+	"PrivateScope",
 	"Private",
 	"FamANDAssem",
 	"Assembly",

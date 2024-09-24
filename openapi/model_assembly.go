@@ -19,8 +19,9 @@ var _ MappedNullable = &Assembly{}
 
 // Assembly struct for Assembly
 type Assembly struct {
-	DefinedTypes        []TypeInfo            `json:"definedTypes,omitempty"`
-	ExportedTypes       []Type                `json:"exportedTypes,omitempty"`
+	DefinedTypes  []TypeInfo `json:"definedTypes,omitempty"`
+	ExportedTypes []Type     `json:"exportedTypes,omitempty"`
+	// Deprecated
 	CodeBase            NullableString        `json:"codeBase,omitempty"`
 	EntryPoint          *MethodInfo           `json:"entryPoint,omitempty"`
 	FullName            NullableString        `json:"fullName,omitempty"`
@@ -31,9 +32,10 @@ type Assembly struct {
 	IsCollectible       *bool                 `json:"isCollectible,omitempty"`
 	IsFullyTrusted      *bool                 `json:"isFullyTrusted,omitempty"`
 	CustomAttributes    []CustomAttributeData `json:"customAttributes,omitempty"`
-	EscapedCodeBase     NullableString        `json:"escapedCodeBase,omitempty"`
-	ManifestModule      *Module               `json:"manifestModule,omitempty"`
-	Modules             []Module              `json:"modules,omitempty"`
+	// Deprecated
+	EscapedCodeBase NullableString `json:"escapedCodeBase,omitempty"`
+	ManifestModule  *Module        `json:"manifestModule,omitempty"`
+	Modules         []Module       `json:"modules,omitempty"`
 	// Deprecated
 	GlobalAssemblyCache *bool            `json:"globalAssemblyCache,omitempty"`
 	HostContext         *int64           `json:"hostContext,omitempty"`
@@ -124,6 +126,7 @@ func (o *Assembly) SetExportedTypes(v []Type) {
 }
 
 // GetCodeBase returns the CodeBase field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *Assembly) GetCodeBase() string {
 	if o == nil || IsNil(o.CodeBase.Get()) {
 		var ret string
@@ -135,6 +138,7 @@ func (o *Assembly) GetCodeBase() string {
 // GetCodeBaseOk returns a tuple with the CodeBase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *Assembly) GetCodeBaseOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -152,6 +156,7 @@ func (o *Assembly) HasCodeBase() bool {
 }
 
 // SetCodeBase gets a reference to the given NullableString and assigns it to the CodeBase field.
+// Deprecated
 func (o *Assembly) SetCodeBase(v string) {
 	o.CodeBase.Set(&v)
 }
@@ -489,6 +494,7 @@ func (o *Assembly) SetCustomAttributes(v []CustomAttributeData) {
 }
 
 // GetEscapedCodeBase returns the EscapedCodeBase field value if set, zero value otherwise (both if not set or set to explicit null).
+// Deprecated
 func (o *Assembly) GetEscapedCodeBase() string {
 	if o == nil || IsNil(o.EscapedCodeBase.Get()) {
 		var ret string
@@ -500,6 +506,7 @@ func (o *Assembly) GetEscapedCodeBase() string {
 // GetEscapedCodeBaseOk returns a tuple with the EscapedCodeBase field value if set, nil otherwise
 // and a boolean to check if the value has been set.
 // NOTE: If the value is an explicit nil, `nil, true` will be returned
+// Deprecated
 func (o *Assembly) GetEscapedCodeBaseOk() (*string, bool) {
 	if o == nil {
 		return nil, false
@@ -517,6 +524,7 @@ func (o *Assembly) HasEscapedCodeBase() bool {
 }
 
 // SetEscapedCodeBase gets a reference to the given NullableString and assigns it to the EscapedCodeBase field.
+// Deprecated
 func (o *Assembly) SetEscapedCodeBase(v string) {
 	o.EscapedCodeBase.Set(&v)
 }
