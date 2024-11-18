@@ -25,25 +25,19 @@ import (
 	"context"
 	"fmt"
 	"os"
-
-	"github.com/rhaist/go-MSRC/openapi"
+	openapiclient "github.com/rhaist/go-MSRC/openapi"
 )
 
-const API_KEY = "CHANGEME"
-
 func main() {
-	key := "2021-Feb"    // string | update ID (yyyy-mmm), vulnerability ID (CVE number), or year (yyyy)
+	options := *openapiclient.NewUpdateODataQueryOptions() // UpdateODataQueryOptions | OData query options (optional)
 
-	configuration := openapi.NewConfiguration()
-
-	api_client := openapi.NewAPIClient(configuration)
-	resp, r, err := api_client.GetSecurityUpdatesApi.UpdatesGetUpdatesByKey(context.Background(), key).ApiVersion(apiVersion).Execute()
-	if err.Error() != "" {
-		fmt.Fprintf(os.Stderr, "Error when calling `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey``: %v\n", err)
+	configuration := openapiclient.NewConfiguration()
+	apiClient := openapiclient.NewAPIClient(configuration)
+	r, err := apiClient.UpdatesAPI.Updates(context.Background()).Options(options).Execute()
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "Error when calling `UpdatesAPI.Updates``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `UpdatesGetUpdatesByKey`: InlineResponse200
-	fmt.Fprintf(os.Stdout, "Response from `GetSecurityUpdatesApi.UpdatesGetUpdatesByKey`: %v\n", resp)
 }
 ```
 
