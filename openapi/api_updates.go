@@ -33,7 +33,7 @@ func (r ApiUpdatesRequest) Options(options UpdateODataQueryOptions) ApiUpdatesRe
 	return r
 }
 
-func (r ApiUpdatesRequest) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesExecute(r)
 }
 
@@ -56,19 +56,16 @@ func (a *UpdatesAPIService) Updates(ctx context.Context) ApiUpdatesRequest {
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.Updates")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/Updates"
@@ -90,7 +87,7 @@ func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) ([]Update, *http
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -99,19 +96,19 @@ func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) ([]Update, *http
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -119,19 +116,10 @@ func (a *UpdatesAPIService) UpdatesExecute(r ApiUpdatesRequest) ([]Update, *http
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesCountRequest struct {
@@ -146,7 +134,7 @@ func (r ApiUpdatesCountRequest) Options(options UpdateODataQueryOptions) ApiUpda
 	return r
 }
 
-func (r ApiUpdatesCountRequest) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesCountRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesCountExecute(r)
 }
 
@@ -169,19 +157,16 @@ func (a *UpdatesAPIService) UpdatesCount(ctx context.Context) ApiUpdatesCountReq
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesCount")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/Updates/$count"
@@ -203,7 +188,7 @@ func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) ([]Upd
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -212,19 +197,19 @@ func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) ([]Upd
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -232,19 +217,10 @@ func (a *UpdatesAPIService) UpdatesCountExecute(r ApiUpdatesCountRequest) ([]Upd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesGetRequest struct {
@@ -259,7 +235,7 @@ func (r ApiUpdatesGetRequest) Options(options UpdateODataQueryOptions) ApiUpdate
 	return r
 }
 
-func (r ApiUpdatesGetRequest) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesGetExecute(r)
 }
 
@@ -282,19 +258,16 @@ func (a *UpdatesAPIService) UpdatesGet(ctx context.Context) ApiUpdatesGetRequest
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/updates"
@@ -316,7 +289,7 @@ func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) ([]Update,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -325,19 +298,19 @@ func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) ([]Update,
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -345,19 +318,10 @@ func (a *UpdatesAPIService) UpdatesGetExecute(r ApiUpdatesGetRequest) ([]Update,
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesKeyRequest struct {
@@ -379,7 +343,7 @@ func (r ApiUpdatesKeyRequest) Options(options UpdateODataQueryOptions) ApiUpdate
 	return r
 }
 
-func (r ApiUpdatesKeyRequest) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesKeyRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesKeyExecute(r)
 }
 
@@ -403,19 +367,16 @@ func (a *UpdatesAPIService) UpdatesKey(ctx context.Context) ApiUpdatesKeyRequest
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesKey")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/Updates({key})"
@@ -440,7 +401,7 @@ func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) ([]Update,
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -449,19 +410,19 @@ func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) ([]Update,
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -469,19 +430,10 @@ func (a *UpdatesAPIService) UpdatesKeyExecute(r ApiUpdatesKeyRequest) ([]Update,
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesKeyGetRequest struct {
@@ -503,7 +455,7 @@ func (r ApiUpdatesKeyGetRequest) Options(options UpdateODataQueryOptions) ApiUpd
 	return r
 }
 
-func (r ApiUpdatesKeyGetRequest) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesKeyGetRequest) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesKeyGetExecute(r)
 }
 
@@ -527,19 +479,16 @@ func (a *UpdatesAPIService) UpdatesKeyGet(ctx context.Context) ApiUpdatesKeyGetR
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesKeyGet")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/updates({key})"
@@ -564,7 +513,7 @@ func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) ([]U
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -573,19 +522,19 @@ func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) ([]U
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -593,19 +542,10 @@ func (a *UpdatesAPIService) UpdatesKeyGetExecute(r ApiUpdatesKeyGetRequest) ([]U
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesKeyGet_0Request struct {
@@ -627,7 +567,7 @@ func (r ApiUpdatesKeyGet_0Request) Options(options UpdateODataQueryOptions) ApiU
 	return r
 }
 
-func (r ApiUpdatesKeyGet_0Request) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesKeyGet_0Request) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesKeyGet_1Execute(r)
 }
 
@@ -651,19 +591,16 @@ func (a *UpdatesAPIService) UpdatesKeyGet_1(ctx context.Context) ApiUpdatesKeyGe
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesKeyGet_1")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/updates/{key}"
@@ -688,7 +625,7 @@ func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) 
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -697,19 +634,19 @@ func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) 
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -717,19 +654,10 @@ func (a *UpdatesAPIService) UpdatesKeyGet_1Execute(r ApiUpdatesKeyGet_0Request) 
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }
 
 type ApiUpdatesKey_0Request struct {
@@ -751,7 +679,7 @@ func (r ApiUpdatesKey_0Request) Options(options UpdateODataQueryOptions) ApiUpda
 	return r
 }
 
-func (r ApiUpdatesKey_0Request) Execute() ([]Update, *http.Response, error) {
+func (r ApiUpdatesKey_0Request) Execute() (*http.Response, error) {
 	return r.ApiService.UpdatesKey_2Execute(r)
 }
 
@@ -775,19 +703,16 @@ func (a *UpdatesAPIService) UpdatesKey_2(ctx context.Context) ApiUpdatesKey_0Req
 }
 
 // Execute executes the request
-//
-//	@return []Update
-func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) ([]Update, *http.Response, error) {
+func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) (*http.Response, error) {
 	var (
-		localVarHTTPMethod  = http.MethodGet
-		localVarPostBody    interface{}
-		formFiles           []formFile
-		localVarReturnValue []Update
+		localVarHTTPMethod = http.MethodGet
+		localVarPostBody   interface{}
+		formFiles          []formFile
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "UpdatesAPIService.UpdatesKey_2")
 	if err != nil {
-		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
+		return nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
 	localVarPath := localBasePath + "/Updates/{key}"
@@ -812,7 +737,7 @@ func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) ([]Upd
 	}
 
 	// to determine the Accept header
-	localVarHTTPHeaderAccepts := []string{"application/json;odata.metadata=minimal;odata.streaming=true", "application/json;odata.metadata=minimal;odata.streaming=false", "application/json;odata.metadata=minimal", "application/json;odata.metadata=full;odata.streaming=true", "application/json;odata.metadata=full;odata.streaming=false", "application/json;odata.metadata=full", "application/json;odata.metadata=none;odata.streaming=true", "application/json;odata.metadata=none;odata.streaming=false", "application/json;odata.metadata=none", "application/json;odata.streaming=true", "application/json;odata.streaming=false", "application/json", "application/xml", "text/plain", "application/octet-stream", "text/xml", "text/json"}
+	localVarHTTPHeaderAccepts := []string{}
 
 	// set Accept header
 	localVarHTTPHeaderAccept := selectHeaderAccept(localVarHTTPHeaderAccepts)
@@ -821,19 +746,19 @@ func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) ([]Upd
 	}
 	req, err := a.client.prepareRequest(r.ctx, localVarPath, localVarHTTPMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, formFiles)
 	if err != nil {
-		return localVarReturnValue, nil, err
+		return nil, err
 	}
 
 	localVarHTTPResponse, err := a.client.callAPI(req)
 	if err != nil || localVarHTTPResponse == nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	localVarBody, err := io.ReadAll(localVarHTTPResponse.Body)
 	localVarHTTPResponse.Body.Close()
 	localVarHTTPResponse.Body = io.NopCloser(bytes.NewBuffer(localVarBody))
 	if err != nil {
-		return localVarReturnValue, localVarHTTPResponse, err
+		return localVarHTTPResponse, err
 	}
 
 	if localVarHTTPResponse.StatusCode >= 300 {
@@ -841,17 +766,8 @@ func (a *UpdatesAPIService) UpdatesKey_2Execute(r ApiUpdatesKey_0Request) ([]Upd
 			body:  localVarBody,
 			error: localVarHTTPResponse.Status,
 		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
+		return localVarHTTPResponse, newErr
 	}
 
-	err = a.client.decode(&localVarReturnValue, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
-	if err != nil {
-		newErr := &GenericOpenAPIError{
-			body:  localVarBody,
-			error: err.Error(),
-		}
-		return localVarReturnValue, localVarHTTPResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHTTPResponse, nil
+	return localVarHTTPResponse, nil
 }

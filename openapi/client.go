@@ -48,7 +48,11 @@ type APIClient struct {
 
 	// API Services
 
+	CsafAPI *CsafAPIService
+
 	CvrfAPI *CvrfAPIService
+
+	MetadataAPI *MetadataAPIService
 
 	UpdatesAPI *UpdatesAPIService
 }
@@ -69,7 +73,9 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.common.client = c
 
 	// API Services
+	c.CsafAPI = (*CsafAPIService)(&c.common)
 	c.CvrfAPI = (*CvrfAPIService)(&c.common)
+	c.MetadataAPI = (*MetadataAPIService)(&c.common)
 	c.UpdatesAPI = (*UpdatesAPIService)(&c.common)
 
 	return c

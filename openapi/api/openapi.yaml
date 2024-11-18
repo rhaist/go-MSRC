@@ -5,6 +5,21 @@ info:
 servers:
 - url: /
 paths:
+  /csaf/{id}:
+    get:
+      parameters:
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          description: Success
+      tags:
+      - Csaf
   /cvrf/{id}:
     get:
       description: "Get detailed Microsoft security update, formatted according to\
@@ -49,6 +64,234 @@ paths:
       summary: Get security update details in CVRF format
       tags:
       - Cvrf
+  /./$metadata:
+    get:
+      operationId: ./$metadata
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+          description: Success
+      tags:
+      - Metadata
+  /$metadata:
+    get:
+      operationId: $metadata
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/IEdmModel'
+          description: Success
+      tags:
+      - Metadata
+  /.:
+    get:
+      operationId: ./
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+          description: Success
+      tags:
+      - Metadata
+  /:
+    get:
+      operationId: ""
+      responses:
+        "200":
+          content:
+            application/json;odata.metadata=minimal;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=minimal;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=minimal:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=full:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.metadata=none:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.streaming=true:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json;odata.streaming=false:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            application/octet-stream:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ODataServiceDocument'
+          description: Success
+      tags:
+      - Metadata
   /updates:
     get:
       description: "Get a list of all Microsoft security updates. Each includes a\
@@ -67,92 +310,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get all security update summaries
       tags:
@@ -176,92 +333,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get all security update summaries
       tags:
@@ -285,92 +356,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get all security update summaries
       tags:
@@ -403,92 +388,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get security update summaries by key
       tags:
@@ -521,92 +420,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get security update summaries by key
       tags:
@@ -640,92 +453,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get security update summaries by key
       tags:
@@ -759,92 +486,6 @@ paths:
         style: form
       responses:
         "200":
-          content:
-            application/json;odata.metadata=minimal;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=minimal:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=full:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.metadata=none:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=true:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json;odata.streaming=false:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/plain:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            application/octet-stream:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/xml:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
-            text/json:
-              schema:
-                items:
-                  $ref: '#/components/schemas/Update'
-                type: array
           description: Success
       summary: Get security update summaries by key
       tags:
@@ -1823,6 +1464,17 @@ components:
       type: object
     IEdmEntityContainer:
       additionalProperties: false
+      example:
+        elements:
+        - container: null
+          containerElementKind: None
+          name: name
+        - container: null
+          containerElementKind: None
+          name: name
+        namespace: namespace
+        name: name
+        schemaElementKind: null
       properties:
         elements:
           items:
@@ -1843,6 +1495,10 @@ components:
       type: object
     IEdmEntityContainerElement:
       additionalProperties: false
+      example:
+        container: null
+        containerElementKind: None
+        name: name
       properties:
         containerElementKind:
           $ref: '#/components/schemas/EdmContainerElementKind'
@@ -1855,12 +1511,69 @@ components:
       type: object
     IEdmExpression:
       additionalProperties: false
+      example:
+        expressionKind: None
       properties:
         expressionKind:
           $ref: '#/components/schemas/EdmExpressionKind'
       type: object
     IEdmModel:
       additionalProperties: false
+      example:
+        declaredNamespaces:
+        - declaredNamespaces
+        - declaredNamespaces
+        vocabularyAnnotations:
+        - qualifier: qualifier
+          term:
+            defaultValue: defaultValue
+            namespace: namespace
+            name: name
+            appliesTo: appliesTo
+            schemaElementKind: null
+            type:
+              isNullable: true
+              definition:
+                typeKind: None
+          value:
+            expressionKind: None
+          target: "{}"
+        - qualifier: qualifier
+          term:
+            defaultValue: defaultValue
+            namespace: namespace
+            name: name
+            appliesTo: appliesTo
+            schemaElementKind: null
+            type:
+              isNullable: true
+              definition:
+                typeKind: None
+          value:
+            expressionKind: None
+          target: "{}"
+        referencedModels:
+        - null
+        - null
+        directValueAnnotationsManager: "{}"
+        schemaElements:
+        - namespace: namespace
+          name: name
+          schemaElementKind: None
+        - namespace: namespace
+          name: name
+          schemaElementKind: None
+        entityContainer:
+          elements:
+          - container: null
+            containerElementKind: None
+            name: name
+          - container: null
+            containerElementKind: None
+            name: name
+          namespace: namespace
+          name: name
+          schemaElementKind: null
       properties:
         schemaElements:
           items:
@@ -1985,6 +1698,10 @@ components:
       type: object
     IEdmSchemaElement:
       additionalProperties: false
+      example:
+        namespace: namespace
+        name: name
+        schemaElementKind: None
       properties:
         schemaElementKind:
           $ref: '#/components/schemas/EdmSchemaElementKind'
@@ -2037,6 +1754,16 @@ components:
       type: object
     IEdmTerm:
       additionalProperties: false
+      example:
+        defaultValue: defaultValue
+        namespace: namespace
+        name: name
+        appliesTo: appliesTo
+        schemaElementKind: null
+        type:
+          isNullable: true
+          definition:
+            typeKind: None
       properties:
         type:
           $ref: '#/components/schemas/IEdmTypeReference'
@@ -2061,12 +1788,18 @@ components:
       type: object
     IEdmType:
       additionalProperties: false
+      example:
+        typeKind: None
       properties:
         typeKind:
           $ref: '#/components/schemas/EdmTypeKind'
       type: object
     IEdmTypeReference:
       additionalProperties: false
+      example:
+        isNullable: true
+        definition:
+          typeKind: None
       properties:
         isNullable:
           readOnly: true
@@ -2079,6 +1812,21 @@ components:
       type: object
     IEdmVocabularyAnnotation:
       additionalProperties: false
+      example:
+        qualifier: qualifier
+        term:
+          defaultValue: defaultValue
+          namespace: namespace
+          name: name
+          appliesTo: appliesTo
+          schemaElementKind: null
+          type:
+            isNullable: true
+            definition:
+              typeKind: None
+        value:
+          expressionKind: None
+        target: "{}"
       properties:
         qualifier:
           nullable: true
@@ -2534,6 +2282,50 @@ components:
           readOnly: true
           type: integer
       type: object
+    ODataEntitySetInfo:
+      additionalProperties: false
+      example:
+        name: name
+        typeAnnotation:
+          typeName: typeName
+        title: title
+        url: https://openapi-generator.tech
+      properties:
+        typeAnnotation:
+          $ref: '#/components/schemas/ODataTypeAnnotation'
+        url:
+          format: uri
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+      type: object
+    ODataFunctionImportInfo:
+      additionalProperties: false
+      example:
+        name: name
+        typeAnnotation:
+          typeName: typeName
+        title: title
+        url: https://openapi-generator.tech
+      properties:
+        typeAnnotation:
+          $ref: '#/components/schemas/ODataTypeAnnotation'
+        url:
+          format: uri
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+      type: object
     ODataPathSegment:
       additionalProperties: false
       properties:
@@ -2617,6 +2409,95 @@ components:
           readOnly: true
           type: string
         deltaToken:
+          nullable: true
+          readOnly: true
+          type: string
+      type: object
+    ODataServiceDocument:
+      additionalProperties: false
+      example:
+        functionImports:
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+        typeAnnotation:
+          typeName: typeName
+        singletons:
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+        entitySets:
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+        - name: name
+          typeAnnotation:
+            typeName: typeName
+          title: title
+          url: https://openapi-generator.tech
+      properties:
+        typeAnnotation:
+          $ref: '#/components/schemas/ODataTypeAnnotation'
+        entitySets:
+          items:
+            $ref: '#/components/schemas/ODataEntitySetInfo'
+          nullable: true
+          type: array
+        singletons:
+          items:
+            $ref: '#/components/schemas/ODataSingletonInfo'
+          nullable: true
+          type: array
+        functionImports:
+          items:
+            $ref: '#/components/schemas/ODataFunctionImportInfo'
+          nullable: true
+          type: array
+      type: object
+    ODataSingletonInfo:
+      additionalProperties: false
+      example:
+        name: name
+        typeAnnotation:
+          typeName: typeName
+        title: title
+        url: https://openapi-generator.tech
+      properties:
+        typeAnnotation:
+          $ref: '#/components/schemas/ODataTypeAnnotation'
+        url:
+          format: uri
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+      type: object
+    ODataTypeAnnotation:
+      additionalProperties: false
+      example:
+        typeName: typeName
+      properties:
+        typeName:
           nullable: true
           readOnly: true
           type: string
@@ -3661,46 +3542,6 @@ components:
           $ref: '#/components/schemas/Type'
         value:
           nullable: true
-      type: object
-    Update:
-      additionalProperties: false
-      example:
-        severity: severity
-        currentReleaseDate: 2000-01-23T04:56:07.000+00:00
-        cvrfUrl: cvrfUrl
-        alias: alias
-        id: id
-        documentTitle: documentTitle
-        initialReleaseDate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        id:
-          minLength: 1
-          type: string
-        alias:
-          minLength: 1
-          type: string
-        documentTitle:
-          minLength: 1
-          type: string
-        severity:
-          nullable: true
-          type: string
-        initialReleaseDate:
-          format: date-time
-          type: string
-        currentReleaseDate:
-          format: date-time
-          type: string
-        cvrfUrl:
-          minLength: 1
-          type: string
-      required:
-      - alias
-      - currentReleaseDate
-      - cvrfUrl
-      - documentTitle
-      - id
-      - initialReleaseDate
       type: object
     UpdateETag:
       additionalProperties: false
