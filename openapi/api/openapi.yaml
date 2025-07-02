@@ -72,52 +72,52 @@ paths:
           content:
             application/json;odata.metadata=minimal;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=minimal;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=minimal:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/xml:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             text/plain:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/octet-stream:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             text/json:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
           description: Success
       tags:
       - Metadata
@@ -129,52 +129,52 @@ paths:
           content:
             application/json;odata.metadata=minimal;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=minimal;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=minimal:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=full:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.metadata=none:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/json:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/xml:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             text/plain:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             application/octet-stream:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
             text/json:
               schema:
-                $ref: '#/components/schemas/IEdmModel'
+                $ref: "#/components/schemas/IEdmModel"
           description: Success
       tags:
       - Metadata
@@ -186,52 +186,52 @@ paths:
           content:
             application/json;odata.metadata=minimal;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=minimal;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=minimal:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/xml:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             text/plain:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/octet-stream:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             text/json:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
           description: Success
       tags:
       - Metadata
@@ -243,52 +243,52 @@ paths:
           content:
             application/json;odata.metadata=minimal;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=minimal;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=minimal:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=full:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.metadata=none:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.streaming=true:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json;odata.streaming=false:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/json:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/xml:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             text/plain:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             application/octet-stream:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
             text/json:
               schema:
-                $ref: '#/components/schemas/ODataServiceDocument'
+                $ref: "#/components/schemas/ODataServiceDocument"
           description: Success
       tags:
       - Metadata
@@ -306,7 +306,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -329,7 +329,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -352,7 +352,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -384,7 +384,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -416,7 +416,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -449,7 +449,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -482,7 +482,7 @@ paths:
         name: options
         required: false
         schema:
-          $ref: '#/components/schemas/UpdateODataQueryOptions'
+          $ref: "#/components/schemas/UpdateODataQueryOptions"
         style: form
       responses:
         "200":
@@ -531,7 +531,7 @@ components:
       properties:
         transformations:
           items:
-            $ref: '#/components/schemas/TransformationNode'
+            $ref: "#/components/schemas/TransformationNode"
           nullable: true
           type: array
       type: object
@@ -539,11 +539,11 @@ components:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         resultClrType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         applyClause:
-          $ref: '#/components/schemas/ApplyClause'
+          $ref: "#/components/schemas/ApplyClause"
         rawValue:
           nullable: true
           type: string
@@ -552,7 +552,7 @@ components:
       additionalProperties: false
       properties:
         oid:
-          $ref: '#/components/schemas/Oid'
+          $ref: "#/components/schemas/Oid"
         rawData:
           format: byte
           nullable: true
@@ -563,13 +563,13 @@ components:
       properties:
         definedTypes:
           items:
-            $ref: '#/components/schemas/TypeInfo'
+            $ref: "#/components/schemas/TypeInfo"
           nullable: true
           readOnly: true
           type: array
         exportedTypes:
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: "#/components/schemas/Type"
           nullable: true
           readOnly: true
           type: array
@@ -579,7 +579,7 @@ components:
           readOnly: true
           type: string
         entryPoint:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
         fullName:
           nullable: true
           readOnly: true
@@ -606,7 +606,7 @@ components:
           type: boolean
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -616,10 +616,10 @@ components:
           readOnly: true
           type: string
         manifestModule:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         modules:
           items:
-            $ref: '#/components/schemas/Module'
+            $ref: "#/components/schemas/Module"
           nullable: true
           readOnly: true
           type: array
@@ -632,7 +632,7 @@ components:
           readOnly: true
           type: integer
         securityRuleSet:
-          $ref: '#/components/schemas/SecurityRuleSet'
+          $ref: "#/components/schemas/SecurityRuleSet"
       type: object
     AsymmetricAlgorithm:
       additionalProperties: false
@@ -642,7 +642,7 @@ components:
           type: integer
         legalKeySizes:
           items:
-            $ref: '#/components/schemas/KeySizes'
+            $ref: "#/components/schemas/KeySizes"
           nullable: true
           readOnly: true
           type: array
@@ -666,7 +666,7 @@ components:
           readOnly: true
           type: boolean
         span:
-          $ref: '#/components/schemas/ByteReadOnlySpan'
+          $ref: "#/components/schemas/ByteReadOnlySpan"
       type: object
     ByteReadOnlySpan:
       additionalProperties: false
@@ -697,7 +697,7 @@ components:
           readOnly: true
           type: boolean
         waitHandle:
-          $ref: '#/components/schemas/WaitHandle'
+          $ref: "#/components/schemas/WaitHandle"
       type: object
     Claim:
       additionalProperties: false
@@ -717,7 +717,7 @@ components:
           readOnly: true
           type: object
         subject:
-          $ref: '#/components/schemas/ClaimsIdentity'
+          $ref: "#/components/schemas/ClaimsIdentity"
         type:
           nullable: true
           readOnly: true
@@ -742,12 +742,12 @@ components:
           readOnly: true
           type: boolean
         actor:
-          $ref: '#/components/schemas/ClaimsIdentity'
+          $ref: "#/components/schemas/ClaimsIdentity"
         bootstrapContext:
           nullable: true
         claims:
           items:
-            $ref: '#/components/schemas/Claim'
+            $ref: "#/components/schemas/Claim"
           nullable: true
           readOnly: true
           type: array
@@ -772,25 +772,25 @@ components:
       properties:
         claims:
           items:
-            $ref: '#/components/schemas/Claim'
+            $ref: "#/components/schemas/Claim"
           nullable: true
           readOnly: true
           type: array
         identities:
           items:
-            $ref: '#/components/schemas/ClaimsIdentity'
+            $ref: "#/components/schemas/ClaimsIdentity"
           nullable: true
           readOnly: true
           type: array
         identity:
-          $ref: '#/components/schemas/IIdentity'
+          $ref: "#/components/schemas/IIdentity"
       type: object
     ComputeClause:
       additionalProperties: false
       properties:
         computedItems:
           items:
-            $ref: '#/components/schemas/ComputeExpression'
+            $ref: "#/components/schemas/ComputeExpression"
           nullable: true
           type: array
       type: object
@@ -798,22 +798,22 @@ components:
       additionalProperties: false
       properties:
         expression:
-          $ref: '#/components/schemas/SingleValueNode'
+          $ref: "#/components/schemas/SingleValueNode"
         alias:
           nullable: true
           type: string
         typeReference:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
       type: object
     ComputeQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         resultClrType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         computeClause:
-          $ref: '#/components/schemas/ComputeClause'
+          $ref: "#/components/schemas/ComputeClause"
         rawValue:
           nullable: true
           type: string
@@ -828,17 +828,17 @@ components:
           nullable: true
           type: string
         remoteIpAddress:
-          $ref: '#/components/schemas/IPAddress'
+          $ref: "#/components/schemas/IPAddress"
         remotePort:
           format: int32
           type: integer
         localIpAddress:
-          $ref: '#/components/schemas/IPAddress'
+          $ref: "#/components/schemas/IPAddress"
         localPort:
           format: int32
           type: integer
         clientCertificate:
-          $ref: '#/components/schemas/X509Certificate2'
+          $ref: "#/components/schemas/X509Certificate2"
       type: object
     ConstructorInfo:
       additionalProperties: false
@@ -848,14 +848,14 @@ components:
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -867,11 +867,11 @@ components:
           readOnly: true
           type: integer
         attributes:
-          $ref: '#/components/schemas/MethodAttributes'
+          $ref: "#/components/schemas/MethodAttributes"
         methodImplementationFlags:
-          $ref: '#/components/schemas/MethodImplAttributes'
+          $ref: "#/components/schemas/MethodImplAttributes"
         callingConvention:
-          $ref: '#/components/schemas/CallingConventions'
+          $ref: "#/components/schemas/CallingConventions"
         isAbstract:
           readOnly: true
           type: boolean
@@ -924,7 +924,7 @@ components:
           readOnly: true
           type: boolean
         methodHandle:
-          $ref: '#/components/schemas/RuntimeMethodHandle'
+          $ref: "#/components/schemas/RuntimeMethodHandle"
         isSecurityCritical:
           readOnly: true
           type: boolean
@@ -935,13 +935,13 @@ components:
           readOnly: true
           type: boolean
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
       type: object
     CountQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         rawValue:
           nullable: true
           type: string
@@ -956,18 +956,18 @@ components:
       additionalProperties: false
       properties:
         attributeType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         constructor:
-          $ref: '#/components/schemas/ConstructorInfo'
+          $ref: "#/components/schemas/ConstructorInfo"
         constructorArguments:
           items:
-            $ref: '#/components/schemas/CustomAttributeTypedArgument'
+            $ref: "#/components/schemas/CustomAttributeTypedArgument"
           nullable: true
           readOnly: true
           type: array
         namedArguments:
           items:
-            $ref: '#/components/schemas/CustomAttributeNamedArgument'
+            $ref: "#/components/schemas/CustomAttributeNamedArgument"
           nullable: true
           readOnly: true
           type: array
@@ -976,9 +976,9 @@ components:
       additionalProperties: false
       properties:
         memberInfo:
-          $ref: '#/components/schemas/MemberInfo'
+          $ref: "#/components/schemas/MemberInfo"
         typedValue:
-          $ref: '#/components/schemas/CustomAttributeTypedArgument'
+          $ref: "#/components/schemas/CustomAttributeTypedArgument"
         memberName:
           nullable: true
           readOnly: true
@@ -991,7 +991,7 @@ components:
       additionalProperties: false
       properties:
         argumentType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         value:
           nullable: true
       type: object
@@ -1021,7 +1021,7 @@ components:
         isWellFormed:
           type: boolean
         entityType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isAny:
           type: boolean
         isIfNoneMatch:
@@ -1079,9 +1079,9 @@ components:
       additionalProperties: false
       properties:
         dependentProperty:
-          $ref: '#/components/schemas/IEdmStructuralProperty'
+          $ref: "#/components/schemas/IEdmStructuralProperty"
         principalProperty:
-          $ref: '#/components/schemas/IEdmStructuralProperty'
+          $ref: "#/components/schemas/IEdmStructuralProperty"
       type: object
     EdmSchemaElementKind:
       enum:
@@ -1119,14 +1119,14 @@ components:
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -1138,23 +1138,23 @@ components:
           readOnly: true
           type: integer
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         attributes:
-          $ref: '#/components/schemas/EventAttributes'
+          $ref: "#/components/schemas/EventAttributes"
         isSpecialName:
           readOnly: true
           type: boolean
         addMethod:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
         removeMethod:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
         raiseMethod:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
         isMulticast:
           readOnly: true
           type: boolean
         eventHandlerType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
       type: object
     FieldAttributes:
       enum:
@@ -1186,14 +1186,14 @@ components:
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -1205,11 +1205,11 @@ components:
           readOnly: true
           type: integer
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         attributes:
-          $ref: '#/components/schemas/FieldAttributes'
+          $ref: "#/components/schemas/FieldAttributes"
         fieldType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isInitOnly:
           readOnly: true
           type: boolean
@@ -1257,30 +1257,30 @@ components:
           readOnly: true
           type: boolean
         fieldHandle:
-          $ref: '#/components/schemas/RuntimeFieldHandle'
+          $ref: "#/components/schemas/RuntimeFieldHandle"
       type: object
     FilterClause:
       additionalProperties: false
       properties:
         expression:
-          $ref: '#/components/schemas/SingleValueNode'
+          $ref: "#/components/schemas/SingleValueNode"
         rangeVariable:
-          $ref: '#/components/schemas/RangeVariable'
+          $ref: "#/components/schemas/RangeVariable"
         itemType:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
       type: object
     FilterQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         validator:
           additionalProperties: false
           type: object
         compute:
-          $ref: '#/components/schemas/ComputeQueryOption'
+          $ref: "#/components/schemas/ComputeQueryOption"
         filterClause:
-          $ref: '#/components/schemas/FilterClause'
+          $ref: "#/components/schemas/FilterClause"
         rawValue:
           nullable: true
           type: string
@@ -1320,20 +1320,20 @@ components:
       properties:
         features:
           items:
-            $ref: '#/components/schemas/TypeObjectKeyValuePair'
+            $ref: "#/components/schemas/TypeObjectKeyValuePair"
           nullable: true
           readOnly: true
           type: array
         request:
-          $ref: '#/components/schemas/HttpRequest'
+          $ref: "#/components/schemas/HttpRequest"
         response:
-          $ref: '#/components/schemas/HttpResponse'
+          $ref: "#/components/schemas/HttpResponse"
         connection:
-          $ref: '#/components/schemas/ConnectionInfo'
+          $ref: "#/components/schemas/ConnectionInfo"
         webSockets:
-          $ref: '#/components/schemas/WebSocketManager'
+          $ref: "#/components/schemas/WebSocketManager"
         user:
-          $ref: '#/components/schemas/ClaimsPrincipal'
+          $ref: "#/components/schemas/ClaimsPrincipal"
         items:
           additionalProperties: {}
           nullable: true
@@ -1342,18 +1342,18 @@ components:
           additionalProperties: false
           type: object
         requestAborted:
-          $ref: '#/components/schemas/CancellationToken'
+          $ref: "#/components/schemas/CancellationToken"
         traceIdentifier:
           nullable: true
           type: string
         session:
-          $ref: '#/components/schemas/ISession'
+          $ref: "#/components/schemas/ISession"
       type: object
     HttpRequest:
       additionalProperties: false
       properties:
         httpContext:
-          $ref: '#/components/schemas/HttpContext'
+          $ref: "#/components/schemas/HttpContext"
         method:
           nullable: true
           type: string
@@ -1363,16 +1363,16 @@ components:
         isHttps:
           type: boolean
         host:
-          $ref: '#/components/schemas/HostString'
+          $ref: "#/components/schemas/HostString"
         pathBase:
-          $ref: '#/components/schemas/PathString'
+          $ref: "#/components/schemas/PathString"
         path:
-          $ref: '#/components/schemas/PathString'
+          $ref: "#/components/schemas/PathString"
         queryString:
-          $ref: '#/components/schemas/QueryString'
+          $ref: "#/components/schemas/QueryString"
         query:
           items:
-            $ref: '#/components/schemas/StringStringValuesKeyValuePair'
+            $ref: "#/components/schemas/StringStringValuesKeyValuePair"
           nullable: true
           type: array
         protocol:
@@ -1388,7 +1388,7 @@ components:
           type: object
         cookies:
           items:
-            $ref: '#/components/schemas/StringStringKeyValuePair'
+            $ref: "#/components/schemas/StringStringKeyValuePair"
           nullable: true
           type: array
         contentLength:
@@ -1399,7 +1399,7 @@ components:
           nullable: true
           type: string
         body:
-          $ref: '#/components/schemas/Stream'
+          $ref: "#/components/schemas/Stream"
         bodyReader:
           additionalProperties: false
           type: object
@@ -1408,7 +1408,7 @@ components:
           type: boolean
         form:
           items:
-            $ref: '#/components/schemas/StringStringValuesKeyValuePair'
+            $ref: "#/components/schemas/StringStringValuesKeyValuePair"
           nullable: true
           type: array
         routeValues:
@@ -1420,7 +1420,7 @@ components:
       additionalProperties: false
       properties:
         httpContext:
-          $ref: '#/components/schemas/HttpContext'
+          $ref: "#/components/schemas/HttpContext"
         statusCode:
           format: int32
           type: integer
@@ -1433,9 +1433,9 @@ components:
           readOnly: true
           type: object
         body:
-          $ref: '#/components/schemas/Stream'
+          $ref: "#/components/schemas/Stream"
         bodyWriter:
-          $ref: '#/components/schemas/PipeWriter'
+          $ref: "#/components/schemas/PipeWriter"
         contentLength:
           format: int64
           nullable: true
@@ -1478,12 +1478,12 @@ components:
       properties:
         elements:
           items:
-            $ref: '#/components/schemas/IEdmEntityContainerElement'
+            $ref: "#/components/schemas/IEdmEntityContainerElement"
           nullable: true
           readOnly: true
           type: array
         schemaElementKind:
-          $ref: '#/components/schemas/EdmSchemaElementKind'
+          $ref: "#/components/schemas/EdmSchemaElementKind"
         namespace:
           nullable: true
           readOnly: true
@@ -1501,9 +1501,9 @@ components:
         name: name
       properties:
         containerElementKind:
-          $ref: '#/components/schemas/EdmContainerElementKind'
+          $ref: "#/components/schemas/EdmContainerElementKind"
         container:
-          $ref: '#/components/schemas/IEdmEntityContainer'
+          $ref: "#/components/schemas/IEdmEntityContainer"
         name:
           nullable: true
           readOnly: true
@@ -1515,7 +1515,7 @@ components:
         expressionKind: None
       properties:
         expressionKind:
-          $ref: '#/components/schemas/EdmExpressionKind'
+          $ref: "#/components/schemas/EdmExpressionKind"
       type: object
     IEdmModel:
       additionalProperties: false
@@ -1577,19 +1577,19 @@ components:
       properties:
         schemaElements:
           items:
-            $ref: '#/components/schemas/IEdmSchemaElement'
+            $ref: "#/components/schemas/IEdmSchemaElement"
           nullable: true
           readOnly: true
           type: array
         vocabularyAnnotations:
           items:
-            $ref: '#/components/schemas/IEdmVocabularyAnnotation'
+            $ref: "#/components/schemas/IEdmVocabularyAnnotation"
           nullable: true
           readOnly: true
           type: array
         referencedModels:
           items:
-            $ref: '#/components/schemas/IEdmModel'
+            $ref: "#/components/schemas/IEdmModel"
           nullable: true
           readOnly: true
           type: array
@@ -1603,26 +1603,26 @@ components:
           additionalProperties: false
           type: object
         entityContainer:
-          $ref: '#/components/schemas/IEdmEntityContainer'
+          $ref: "#/components/schemas/IEdmEntityContainer"
       type: object
     IEdmNavigationProperty:
       additionalProperties: false
       properties:
         partner:
-          $ref: '#/components/schemas/IEdmNavigationProperty'
+          $ref: "#/components/schemas/IEdmNavigationProperty"
         onDelete:
-          $ref: '#/components/schemas/EdmOnDeleteAction'
+          $ref: "#/components/schemas/EdmOnDeleteAction"
         containsTarget:
           readOnly: true
           type: boolean
         referentialConstraint:
-          $ref: '#/components/schemas/IEdmReferentialConstraint'
+          $ref: "#/components/schemas/IEdmReferentialConstraint"
         propertyKind:
-          $ref: '#/components/schemas/EdmPropertyKind'
+          $ref: "#/components/schemas/EdmPropertyKind"
         type:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         declaringType:
-          $ref: '#/components/schemas/IEdmStructuredType'
+          $ref: "#/components/schemas/IEdmStructuredType"
         name:
           nullable: true
           readOnly: true
@@ -1632,25 +1632,25 @@ components:
       additionalProperties: false
       properties:
         navigationProperty:
-          $ref: '#/components/schemas/IEdmNavigationProperty'
+          $ref: "#/components/schemas/IEdmNavigationProperty"
         target:
-          $ref: '#/components/schemas/IEdmNavigationSource'
+          $ref: "#/components/schemas/IEdmNavigationSource"
         path:
-          $ref: '#/components/schemas/IEdmPathExpression'
+          $ref: "#/components/schemas/IEdmPathExpression"
       type: object
     IEdmNavigationSource:
       additionalProperties: false
       properties:
         navigationPropertyBindings:
           items:
-            $ref: '#/components/schemas/IEdmNavigationPropertyBinding'
+            $ref: "#/components/schemas/IEdmNavigationPropertyBinding"
           nullable: true
           readOnly: true
           type: array
         path:
-          $ref: '#/components/schemas/IEdmPathExpression'
+          $ref: "#/components/schemas/IEdmPathExpression"
         type:
-          $ref: '#/components/schemas/IEdmType'
+          $ref: "#/components/schemas/IEdmType"
         name:
           nullable: true
           readOnly: true
@@ -1670,17 +1670,17 @@ components:
           readOnly: true
           type: string
         expressionKind:
-          $ref: '#/components/schemas/EdmExpressionKind'
+          $ref: "#/components/schemas/EdmExpressionKind"
       type: object
     IEdmProperty:
       additionalProperties: false
       properties:
         propertyKind:
-          $ref: '#/components/schemas/EdmPropertyKind'
+          $ref: "#/components/schemas/EdmPropertyKind"
         type:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         declaringType:
-          $ref: '#/components/schemas/IEdmStructuredType'
+          $ref: "#/components/schemas/IEdmStructuredType"
         name:
           nullable: true
           readOnly: true
@@ -1691,7 +1691,7 @@ components:
       properties:
         propertyPairs:
           items:
-            $ref: '#/components/schemas/EdmReferentialConstraintPropertyPair'
+            $ref: "#/components/schemas/EdmReferentialConstraintPropertyPair"
           nullable: true
           readOnly: true
           type: array
@@ -1704,7 +1704,7 @@ components:
         schemaElementKind: None
       properties:
         schemaElementKind:
-          $ref: '#/components/schemas/EdmSchemaElementKind'
+          $ref: "#/components/schemas/EdmSchemaElementKind"
         namespace:
           nullable: true
           readOnly: true
@@ -1722,11 +1722,11 @@ components:
           readOnly: true
           type: string
         propertyKind:
-          $ref: '#/components/schemas/EdmPropertyKind'
+          $ref: "#/components/schemas/EdmPropertyKind"
         type:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         declaringType:
-          $ref: '#/components/schemas/IEdmStructuredType'
+          $ref: "#/components/schemas/IEdmStructuredType"
         name:
           nullable: true
           readOnly: true
@@ -1742,15 +1742,15 @@ components:
           readOnly: true
           type: boolean
         baseType:
-          $ref: '#/components/schemas/IEdmStructuredType'
+          $ref: "#/components/schemas/IEdmStructuredType"
         declaredProperties:
           items:
-            $ref: '#/components/schemas/IEdmProperty'
+            $ref: "#/components/schemas/IEdmProperty"
           nullable: true
           readOnly: true
           type: array
         typeKind:
-          $ref: '#/components/schemas/EdmTypeKind'
+          $ref: "#/components/schemas/EdmTypeKind"
       type: object
     IEdmTerm:
       additionalProperties: false
@@ -1766,7 +1766,7 @@ components:
             typeKind: None
       properties:
         type:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         appliesTo:
           nullable: true
           readOnly: true
@@ -1776,7 +1776,7 @@ components:
           readOnly: true
           type: string
         schemaElementKind:
-          $ref: '#/components/schemas/EdmSchemaElementKind'
+          $ref: "#/components/schemas/EdmSchemaElementKind"
         namespace:
           nullable: true
           readOnly: true
@@ -1792,7 +1792,7 @@ components:
         typeKind: None
       properties:
         typeKind:
-          $ref: '#/components/schemas/EdmTypeKind'
+          $ref: "#/components/schemas/EdmTypeKind"
       type: object
     IEdmTypeReference:
       additionalProperties: false
@@ -1805,7 +1805,7 @@ components:
           readOnly: true
           type: boolean
         definition:
-          $ref: '#/components/schemas/IEdmType'
+          $ref: "#/components/schemas/IEdmType"
       type: object
     IEdmVocabularyAnnotatable:
       additionalProperties: false
@@ -1833,12 +1833,12 @@ components:
           readOnly: true
           type: string
         term:
-          $ref: '#/components/schemas/IEdmTerm'
+          $ref: "#/components/schemas/IEdmTerm"
         target:
           additionalProperties: false
           type: object
         value:
-          $ref: '#/components/schemas/IEdmExpression'
+          $ref: "#/components/schemas/IEdmExpression"
       type: object
     IFilterQueryValidator:
       additionalProperties: false
@@ -1868,7 +1868,7 @@ components:
       additionalProperties: false
       properties:
         addressFamily:
-          $ref: '#/components/schemas/AddressFamily'
+          $ref: "#/components/schemas/AddressFamily"
         scopeId:
           format: int64
           type: integer
@@ -1956,20 +1956,20 @@ components:
       additionalProperties: false
       properties:
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         name:
           nullable: true
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2022,20 +2022,20 @@ components:
       additionalProperties: false
       properties:
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         name:
           nullable: true
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2047,11 +2047,11 @@ components:
           readOnly: true
           type: integer
         attributes:
-          $ref: '#/components/schemas/MethodAttributes'
+          $ref: "#/components/schemas/MethodAttributes"
         methodImplementationFlags:
-          $ref: '#/components/schemas/MethodImplAttributes'
+          $ref: "#/components/schemas/MethodImplAttributes"
         callingConvention:
-          $ref: '#/components/schemas/CallingConventions'
+          $ref: "#/components/schemas/CallingConventions"
         isAbstract:
           readOnly: true
           type: boolean
@@ -2104,7 +2104,7 @@ components:
           readOnly: true
           type: boolean
         methodHandle:
-          $ref: '#/components/schemas/RuntimeMethodHandle'
+          $ref: "#/components/schemas/RuntimeMethodHandle"
         isSecurityCritical:
           readOnly: true
           type: boolean
@@ -2140,14 +2140,14 @@ components:
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2159,11 +2159,11 @@ components:
           readOnly: true
           type: integer
         attributes:
-          $ref: '#/components/schemas/MethodAttributes'
+          $ref: "#/components/schemas/MethodAttributes"
         methodImplementationFlags:
-          $ref: '#/components/schemas/MethodImplAttributes'
+          $ref: "#/components/schemas/MethodImplAttributes"
         callingConvention:
-          $ref: '#/components/schemas/CallingConventions'
+          $ref: "#/components/schemas/CallingConventions"
         isAbstract:
           readOnly: true
           type: boolean
@@ -2216,7 +2216,7 @@ components:
           readOnly: true
           type: boolean
         methodHandle:
-          $ref: '#/components/schemas/RuntimeMethodHandle'
+          $ref: "#/components/schemas/RuntimeMethodHandle"
         isSecurityCritical:
           readOnly: true
           type: boolean
@@ -2227,11 +2227,11 @@ components:
           readOnly: true
           type: boolean
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         returnParameter:
-          $ref: '#/components/schemas/ParameterInfo'
+          $ref: "#/components/schemas/ParameterInfo"
         returnType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         returnTypeCustomAttributes:
           additionalProperties: false
           type: object
@@ -2240,7 +2240,7 @@ components:
       additionalProperties: false
       properties:
         assembly:
-          $ref: '#/components/schemas/Assembly'
+          $ref: "#/components/schemas/Assembly"
         fullyQualifiedName:
           nullable: true
           readOnly: true
@@ -2262,10 +2262,10 @@ components:
           readOnly: true
           type: string
         moduleHandle:
-          $ref: '#/components/schemas/ModuleHandle'
+          $ref: "#/components/schemas/ModuleHandle"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2292,7 +2292,7 @@ components:
         url: https://openapi-generator.tech
       properties:
         typeAnnotation:
-          $ref: '#/components/schemas/ODataTypeAnnotation'
+          $ref: "#/components/schemas/ODataTypeAnnotation"
         url:
           format: uri
           nullable: true
@@ -2314,7 +2314,7 @@ components:
         url: https://openapi-generator.tech
       properties:
         typeAnnotation:
-          $ref: '#/components/schemas/ODataTypeAnnotation'
+          $ref: "#/components/schemas/ODataTypeAnnotation"
         url:
           format: uri
           nullable: true
@@ -2330,7 +2330,7 @@ components:
       additionalProperties: false
       properties:
         edmType:
-          $ref: '#/components/schemas/IEdmType'
+          $ref: "#/components/schemas/IEdmType"
         identifier:
           nullable: true
           type: string
@@ -2339,18 +2339,18 @@ components:
       additionalProperties: false
       properties:
         defaultQueryConfigurations:
-          $ref: '#/components/schemas/DefaultQueryConfigurations'
+          $ref: "#/components/schemas/DefaultQueryConfigurations"
         model:
-          $ref: '#/components/schemas/IEdmModel'
+          $ref: "#/components/schemas/IEdmModel"
         elementType:
-          $ref: '#/components/schemas/IEdmType'
+          $ref: "#/components/schemas/IEdmType"
         navigationSource:
-          $ref: '#/components/schemas/IEdmNavigationSource'
+          $ref: "#/components/schemas/IEdmNavigationSource"
         elementClrType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         path:
           items:
-            $ref: '#/components/schemas/ODataPathSegment'
+            $ref: "#/components/schemas/ODataPathSegment"
           nullable: true
           type: array
         requestContainer:
@@ -2453,20 +2453,20 @@ components:
           url: https://openapi-generator.tech
       properties:
         typeAnnotation:
-          $ref: '#/components/schemas/ODataTypeAnnotation'
+          $ref: "#/components/schemas/ODataTypeAnnotation"
         entitySets:
           items:
-            $ref: '#/components/schemas/ODataEntitySetInfo'
+            $ref: "#/components/schemas/ODataEntitySetInfo"
           nullable: true
           type: array
         singletons:
           items:
-            $ref: '#/components/schemas/ODataSingletonInfo'
+            $ref: "#/components/schemas/ODataSingletonInfo"
           nullable: true
           type: array
         functionImports:
           items:
-            $ref: '#/components/schemas/ODataFunctionImportInfo'
+            $ref: "#/components/schemas/ODataFunctionImportInfo"
           nullable: true
           type: array
       type: object
@@ -2480,7 +2480,7 @@ components:
         url: https://openapi-generator.tech
       properties:
         typeAnnotation:
-          $ref: '#/components/schemas/ODataTypeAnnotation'
+          $ref: "#/components/schemas/ODataTypeAnnotation"
         url:
           format: uri
           nullable: true
@@ -2516,15 +2516,15 @@ components:
       additionalProperties: false
       properties:
         thenBy:
-          $ref: '#/components/schemas/OrderByClause'
+          $ref: "#/components/schemas/OrderByClause"
         expression:
-          $ref: '#/components/schemas/SingleValueNode'
+          $ref: "#/components/schemas/SingleValueNode"
         direction:
-          $ref: '#/components/schemas/OrderByDirection'
+          $ref: "#/components/schemas/OrderByDirection"
         rangeVariable:
-          $ref: '#/components/schemas/RangeVariable'
+          $ref: "#/components/schemas/RangeVariable"
         itemType:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
       type: object
     OrderByDirection:
       enum:
@@ -2535,16 +2535,16 @@ components:
       additionalProperties: false
       properties:
         direction:
-          $ref: '#/components/schemas/OrderByDirection'
+          $ref: "#/components/schemas/OrderByDirection"
       type: object
     OrderByQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         orderByNodes:
           items:
-            $ref: '#/components/schemas/OrderByNode'
+            $ref: "#/components/schemas/OrderByNode"
           nullable: true
           readOnly: true
           type: array
@@ -2555,9 +2555,9 @@ components:
           additionalProperties: false
           type: object
         compute:
-          $ref: '#/components/schemas/ComputeQueryOption'
+          $ref: "#/components/schemas/ComputeQueryOption"
         orderByClause:
-          $ref: '#/components/schemas/OrderByClause'
+          $ref: "#/components/schemas/OrderByClause"
       type: object
     ParameterAttributes:
       enum:
@@ -2577,15 +2577,15 @@ components:
       additionalProperties: false
       properties:
         attributes:
-          $ref: '#/components/schemas/ParameterAttributes'
+          $ref: "#/components/schemas/ParameterAttributes"
         member:
-          $ref: '#/components/schemas/MemberInfo'
+          $ref: "#/components/schemas/MemberInfo"
         name:
           nullable: true
           readOnly: true
           type: string
         parameterType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         position:
           format: int32
           readOnly: true
@@ -2616,7 +2616,7 @@ components:
           type: boolean
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2668,14 +2668,14 @@ components:
           readOnly: true
           type: string
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -2687,11 +2687,11 @@ components:
           readOnly: true
           type: integer
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         propertyType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         attributes:
-          $ref: '#/components/schemas/PropertyAttributes'
+          $ref: "#/components/schemas/PropertyAttributes"
         isSpecialName:
           readOnly: true
           type: boolean
@@ -2702,21 +2702,21 @@ components:
           readOnly: true
           type: boolean
         getMethod:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
         setMethod:
-          $ref: '#/components/schemas/MethodInfo'
+          $ref: "#/components/schemas/MethodInfo"
       type: object
     PublicKey:
       additionalProperties: false
       properties:
         encodedKeyValue:
-          $ref: '#/components/schemas/AsnEncodedData'
+          $ref: "#/components/schemas/AsnEncodedData"
         encodedParameters:
-          $ref: '#/components/schemas/AsnEncodedData'
+          $ref: "#/components/schemas/AsnEncodedData"
         key:
-          $ref: '#/components/schemas/AsymmetricAlgorithm'
+          $ref: "#/components/schemas/AsymmetricAlgorithm"
         oid:
-          $ref: '#/components/schemas/Oid'
+          $ref: "#/components/schemas/Oid"
       type: object
     QueryNodeKind:
       enum:
@@ -2773,7 +2773,7 @@ components:
           readOnly: true
           type: string
         typeReference:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         kind:
           format: int32
           readOnly: true
@@ -2814,17 +2814,17 @@ components:
       additionalProperties: false
       properties:
         expression:
-          $ref: '#/components/schemas/SingleValueNode'
+          $ref: "#/components/schemas/SingleValueNode"
       type: object
     SearchQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         resultClrType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         searchClause:
-          $ref: '#/components/schemas/SearchClause'
+          $ref: "#/components/schemas/SearchClause"
         rawValue:
           nullable: true
           type: string
@@ -2840,7 +2840,7 @@ components:
       properties:
         selectedItems:
           items:
-            $ref: '#/components/schemas/SelectItem'
+            $ref: "#/components/schemas/SelectItem"
           nullable: true
           type: array
         allSelected:
@@ -2850,7 +2850,7 @@ components:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         rawSelect:
           nullable: true
           readOnly: true
@@ -2860,12 +2860,12 @@ components:
           readOnly: true
           type: string
         compute:
-          $ref: '#/components/schemas/ComputeQueryOption'
+          $ref: "#/components/schemas/ComputeQueryOption"
         validator:
           additionalProperties: false
           type: object
         selectExpandClause:
-          $ref: '#/components/schemas/SelectExpandClause'
+          $ref: "#/components/schemas/SelectExpandClause"
         levelsMaxLiteralExpansionDepth:
           format: int32
           type: integer
@@ -2877,15 +2877,15 @@ components:
       additionalProperties: false
       properties:
         typeReference:
-          $ref: '#/components/schemas/IEdmTypeReference'
+          $ref: "#/components/schemas/IEdmTypeReference"
         kind:
-          $ref: '#/components/schemas/QueryNodeKind'
+          $ref: "#/components/schemas/QueryNodeKind"
       type: object
     SkipQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         rawValue:
           nullable: true
           type: string
@@ -2907,7 +2907,7 @@ components:
           nullable: true
           type: string
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         validator:
           additionalProperties: false
           type: object
@@ -2972,13 +2972,13 @@ components:
           nullable: true
           readOnly: true
         value:
-          $ref: '#/components/schemas/LayoutKind'
+          $ref: "#/components/schemas/LayoutKind"
       type: object
     TopQueryOption:
       additionalProperties: false
       properties:
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         rawValue:
           nullable: true
           type: string
@@ -2994,7 +2994,7 @@ components:
       additionalProperties: false
       properties:
         kind:
-          $ref: '#/components/schemas/TransformationNodeKind'
+          $ref: "#/components/schemas/TransformationNodeKind"
       type: object
     TransformationNodeKind:
       enum:
@@ -3013,7 +3013,7 @@ components:
           type: string
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -3028,7 +3028,7 @@ components:
           readOnly: true
           type: boolean
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         namespace:
           nullable: true
           readOnly: true
@@ -3042,20 +3042,20 @@ components:
           readOnly: true
           type: string
         assembly:
-          $ref: '#/components/schemas/Assembly'
+          $ref: "#/components/schemas/Assembly"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         isNested:
           readOnly: true
           type: boolean
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         declaringMethod:
-          $ref: '#/components/schemas/MethodBase'
+          $ref: "#/components/schemas/MethodBase"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         underlyingSystemType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isTypeDefinition:
           readOnly: true
           type: boolean
@@ -3106,7 +3106,7 @@ components:
           type: boolean
         genericTypeArguments:
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: "#/components/schemas/Type"
           nullable: true
           readOnly: true
           type: array
@@ -3115,9 +3115,9 @@ components:
           readOnly: true
           type: integer
         genericParameterAttributes:
-          $ref: '#/components/schemas/GenericParameterAttributes'
+          $ref: "#/components/schemas/GenericParameterAttributes"
         attributes:
-          $ref: '#/components/schemas/TypeAttributes'
+          $ref: "#/components/schemas/TypeAttributes"
         isAbstract:
           readOnly: true
           type: boolean
@@ -3206,17 +3206,17 @@ components:
           readOnly: true
           type: boolean
         structLayoutAttribute:
-          $ref: '#/components/schemas/StructLayoutAttribute'
+          $ref: "#/components/schemas/StructLayoutAttribute"
         typeInitializer:
-          $ref: '#/components/schemas/ConstructorInfo'
+          $ref: "#/components/schemas/ConstructorInfo"
         typeHandle:
-          $ref: '#/components/schemas/RuntimeTypeHandle'
+          $ref: "#/components/schemas/RuntimeTypeHandle"
         guid:
           format: uuid
           readOnly: true
           type: string
         baseType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isSerializable:
           deprecated: true
           readOnly: true
@@ -3266,7 +3266,7 @@ components:
           type: string
         customAttributes:
           items:
-            $ref: '#/components/schemas/CustomAttributeData'
+            $ref: "#/components/schemas/CustomAttributeData"
           nullable: true
           readOnly: true
           type: array
@@ -3281,7 +3281,7 @@ components:
           readOnly: true
           type: boolean
         memberType:
-          $ref: '#/components/schemas/MemberTypes'
+          $ref: "#/components/schemas/MemberTypes"
         namespace:
           nullable: true
           readOnly: true
@@ -3295,20 +3295,20 @@ components:
           readOnly: true
           type: string
         assembly:
-          $ref: '#/components/schemas/Assembly'
+          $ref: "#/components/schemas/Assembly"
         module:
-          $ref: '#/components/schemas/Module'
+          $ref: "#/components/schemas/Module"
         isNested:
           readOnly: true
           type: boolean
         declaringType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         declaringMethod:
-          $ref: '#/components/schemas/MethodBase'
+          $ref: "#/components/schemas/MethodBase"
         reflectedType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         underlyingSystemType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isTypeDefinition:
           readOnly: true
           type: boolean
@@ -3359,7 +3359,7 @@ components:
           type: boolean
         genericTypeArguments:
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: "#/components/schemas/Type"
           nullable: true
           readOnly: true
           type: array
@@ -3368,9 +3368,9 @@ components:
           readOnly: true
           type: integer
         genericParameterAttributes:
-          $ref: '#/components/schemas/GenericParameterAttributes'
+          $ref: "#/components/schemas/GenericParameterAttributes"
         attributes:
-          $ref: '#/components/schemas/TypeAttributes'
+          $ref: "#/components/schemas/TypeAttributes"
         isAbstract:
           readOnly: true
           type: boolean
@@ -3459,17 +3459,17 @@ components:
           readOnly: true
           type: boolean
         structLayoutAttribute:
-          $ref: '#/components/schemas/StructLayoutAttribute'
+          $ref: "#/components/schemas/StructLayoutAttribute"
         typeInitializer:
-          $ref: '#/components/schemas/ConstructorInfo'
+          $ref: "#/components/schemas/ConstructorInfo"
         typeHandle:
-          $ref: '#/components/schemas/RuntimeTypeHandle'
+          $ref: "#/components/schemas/RuntimeTypeHandle"
         guid:
           format: uuid
           readOnly: true
           type: string
         baseType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isSerializable:
           deprecated: true
           readOnly: true
@@ -3482,55 +3482,55 @@ components:
           type: boolean
         genericTypeParameters:
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: "#/components/schemas/Type"
           nullable: true
           readOnly: true
           type: array
         declaredConstructors:
           items:
-            $ref: '#/components/schemas/ConstructorInfo'
+            $ref: "#/components/schemas/ConstructorInfo"
           nullable: true
           readOnly: true
           type: array
         declaredEvents:
           items:
-            $ref: '#/components/schemas/EventInfo'
+            $ref: "#/components/schemas/EventInfo"
           nullable: true
           readOnly: true
           type: array
         declaredFields:
           items:
-            $ref: '#/components/schemas/FieldInfo'
+            $ref: "#/components/schemas/FieldInfo"
           nullable: true
           readOnly: true
           type: array
         declaredMembers:
           items:
-            $ref: '#/components/schemas/MemberInfo'
+            $ref: "#/components/schemas/MemberInfo"
           nullable: true
           readOnly: true
           type: array
         declaredMethods:
           items:
-            $ref: '#/components/schemas/MethodInfo'
+            $ref: "#/components/schemas/MethodInfo"
           nullable: true
           readOnly: true
           type: array
         declaredNestedTypes:
           items:
-            $ref: '#/components/schemas/TypeInfo'
+            $ref: "#/components/schemas/TypeInfo"
           nullable: true
           readOnly: true
           type: array
         declaredProperties:
           items:
-            $ref: '#/components/schemas/PropertyInfo'
+            $ref: "#/components/schemas/PropertyInfo"
           nullable: true
           readOnly: true
           type: array
         implementedInterfaces:
           items:
-            $ref: '#/components/schemas/Type'
+            $ref: "#/components/schemas/Type"
           nullable: true
           readOnly: true
           type: array
@@ -3539,7 +3539,7 @@ components:
       additionalProperties: false
       properties:
         key:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         value:
           nullable: true
       type: object
@@ -3549,7 +3549,7 @@ components:
         isWellFormed:
           type: boolean
         entityType:
-          $ref: '#/components/schemas/Type'
+          $ref: "#/components/schemas/Type"
         isAny:
           type: boolean
         isIfNoneMatch:
@@ -3559,38 +3559,38 @@ components:
       additionalProperties: false
       properties:
         request:
-          $ref: '#/components/schemas/HttpRequest'
+          $ref: "#/components/schemas/HttpRequest"
         context:
-          $ref: '#/components/schemas/ODataQueryContext'
+          $ref: "#/components/schemas/ODataQueryContext"
         rawValues:
-          $ref: '#/components/schemas/ODataRawQueryOptions'
+          $ref: "#/components/schemas/ODataRawQueryOptions"
         selectExpand:
-          $ref: '#/components/schemas/SelectExpandQueryOption'
+          $ref: "#/components/schemas/SelectExpandQueryOption"
         apply:
-          $ref: '#/components/schemas/ApplyQueryOption'
+          $ref: "#/components/schemas/ApplyQueryOption"
         compute:
-          $ref: '#/components/schemas/ComputeQueryOption'
+          $ref: "#/components/schemas/ComputeQueryOption"
         filter:
-          $ref: '#/components/schemas/FilterQueryOption'
+          $ref: "#/components/schemas/FilterQueryOption"
         search:
-          $ref: '#/components/schemas/SearchQueryOption'
+          $ref: "#/components/schemas/SearchQueryOption"
         orderBy:
-          $ref: '#/components/schemas/OrderByQueryOption'
+          $ref: "#/components/schemas/OrderByQueryOption"
         skip:
-          $ref: '#/components/schemas/SkipQueryOption'
+          $ref: "#/components/schemas/SkipQueryOption"
         skipToken:
-          $ref: '#/components/schemas/SkipTokenQueryOption'
+          $ref: "#/components/schemas/SkipTokenQueryOption"
         top:
-          $ref: '#/components/schemas/TopQueryOption'
+          $ref: "#/components/schemas/TopQueryOption"
         count:
-          $ref: '#/components/schemas/CountQueryOption'
+          $ref: "#/components/schemas/CountQueryOption"
         validator:
           additionalProperties: false
           type: object
         ifMatch:
-          $ref: '#/components/schemas/UpdateETag'
+          $ref: "#/components/schemas/UpdateETag"
         ifNoneMatch:
-          $ref: '#/components/schemas/UpdateETag'
+          $ref: "#/components/schemas/UpdateETag"
       type: object
     WaitHandle:
       additionalProperties: false
@@ -3599,7 +3599,7 @@ components:
           additionalProperties: false
           type: object
         safeWaitHandle:
-          $ref: '#/components/schemas/SafeWaitHandle'
+          $ref: "#/components/schemas/SafeWaitHandle"
       type: object
     WebSocketManager:
       additionalProperties: false
@@ -3618,7 +3618,7 @@ components:
       additionalProperties: false
       properties:
         oid:
-          $ref: '#/components/schemas/Oid'
+          $ref: "#/components/schemas/Oid"
         rawData:
           format: byte
           nullable: true
@@ -3643,12 +3643,12 @@ components:
           readOnly: true
           type: string
         serialNumberBytes:
-          $ref: '#/components/schemas/ByteReadOnlyMemory'
+          $ref: "#/components/schemas/ByteReadOnlyMemory"
         archived:
           type: boolean
         extensions:
           items:
-            $ref: '#/components/schemas/X509Extension'
+            $ref: "#/components/schemas/X509Extension"
           nullable: true
           readOnly: true
           type: array
@@ -3659,9 +3659,9 @@ components:
           readOnly: true
           type: boolean
         privateKey:
-          $ref: '#/components/schemas/AsymmetricAlgorithm'
+          $ref: "#/components/schemas/AsymmetricAlgorithm"
         issuerName:
-          $ref: '#/components/schemas/X500DistinguishedName'
+          $ref: "#/components/schemas/X500DistinguishedName"
         notAfter:
           format: date-time
           readOnly: true
@@ -3671,22 +3671,22 @@ components:
           readOnly: true
           type: string
         publicKey:
-          $ref: '#/components/schemas/PublicKey'
+          $ref: "#/components/schemas/PublicKey"
         rawData:
           format: byte
           nullable: true
           readOnly: true
           type: string
         rawDataMemory:
-          $ref: '#/components/schemas/ByteReadOnlyMemory'
+          $ref: "#/components/schemas/ByteReadOnlyMemory"
         serialNumber:
           nullable: true
           readOnly: true
           type: string
         signatureAlgorithm:
-          $ref: '#/components/schemas/Oid'
+          $ref: "#/components/schemas/Oid"
         subjectName:
-          $ref: '#/components/schemas/X500DistinguishedName'
+          $ref: "#/components/schemas/X500DistinguishedName"
         thumbprint:
           nullable: true
           readOnly: true
@@ -3700,7 +3700,7 @@ components:
       additionalProperties: false
       properties:
         oid:
-          $ref: '#/components/schemas/Oid'
+          $ref: "#/components/schemas/Oid"
         rawData:
           format: byte
           nullable: true
