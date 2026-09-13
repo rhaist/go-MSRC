@@ -1466,15 +1466,15 @@ components:
       additionalProperties: false
       example:
         elements:
-        - container: null
-          containerElementKind: None
+        - containerElementKind: None
+          container: null
           name: name
-        - container: null
-          containerElementKind: None
+        - containerElementKind: None
+          container: null
           name: name
+        schemaElementKind: null
         namespace: namespace
         name: name
-        schemaElementKind: null
       properties:
         elements:
           items:
@@ -1496,8 +1496,8 @@ components:
     IEdmEntityContainerElement:
       additionalProperties: false
       example:
-        container: null
         containerElementKind: None
+        container: null
         name: name
       properties:
         containerElementKind:
@@ -1520,60 +1520,60 @@ components:
     IEdmModel:
       additionalProperties: false
       example:
-        declaredNamespaces:
-        - declaredNamespaces
-        - declaredNamespaces
+        schemaElements:
+        - schemaElementKind: None
+          namespace: namespace
+          name: name
+        - schemaElementKind: None
+          namespace: namespace
+          name: name
         vocabularyAnnotations:
         - qualifier: qualifier
           term:
-            defaultValue: defaultValue
-            namespace: namespace
-            name: name
-            appliesTo: appliesTo
-            schemaElementKind: null
             type:
               isNullable: true
               definition:
                 typeKind: None
+            appliesTo: appliesTo
+            defaultValue: defaultValue
+            schemaElementKind: null
+            namespace: namespace
+            name: name
+          target: "{}"
           value:
             expressionKind: None
-          target: "{}"
         - qualifier: qualifier
           term:
-            defaultValue: defaultValue
-            namespace: namespace
-            name: name
-            appliesTo: appliesTo
-            schemaElementKind: null
             type:
               isNullable: true
               definition:
                 typeKind: None
+            appliesTo: appliesTo
+            defaultValue: defaultValue
+            schemaElementKind: null
+            namespace: namespace
+            name: name
+          target: "{}"
           value:
             expressionKind: None
-          target: "{}"
         referencedModels:
         - null
         - null
+        declaredNamespaces:
+        - declaredNamespaces
+        - declaredNamespaces
         directValueAnnotationsManager: "{}"
-        schemaElements:
-        - namespace: namespace
-          name: name
-          schemaElementKind: None
-        - namespace: namespace
-          name: name
-          schemaElementKind: None
         entityContainer:
           elements:
-          - container: null
-            containerElementKind: None
+          - containerElementKind: None
+            container: null
             name: name
-          - container: null
-            containerElementKind: None
+          - containerElementKind: None
+            container: null
             name: name
+          schemaElementKind: null
           namespace: namespace
           name: name
-          schemaElementKind: null
       properties:
         schemaElements:
           items:
@@ -1699,9 +1699,9 @@ components:
     IEdmSchemaElement:
       additionalProperties: false
       example:
+        schemaElementKind: None
         namespace: namespace
         name: name
-        schemaElementKind: None
       properties:
         schemaElementKind:
           $ref: "#/components/schemas/EdmSchemaElementKind"
@@ -1755,15 +1755,15 @@ components:
     IEdmTerm:
       additionalProperties: false
       example:
-        defaultValue: defaultValue
-        namespace: namespace
-        name: name
-        appliesTo: appliesTo
-        schemaElementKind: null
         type:
           isNullable: true
           definition:
             typeKind: None
+        appliesTo: appliesTo
+        defaultValue: defaultValue
+        schemaElementKind: null
+        namespace: namespace
+        name: name
       properties:
         type:
           $ref: "#/components/schemas/IEdmTypeReference"
@@ -1815,18 +1815,18 @@ components:
       example:
         qualifier: qualifier
         term:
-          defaultValue: defaultValue
-          namespace: namespace
-          name: name
-          appliesTo: appliesTo
-          schemaElementKind: null
           type:
             isNullable: true
             definition:
               typeKind: None
+          appliesTo: appliesTo
+          defaultValue: defaultValue
+          schemaElementKind: null
+          namespace: namespace
+          name: name
+        target: "{}"
         value:
           expressionKind: None
-        target: "{}"
       properties:
         qualifier:
           nullable: true
@@ -2285,11 +2285,11 @@ components:
     ODataEntitySetInfo:
       additionalProperties: false
       example:
-        name: name
         typeAnnotation:
           typeName: typeName
-        title: title
         url: https://openapi-generator.tech
+        name: name
+        title: title
       properties:
         typeAnnotation:
           $ref: "#/components/schemas/ODataTypeAnnotation"
@@ -2307,11 +2307,11 @@ components:
     ODataFunctionImportInfo:
       additionalProperties: false
       example:
-        name: name
         typeAnnotation:
           typeName: typeName
-        title: title
         url: https://openapi-generator.tech
+        name: name
+        title: title
       properties:
         typeAnnotation:
           $ref: "#/components/schemas/ODataTypeAnnotation"
@@ -2416,41 +2416,41 @@ components:
     ODataServiceDocument:
       additionalProperties: false
       example:
-        functionImports:
-        - name: name
-          typeAnnotation:
-            typeName: typeName
-          title: title
-          url: https://openapi-generator.tech
-        - name: name
-          typeAnnotation:
-            typeName: typeName
-          title: title
-          url: https://openapi-generator.tech
         typeAnnotation:
           typeName: typeName
-        singletons:
-        - name: name
-          typeAnnotation:
-            typeName: typeName
-          title: title
-          url: https://openapi-generator.tech
-        - name: name
-          typeAnnotation:
-            typeName: typeName
-          title: title
-          url: https://openapi-generator.tech
         entitySets:
-        - name: name
-          typeAnnotation:
+        - typeAnnotation:
             typeName: typeName
-          title: title
           url: https://openapi-generator.tech
-        - name: name
-          typeAnnotation:
+          name: name
+          title: title
+        - typeAnnotation:
             typeName: typeName
-          title: title
           url: https://openapi-generator.tech
+          name: name
+          title: title
+        singletons:
+        - typeAnnotation:
+            typeName: typeName
+          url: https://openapi-generator.tech
+          name: name
+          title: title
+        - typeAnnotation:
+            typeName: typeName
+          url: https://openapi-generator.tech
+          name: name
+          title: title
+        functionImports:
+        - typeAnnotation:
+            typeName: typeName
+          url: https://openapi-generator.tech
+          name: name
+          title: title
+        - typeAnnotation:
+            typeName: typeName
+          url: https://openapi-generator.tech
+          name: name
+          title: title
       properties:
         typeAnnotation:
           $ref: "#/components/schemas/ODataTypeAnnotation"
@@ -2473,11 +2473,11 @@ components:
     ODataSingletonInfo:
       additionalProperties: false
       example:
-        name: name
         typeAnnotation:
           typeName: typeName
-        title: title
         url: https://openapi-generator.tech
+        name: name
+        title: title
       properties:
         typeAnnotation:
           $ref: "#/components/schemas/ODataTypeAnnotation"
